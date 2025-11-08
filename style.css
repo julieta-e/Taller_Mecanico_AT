@@ -172,20 +172,43 @@ header {
 
 /* Hero Section (index.html) */
 
+/* Secciones Generales */
+section {
+    padding: 60px 20px;
+    max-width: 1200px; /* Limitación de ancho general */
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* --- EXCEPCIÓN PARA HERO (PARA QUE OCUPE EL 100% DE ANCHO) --- */
 #hero {
-    background: url("ruta/a/imagen-fondo-hero.jpg") no-repeat center center/cover;
+    /* Mantenemos tus estilos de Hero... */
+    background: url("resources/hero.webp") no-repeat center center/cover;
     color: var(--blanco);
     text-align: center;
-    padding: 120px 20px;
-    min-height: 500px;
+    padding: 180px 20px;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-top: -80px;
-    /* Para que inicie desde el borde superior */
+    margin-top: -50px;
+    
+    /* ¡Añadimos estas dos propiedades para ignorar el límite de 'section'! */
+    max-width: 100%;
+    width: 100%;
+    
+    /* Y si tu HTML usa <main>, también necesitas anular el padding horizontal de tu section: */
+    padding-left: 0;
+    padding-right: 0;
 }
 
+/* También aplica la corrección al contenedor interno (si lo tienes): */
+.hero-content {
+    /* Si el contenido del Hero se ve muy ancho, puedes darle un max-width */
+    max-width: 1200px;
+    margin: 0 auto; /* Para centrar el contenido */
+}
 #hero::before {
     /* Capa oscura */
     content: "";
@@ -818,8 +841,8 @@ footer .copy {
 /* Contenedor del logo */
 .logo-option img {
     /* ** TAMAÑO DE LA IMAGEN EN LA FILA ** */
-    width: 40px; 
-    height: 40px; /* Reducido para mejor vista en fila */
+    width: 120px; 
+    height: 120px; /* Reducido para mejor vista en fila */
     object-fit: contain;
     padding: 0;
     
@@ -839,7 +862,7 @@ footer .copy {
     font-size: 1em;
     font-weight: bold;
     color: var(--gris-oscuro);
-    margin-left: 10px; /* Espacio entre el logo y el texto */
+    margin-left: 15px; /* Espacio entre el logo y el texto */
     opacity: 0.9;
     transition: color 0.3s ease;
     text-transform: uppercase;
