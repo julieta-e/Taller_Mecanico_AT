@@ -1,0 +1,126 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Vehículo - Taller Mecánico AT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/img/LOGO.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/img/LOGO.png" alt="Logo Taller Mecánico AT">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sucursales.html">Sucursales</a></li>
+                    <li><a href="servicios.html">Servicios Técnicos</a></li>
+                    <li><a href="repuestos.html">Repuestos</a></li>
+                    <li><a href="index.html#contacto">Contáctanos</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="cuenta.html" class="account-link">Mi Cuenta</a>
+                <a href="agendar_cita.html" class="cta-button">Agendar Cita</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="registro-vehiculo">
+            <h2>Registro de Vehículo</h2>
+            <p>Complete el siguiente formulario para registrar un nuevo vehículo en el sistema del Taller Mecánico AT.</p>
+            
+            <div class="cita-form-container">
+                <form id="formRegistroVehiculo" method="POST" action="procesar_registro.php">
+                    
+                    <!-- DATOS DEL PROPIETARIO -->
+                    <fieldset class="form-step">
+                        <legend>Datos del Propietario</legend>
+                        <div class="form-group">
+                            <label for="nombrePropietario">Nombre completo:</label>
+                            <input type="text" id="nombrePropietario" name="nombrePropietario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ciPropietario">Cédula de Identidad:</label>
+                            <input type="text" id="ciPropietario" name="ciPropietario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefonoPropietario">Teléfono:</label>
+                            <input type="text" id="telefonoPropietario" name="telefonoPropietario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailPropietario">Correo electrónico:</label>
+                            <input type="email" id="emailPropietario" name="emailPropietario">
+                        </div>
+                    </fieldset>
+
+                    <!-- DATOS DEL VEHÍCULO -->
+                    <fieldset class="form-step">
+                        <legend>Datos del Vehículo</legend>
+                        <div class="form-group">
+                            <label for="placaVehiculo">Número de Placa:</label>
+                            <input type="text" id="placaVehiculo" name="placaVehiculo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="marcaVehiculo">Marca:</label>
+                            <input type="text" id="marcaVehiculo" name="marcaVehiculo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modeloVehiculo">Modelo:</label>
+                            <input type="text" id="modeloVehiculo" name="modeloVehiculo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="anioVehiculo">Año:</label>
+                            <input type="text" id="anioVehiculo" name="anioVehiculo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoVehiculo">Tipo de Vehículo:</label>
+                            <select id="tipoVehiculo" name="tipoVehiculo" required>
+                                <option value="">Seleccione...</option>
+                                <option value="automovil">Automóvil</option>
+                                <option value="camioneta">Camioneta</option>
+                                <option value="motocicleta">Motocicleta</option>
+                                <option value="camion">Camión</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="colorVehiculo">Color:</label>
+                            <input type="text" id="colorVehiculo" name="colorVehiculo">
+                        </div>
+                    </fieldset>
+
+                    <!-- CONFIRMACIÓN -->
+                    <fieldset class="form-step">
+                        <legend>Confirmación</legend>
+                        <p>Por favor, verifique que todos los datos sean correctos antes de enviar el formulario.</p>
+                        <button type="submit" class="cta-button large">Registrar Vehículo</button>
+                    </fieldset>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <h2>Contáctanos</h2>
+        <p>¿Tienes alguna pregunta o necesitas ayuda con tu registro?</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+59171234567">+591 71234567</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@tallermecanicoat.com">info@tallermecanicoat.com</a></p>
+        <div class="social-media">
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">WhatsApp</a>
+        </div>
+        <p class="copy">&copy; 2025 Taller Mecánico AT. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
