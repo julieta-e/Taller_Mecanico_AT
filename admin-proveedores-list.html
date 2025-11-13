@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proveedores - Taller Mecánico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card" style="margin:2rem;">
+    <h2 style="color: var(--azul-oscuro)">Proveedores Registrados</h2>
+    <table id="proveedores-table" border="1" style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Contacto</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function listarProveedores(){
+      const res = await fetch('api/proveedores.php?action=list');
+      const data = await res.json();
+      const tbody = document.querySelector('#proveedores-table tbody');
+      tbody.innerHTML = '';
+      data.forEach(p=>{
+        tbody.innerHTML += `<tr>
+          <td>${p.id}</td>
+          <td>${p.nombre}</td>
+          <td>${p.contacto}</td>
+          <td>${p.telefono}</td>
+          <td>${p.email}</td>
+          <td>${p.direccion}</td>
+          <td>
+            <button class="btn-warning" onclick="editar(${p.id})">Editar</button>
+            <button class="btn-primary" onclick="eliminar(${p.id})">Eliminar</button>
+          </td>
+        </tr>`;
+      });
+    }
+
+    async function eliminar(id){
+      if(confirm('¿Seguro que quieres eliminar este proveedor?')){
+        const res = await fetch('api/proveedores.php', {
+          method:'POST',
+          body: new URLSearchParams({action:'delete', id})
+        });
+        const data = await res.json();
+        if(data.ok) listarProveedores();
+      }
+    }
+
+    function editar(id){
+      window.location='admin-proveedores-add.html?id='+id;
+    }
+
+    listarProveedores();
+  </script>
+</body>
+</html>

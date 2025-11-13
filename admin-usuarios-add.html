@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alta de Usuario - Taller Mecánico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card" style="max-width:600px; margin:2rem auto;">
+    <h2 style="color: var(--azul-oscuro)">Alta de Usuario</h2>
+    <form id="form-usuario">
+      <label>Nombre</label>
+      <input name="nombre" required>
+      <label>Email</label>
+      <input name="email" type="email" required>
+      <label>Contraseña</label>
+      <input name="password" type="password" required>
+      <label>Rol</label>
+      <select name="rol">
+        <option value="admin">Admin</option>
+        <option value="mecanico">Mecánico</option>
+        <option value="recepcion">Recepción</option>
+      </select>
+      <button class="btn-primary" type="submit">Crear</button>
+    </form>
+    <div id="msg"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('form-usuario');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const res = await fetch('api/usuarios.php', {method:'POST', body: fd});
+      const data = await res.json();
+      document.getElementById('msg').innerText = data.ok ? 'Usuario creado' : 'Error al crear usuario';
+    });
+  </script>
+</body>
+</html>
