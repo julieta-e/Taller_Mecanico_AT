@@ -1,126 +1,389 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Vehículo - Taller Mecánico AT</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/img/LOGO.png" type="image/png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Taller AT</title>
+    <style>
+        /* RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; font-family: Arial, sans-serif; background: #f4f4f4; overflow: hidden; }
+
+        /* LAYOUT */
+        .admin-body { display: flex; height: 100vh; }
+
+        /* SIDEBAR - MENÚ IZQUIERDO */
+        .sidebar {
+            width: 250px;
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-admin img {
+            width: 150px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-nav ul { list-style: none; flex: 1; }
+
+        .sidebar-nav a {
+            display: block;
+            color: white;
+            padding: 12px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover { background-color: #ff6d2d; }
+
+        /* SUBMENÚS */
+        .has-submenu > .main-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .has-submenu > .main-link::after {
+            content: '▼';
+            font-size: 0.7em;
+            transition: transform 0.3s ease;
+        }
+
+        .has-submenu.open > .main-link::after {
+            transform: rotate(180deg);
+        }
+
+        .submenu {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 0 0;
+            background-color: rgba(255, 109, 45, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            border-left: 3px solid #ff6d2d;
+        }
+
+        .has-submenu.open .submenu {
+            max-height: 1000px; /* suficiente para todos los ítems */
+        }
+
+        .submenu li a {
+            padding: 10px 15px 10px 35px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
+        }
+
+        .submenu li a:hover {
+            background-color: rgba(255, 109, 45, 0.3);
+            color: #ff6d2d;
+            padding-left: 40px;
+        }
+
+        /* CERRAR SESIÓN */
+        .logout-link {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .logout-link a {
+            background-color: #dc3545 !important;
+            text-align: center;
+        }
+
+        .logout-link a:hover {
+            background-color: #c82333 !important;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        main {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+
+        .dashboard-section { display: none; }
+        .dashboard-section.active { display: block; }
+
+        h1 {
+            color: #003366;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ff6d2d;
+            padding-bottom: 10px;
+            font-size: 2em;
+        }
+
+        /* ESTILOS GENERALES */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 30px 0; }
+        .stat-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); text-align: center; border-left: 5px solid #003366; }
+        .stat-box.alert { border-left-color: #dc3545; }
+        .stat-box .number { font-size: 3em; font-weight: bold; color: #003366; }
+        .stat-box .label { color: #666; margin-top: 8px; font-size: 1.1em; }
+
+        .section-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); margin-bottom: 25px; }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #003366;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 10px 8px 20px 0;
+        }
+        .cta-button:hover { background-color: #ff6d2d; }
+
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .data-table th { background-color: #003366; color: white; padding: 15px; text-align: left; }
+        .data-table td { padding: 12px; border-bottom: 1px solid #ddd; }
+        .data-table tr:hover { background-color: #f9f9f9; }
+        .action-btn { color: #ff6d2d; cursor: pointer; font-weight: bold; }
+        .action-btn:hover { text-decoration: underline; }
+
+        /* FORMULARIOS */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #ff6d2d; box-shadow: 0 0 8px rgba(255,109,45,0.3); }
+        .form-row { display: flex; gap: 20px; }
+        .form-row .form-group { flex: 1; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .admin-body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; padding: 15px; }
+            .dashboard-content { padding: 20px; }
+            .form-row { flex-direction: column; }
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/img/LOGO.png" alt="Logo Taller Mecánico AT">
-                </a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sucursales.html">Sucursales</a></li>
-                    <li><a href="servicios.html">Servicios Técnicos</a></li>
-                    <li><a href="repuestos.html">Repuestos</a></li>
-                    <li><a href="Promociones.html">Promociones</a></li>
-                </ul>
-            </nav>
-            <div class="nav-actions">
-                <a href="cuenta.html" class="account-link">Mi Cuenta</a>
-                <a href="agendar_cita.html" class="cta-button">Agendar Cita</a>
-            </div>
+<body class="admin-body">
+
+    <!-- MENÚ IZQUIERDO - 100% COMO LO TENÍAS TÚ -->
+    <aside class="sidebar">
+        <div class="logo-admin">
+            <img src="assets/img/systmec-Photoroom.png" alt="Logo" onerror="this.style.display='none'">
         </div>
-    </header>
 
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="javascript:void(0)" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Citas</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-hoy')">Citas de Hoy</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-proximas')">Próximas Citas</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-crear')">Crear Cita</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Clientes</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-listar')">Lista de Clientes</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-nuevo')">Registrar Cliente</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Vehículos</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('vehiculos-listar')">Lista</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('vehiculos-nuevo')">Registrar</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Productos</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-listar')">Inventario</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-nuevo')">Agregar</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Ventas</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('ventas-listar')">Registro</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('ventas-nueva')">Nueva Venta</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Compras</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('compras-listar')">Órdenes</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('compras-nueva')">Nueva Orden</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Usuarios</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-listar')">Lista</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-nuevo')">Crear Usuario</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('servicios-listar')">Lista</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('servicios-nuevo')">Crear</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Repuestos</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('repuestos-listar')">Catálogo</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('repuestos-nuevo')">Agregar</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Proveedores</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-listar')">Lista</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-nuevo')">Registrar</a></li>
+                    </ul>
+                </li>
+
+                <li class="logout-link">
+                    <a href="logout.php">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
     <main>
-        <section id="registro-vehiculo">
-            <h2>Registro de Vehículo</h2>
-            <p>Complete el siguiente formulario para registrar un nuevo vehículo en el sistema del Taller Mecánico AT.</p>
-            
-            <div class="cita-form-container">
-                <form id="formRegistroVehiculo" method="POST" action="procesar_registro.php">
-                    
-                    <!-- DATOS DEL PROPIETARIO -->
-                    <fieldset class="form-step">
-                        <legend>Datos del Propietario</legend>
-                        <div class="form-group">
-                            <label for="nombrePropietario">Nombre completo:</label>
-                            <input type="text" id="nombrePropietario" name="nombrePropietario" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ciPropietario">Cédula de Identidad:</label>
-                            <input type="text" id="ciPropietario" name="ciPropietario" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefonoPropietario">Teléfono:</label>
-                            <input type="text" id="telefonoPropietario" name="telefonoPropietario" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emailPropietario">Correo electrónico:</label>
-                            <input type="email" id="emailPropietario" name="emailPropietario">
-                        </div>
-                    </fieldset>
+        <div class="dashboard-content">
+            <!-- INICIO -->
+            <section id="inicio" class="dashboard-section active">
+                <h1>Bienvenido al Sistema - Taller AT</h1>
+                <div class="stats-grid">
+                    <div class="stat-box"><div class="number">8</div><div class="label">Citas Hoy</div></div>
+                    <div class="stat-box alert"><div class="number">5</div><div class="label">Stock Crítico</div></div>
+                    <div class="stat-box"><div class="number">Bs 2.540</div><div class="label">Ventas del Día</div></div>
+                </div>
+                <div class="section-card">
+                    <h2>Panel de Administración</h2>
+                    <p>Sistema completo de gestión para taller mecánico.</p>
+                </div>
+            </section>
 
-                    <!-- DATOS DEL VEHÍCULO -->
-                    <fieldset class="form-step">
-                        <legend>Datos del Vehículo</legend>
-                        <div class="form-group">
-                            <label for="placaVehiculo">Número de Placa:</label>
-                            <input type="text" id="placaVehiculo" name="placaVehiculo" required>
+            <!-- VEHÍCULOS - LISTA Y REGISTRO (CRUD funcional) -->
+            <section id="vehiculos-listar" class="dashboard-section">
+                <h1>Lista de Vehículos</h1>
+                <button class="cta-button" onclick="mostrarSeccion('vehiculos-nuevo')">+ Registrar Vehículo</button>
+                <div class="section-card">
+                    <table class="data-table" id="tablaVehiculos">
+                        <thead>
+                            <tr><th>Placa</th><th>Marca</th><th>Modelo</th><th>Año</th><th>Color</th><th>Cliente</th><th>Acciones</th></tr>
+                        </thead>
+                        <tbody id="vehiculosBody">
+                            <tr>
+                                <td>SAB-100</td><td>Toyota</td><td>Corolla</td><td>2015</td><td>Plateado</td><td>Juan Pérez</td>
+                                <td><span class="action-btn" onclick="editarVehiculo(this)">Editar</span> | <span class="action-btn" onclick="eliminarVehiculo(this)">Eliminar</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="vehiculos-nuevo" class="dashboard-section">
+                <h1>Registrar Vehículo</h1>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('vehiculos-listar')">Volver</button>
+                <div class="section-card">
+                    <form id="formVehiculo">
+                        <div class="form-group"><label>Placa *</label><input type="text" id="placa" required></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Marca *</label><input type="text" id="marca" required></div>
+                            <div class="form-group"><label>Modelo</label><input type="text" id="modelo"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Año</label><input type="number" id="anio" min="1900"></div>
+                            <div class="form-group"><label>Color</label><input type="text" id="color"></div>
                         </div>
                         <div class="form-group">
-                            <label for="marcaVehiculo">Marca:</label>
-                            <input type="text" id="marcaVehiculo" name="marcaVehiculo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="modeloVehiculo">Modelo:</label>
-                            <input type="text" id="modeloVehiculo" name="modeloVehiculo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="anioVehiculo">Año:</label>
-                            <input type="text" id="anioVehiculo" name="anioVehiculo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tipoVehiculo">Tipo de Vehículo:</label>
-                            <select id="tipoVehiculo" name="tipoVehiculo" required>
-                                <option value="">Seleccione...</option>
-                                <option value="automovil">Automóvil</option>
-                                <option value="camioneta">Camioneta</option>
-                                <option value="motocicleta">Motocicleta</option>
-                                <option value="camion">Camión</option>
-                                <option value="otros">Otros</option>
+                            <label>Cliente *</label>
+                            <select id="cliente" required>
+                                <option value="">Seleccionar</option>
+                                <option>Juan Pérez</option>
+                                <option>María Gómez</option>
+                                <option>Carlos Rivas</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="colorVehiculo">Color:</label>
-                            <input type="text" id="colorVehiculo" name="colorVehiculo">
-                        </div>
-                    </fieldset>
+                        <button type="button" class="cta-button" onclick="guardarVehiculo()">Guardar</button>
+                        <button type="button" class="cta-button" style="background:#dc3545;" onclick="mostrarSeccion('vehiculos-listar')">Cancelar</button>
+                    </form>
+                </div>
+            </section>
 
-                    <!-- CONFIRMACIÓN -->
-                    <fieldset class="form-step">
-                        <legend>Confirmación</legend>
-                        <p>Por favor, verifique que todos los datos sean correctos antes de enviar el formulario.</p>
-                        <button type="submit" class="cta-button large">Registrar Vehículo</button>
-                    </fieldset>
-
-                </form>
-            </div>
-        </section>
+            <!-- Aquí puedes ir pegando todas las demás secciones que ya tenías (citas, clientes, productos, etc.) -->
+        </div>
     </main>
 
-    <footer id="contacto">
-        <h2>Contáctanos</h2>
-        <p>¿Tienes alguna pregunta o necesitas ayuda con tu registro?</p>
-        <p><strong>Teléfono:</strong> <a href="tel:+59171234567">+591 71234567</a></p>
-        <p><strong>Email:</strong> <a href="mailto:info@tallermecanicoat.com">info@tallermecanicoat.com</a></p>
-        <div class="social-media">
-            <a href="#" target="_blank">Facebook</a>
-            <a href="#" target="_blank">Instagram</a>
-            <a href="#" target="_blank">WhatsApp</a>
-        </div>
-        <p class="copy">&copy; 2025 Taller Mecánico AT. Todos los derechos reservados.</p>
-    </footer>
+    <script>
+        function mostrarSeccion(id) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
+            const sec = document.getElementById(id);
+            if (sec) sec.classList.add('active');
+            document.querySelector('.dashboard-content').scrollTop = 0;
+        }
 
-    <script src="script.js"></script>
+        function toggleMenu(el) {
+            el.parentElement.classList.toggle('open');
+        }
+
+        // CRUD Vehículos
+        function guardarVehiculo() {
+            const placa = document.getElementById('placa').value.trim();
+            const marca = document.getElementById('marca').value.trim();
+            const modelo = document.getElementById('modelo').value.trim();
+            const anio = document.getElementById('anio').value;
+            const color = document.getElementById('color').value.trim();
+            const cliente = document.getElementById('cliente').value;
+
+            if (!placa || !marca || !cliente) { alert('Complete los campos obligatorios'); return; }
+
+            const tbody = document.getElementById('vehiculosBody');
+            const fila = document.createElement('tr');
+            fila.innerHTML = `<td>${placa}</td><td>${marca}</td><td>${modelo||'-'}</td><td>${anio||'-'}</td><td>${color||'-'}</td><td>${cliente}</td>
+                <td><span class="action-btn" onclick="editarVehiculo(this)">Editar</span> | 
+                    <span class="action-btn" onclick="eliminarVehiculo(this)">Eliminar</span></td>`;
+            tbody.appendChild(fila);
+            document.getElementById('formVehiculo').reset();
+            mostrarSeccion('vehiculos-listar');
+        }
+
+        function eliminarVehiculo(btn) { if (confirm('¿Eliminar vehículo?')) btn.closest('tr').remove(); }
+        function editarVehiculo(btn) { alert('Función editar lista para implementar'); }
+
+        // Iniciar en Inicio
+        document.addEventListener('DOMContentLoaded', () => mostrarSeccion('inicio'));
+    </script>
 </body>
 </html>
