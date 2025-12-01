@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil de Usuario - Taller Mecánico AT</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/img/LOGO.png" type="image/png" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+</head>
+
+<body>
+    <header>
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/img/LOGO.png" alt="Logo Taller Mecánico AT" />
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sucursales.html">Sucursales</a></li>
+                    <li><a href="servicios.html">Servicios Técnicos</a></li>
+                    <li><a href="repuestos.html">Repuestos</a></li>
+                    <li><a href="Promociones.html">Promociones</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="agendar_cita.html" class="cta-button">Agendar Cita</a>
+                <div id="profile-menu-container" class="profile-dropdown-wrapper"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-page-main">
+        <div class="profile-content">
+            <h1>Bienvenido a tu Perfil</h1>
+            <p>Aquí podrás gestionar tus vehículos, citas agendadas, historial de servicios y datos personales.</p>
+            
+            <section class="profile-details">
+                <h2><i class="fas fa-user-cog"></i> Mis Datos Personales</h2>
+                <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
+                <p><strong>Email:</strong> <span id="profile-email">Cargando...</span></p>
+                <p><strong>Teléfono:</strong> <span id="profile-phone">Añadir...</span></p>
+                <button onclick="alert('Funcionalidad de edición')">Editar Perfil</button>
+            </section>
+            
+            <div class="profile-sections-right">
+                <section class="appointments-section">
+                    <h2><i class="fas fa-calendar-check"></i> Próxima Cita</h2>
+                    <div class="appointment-card">
+                        <p><strong>Fecha:</strong> 15 de Diciembre, 2025</p>
+                        <p><strong>Servicio:</strong> Mantenimiento de 10,000 km</p>
+                        <p><strong>Vehículo:</strong> Toyota Corolla (ABC-123)</p>
+                        <p><strong>Estado:</strong> Confirmada</p>
+                    </div>
+                    <a href="agendar_cita.html" class="cta-button" style="display: block; margin-top: 15px;">Nueva Cita</a>
+                </section>
+                
+                <section class="vehicles-section" style="margin-top: 30px;">
+                    <h2><i class="fas fa-car"></i> Mis Vehículos</h2>
+                    <div class="vehicle-card" style="border: 1px solid var(--color-border); padding: 15px; border-radius: 5px;">
+                        <p><strong>Modelo:</strong> Toyota Corolla</p>
+                        <p><strong>Placa:</strong> ABC-123</p>
+                        <p><strong>Año:</strong> 2020</p>
+                    </div>
+                </section>
+            </div>
+            
+            <button onclick="logout()" class="cta-button">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        </footer>
+
+    <script>
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('userName');
+            window.location.href = "index.html"; 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileMenuContainer = document.getElementById('profile-menu-container');
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            const userName = sessionStorage.getItem('userName') || 'Mi Perfil';
+            const userEmail = sessionStorage.getItem('userEmail') || 'usuario@tallerat.com'; 
+
+            if (isLoggedIn && profileMenuContainer) {
+                
+                // --- 1. INYECCIÓN DEL BOTÓN Y MENÚ COMPLETO ---
+                profileMenuContainer.innerHTML = `
+                    <button id="profile-button" class="profile-button">
+                        <i class="fas fa-user-circle"></i> 
+                    </button>
+
+                    <div id="profile-dropdown-menu" class="profile-dropdown-menu hidden">
+                        <div class="profile-info-header">
+                            <i class="fas fa-user-circle large-icon"></i>
+                            <div class="text-info">
+                                <strong>${userName}</strong>
+                                <small>${userEmail}</small>
+                                <a href="perfil.html" class="view-channel-link">Ver tu Perfil</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <a href="perfil.html" class="menu-item"><i class="fas fa-cog"></i> Configuración de Cuenta</a>
+                        <a href="historial.html" class="menu-item"><i class="fas fa-history"></i> Historial de Servicios</a>
+                        <a href="#" onclick="logout()" class="menu-item logout-item"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                    </div>
+                `;
+                
+                // --- 2. LÓGICA DE MOSTRAR/OCULTAR EL MENÚ ---
+                
+                const profileButton = document.getElementById('profile-button');
+                const dropdownMenu = document.getElementById('profile-dropdown-menu');
+
+                if (profileButton && dropdownMenu) {
+                    profileButton.addEventListener('click', (e) => {
+                        e.stopPropagation(); 
+                        dropdownMenu.classList.toggle('hidden');
+                    });
+                    
+                    document.addEventListener('click', (e) => {
+                        if (!profileMenuContainer.contains(e.target) && !dropdownMenu.classList.contains('hidden')) {
+                            dropdownMenu.classList.add('hidden');
+                        }
+                    });
+                }
+                
+                // --- 3. CARGA DE DATOS DEL PERFIL ---
+                // Estos elementos SÍ existen en esta página
+                const profileNameElement = document.getElementById('profile-name');
+                const profileEmailElement = document.getElementById('profile-email');
+                if (profileNameElement) profileNameElement.textContent = userName;
+                if (profileEmailElement) profileEmailElement.textContent = userEmail;
+                
+            } else if (profileMenuContainer) {
+                // Si NO ha iniciado sesión, mostrar el enlace de "Iniciar Sesión"
+                profileMenuContainer.innerHTML = `
+                    <a href="cuenta.html" class="account-link active">Iniciar sesion</a>
+                `;
+                
+                // Opcional: Redirigir si alguien entra a perfil.html sin iniciar sesión
+                // alert("Debes iniciar sesión para ver tu perfil.");
+                // window.location.href = "cuenta.html";
+            }
+        });
+    </script>
+</body>
+</html>

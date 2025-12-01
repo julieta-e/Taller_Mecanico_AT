@@ -173,10 +173,9 @@ header {
 }
 
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el botón y el perfil */
 }
 
 .account-link {
@@ -2521,4 +2520,634 @@ footer {
                 grid-template-columns: 1fr;
             }
           }
-          
+          .form-container {
+  display: none;
+}
+
+.form-container.active {
+  display: block;
+}
+/* ========================================= */
+/* ESTILOS ESPECÍFICOS DEL PERFIL DEL CLIENTE */
+/* ========================================= */
+
+/* Main de la página de perfil */
+main.profile-page-main {
+    padding-top: 100px; /* Ajuste para el header fijo */
+    background-color: var(--gris-claro-fondo);
+}
+
+#profile-dashboard {
+    text-align: left;
+    padding: 40px 20px 60px;
+}
+
+#profile-dashboard h2 {
+    text-align: left;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+#profile-dashboard h2::after {
+    /* Desactivar el subrayado en el título principal del dashboard */
+    content: none;
+}
+
+.profile-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Tarjetas de información y acciones */
+.profile-card {
+    background-color: var(--blanco);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.data-card {
+    flex: 2; /* Ocupa más espacio para los datos */
+    min-width: 350px;
+}
+
+.data-card h3 {
+    border-bottom: 2px solid var(--naranja-vibrante);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 1.1em;
+}
+
+.data-row strong {
+    color: var(--azul-oscuro);
+    font-weight: bold;
+}
+
+.data-card .cta-button {
+    margin-top: 25px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+.profile-actions {
+    flex: 3; /* Ocupa el resto del espacio */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.appointment-card {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+}
+
+.appointment-card h3 {
+    color: var(--naranja-vibrante);
+}
+
+.appointment-card p {
+    margin-bottom: 20px;
+}
+
+.appointment-card .cta-button.full-width {
+    background-color: var(--naranja-vibrante);
+    border-color: var(--naranja-vibrante);
+}
+
+.appointment-card .cta-button.full-width:hover {
+    background-color: var(--blanco);
+    color: var(--azul-oscuro);
+}
+
+.history-card h3 {
+    border-bottom: 2px solid var(--azul-oscuro);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#citas-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+#citas-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 0.95em;
+    color: var(--gris-oscuro);
+}
+
+/* Estilo para el botón secundario */
+.secondary-button {
+    background-color: var(--gris-oscuro);
+    border-color: var(--gris-oscuro);
+    color: var(--blanco);
+}
+
+.secondary-button:hover {
+    background-color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+/* Responsive para Perfil */
+@media (max-width: 900px) {
+    .profile-layout {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .data-card, .profile-actions {
+        min-width: 100%;
+        flex: 1;
+    }
+}
+/* ========================================= */
+/* NUEVO: MENÚ DE USUARIO (TIPO YOUTUBE - AJUSTADO) */
+/* ========================================= */
+
+/* Contenedor del Perfil (Contiene el botón y el menú) */
+/* Usa el selector que tienes en tu HTML: #profile-menu-container */
+.profile-dropdown-wrapper {
+    position: relative;
+}
+
+/* El Botón de Perfil (Solo el Ícono) */
+#profile-button {
+    /* Reemplaza .user-avatar si usas este ID */
+    width: 45px;
+    height: 45px;
+    background-color: var(--naranja-vibrante); /* Color de fondo del Avatar */
+    color: var(--blanco);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem; /* Ícono grande */
+    border: 2px solid var(--blanco);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    padding: 0;
+}
+
+#profile-button:hover {
+    box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4); /* Efecto de hover sutil */
+    background-color: #e64a19; /* Ligeramente más oscuro al pasar el ratón */
+}
+
+#profile-button i {
+    color: var(--blanco);
+}
+
+
+/* El Menú Desplegable (Estilo Oscuro UNIFICADO) */
+.profile-dropdown-menu {
+    position: absolute;
+    top: 60px; /* Ajustado para caer debajo de un header típico */
+    right: 0;
+    background-color: #282828; /* Fondo oscuro estilo YouTube */
+    color: #fff;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex; /* Mostrará como flex, la clase hidden lo ocultará */
+    flex-direction: column;
+    z-index: 2000;
+    overflow: hidden;
+    border: 1px solid #3e3e3e;
+    
+    /* Transición y ocultamiento basado en tu lógica JS */
+    opacity: 1;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+/* Clase para ocultar el menú (usada por tu JS) */
+.profile-dropdown-menu.hidden {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Cabecera del Dropdown (Avatar grande + Info) */
+.profile-info-header {
+    padding: 20px;
+    border-bottom: 1px solid #3e3e3e;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #212121;
+}
+
+.profile-info-header .large-icon {
+    /* Estilo del Avatar grande */
+    width: 50px;
+    height: 50px;
+    background-color: var(--naranja-vibrante);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-info-header .text-info {
+    overflow: hidden;
+}
+
+.profile-info-header .text-info strong {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.profile-info-header .text-info small {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.profile-info-header .text-info .view-channel-link {
+    /* Enlace "Ver tu Perfil" */
+    font-size: 13px;
+    color: var(--naranja-vibrante);
+    text-decoration: none;
+    margin-top: 5px;
+    display: block;
+}
+
+.profile-info-header .text-info .view-channel-link:hover {
+    text-decoration: underline;
+}
+
+/* Separador */
+hr {
+    border: none;
+    border-top: 1px solid #3e3e3e;
+    margin: 5px 0;
+}
+
+/* Items del menú */
+.menu-item {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #e0e0e0 !important;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background 0.2s;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu-item i {
+    width: 20px;
+    text-align: center;
+    color: #aaa;
+}
+
+.menu-item:hover {
+    background-color: #3e3e3e;
+    color: white !important;
+}
+
+.menu-item:hover i {
+    color: var(--naranja-vibrante);
+}
+
+/* Estilo específico para Cerrar Sesión */
+.logout-item {
+    color: var(--color-danger) !important; /* Asegura el color rojo si usas la variable */
+    color: #f44336 !important; /* Si no tienes --color-danger, usa un rojo específico */
+}
+
+.logout-item i {
+    color: #f44336 !important;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+/* LAYOUT */
+.admin-body {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR - MENÚ IZQUIERDO */
+.sidebar {
+    width: 250px;
+    background-color: #003366;
+    /* Azul Oscuro para Taller AT */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-admin img {
+    width: 150px;
+    margin-bottom: 30px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    flex: 1;
+}
+
+.sidebar-nav a {
+    display: block;
+    color: white;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav a:hover {
+    background-color: #ff6d2d;
+    /* Naranja/Accent */
+}
+
+/* SUBMENÚS */
+.has-submenu>.main-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.has-submenu>.main-link::after {
+    content: '▼';
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+}
+
+.has-submenu.open>.main-link::after {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    background-color: rgba(255, 109, 45, 0.1);
+    /* Fondo muy claro del naranja */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    border-left: 3px solid #ff6d2d;
+}
+
+.has-submenu.open .submenu {
+    max-height: 1000px;
+    /* Suficiente para todos los ítems */
+}
+
+.submenu li a {
+    padding: 10px 15px 10px 35px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
+}
+
+.submenu li a:hover {
+    background-color: rgba(255, 109, 45, 0.3);
+    color: #ff6d2d;
+    padding-left: 40px;
+}
+
+/* CERRAR SESIÓN */
+.logout-link {
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.logout-link a {
+    background-color: #dc3545 !important;
+    /* Rojo */
+    text-align: center;
+}
+
+.logout-link a:hover {
+    background-color: #c82333 !important;
+}
+
+/* CONTENIDO PRINCIPAL */
+main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.dashboard-section {
+    display: none;
+}
+
+.dashboard-section.active {
+    display: block;
+}
+
+h1 {
+    color: #003366;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ff6d2d;
+    padding-bottom: 10px;
+    font-size: 2em;
+}
+
+/* ESTILOS GENERALES */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.stat-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-left: 5px solid #003366;
+}
+
+.stat-box.alert {
+    border-left-color: #dc3545;
+}
+
+.stat-box .number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #003366;
+}
+
+.stat-box .label {
+    color: #666;
+    margin-top: 8px;
+    font-size: 1.1em;
+}
+
+.section-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #003366;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 10px 8px 20px 0;
+}
+
+.cta-button:hover {
+    background-color: #ff6d2d;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.data-table th {
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.action-btn {
+    color: #ff6d2d;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.action-btn:hover {
+    text-decoration: underline;
+}
+
+/* FORMULARIOS */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6d2d;
+    box-shadow: 0 0 8px rgba(255, 109, 45, 0.3);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .admin-body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .dashboard-content {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+}

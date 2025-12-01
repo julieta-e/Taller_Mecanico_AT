@@ -1,186 +1,288 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi Cuenta - Taller Mecánico AT</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/img/LOGO.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-</head>
-<body>
-    
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/img/LOGO.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body>
     <header>
-        <div class="navbar-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/img/LOGO.png" alt="Logo Taller Mecánico AT">
-                </a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sucursales.html">Sucursales</a></li>
-                    <li><a href="servicios.html">Servicios Técnicos</a></li>
-                    <li><a href="repuestos.html">Repuestos</a></li>
-                    <li><a href="Promociones.html">Promociones</a></li>
-                </ul>
-            </nav>
-            <div class="nav-actions">
-                <a href="cuenta.html" class="account-link active">Mi Cuenta</a>
-                <a href="agendar_cita.html" class="cta-button">Agendar Cita</a>
-            </div>
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/img/LOGO.png" alt="Logo Taller Mecánico AT" />
+          </a>
         </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sucursales.html">Sucursales</a></li>
+            <li><a href="servicios.html">Servicios Técnicos</a></li>
+            <li><a href="repuestos.html">Repuestos</a></li>
+            <li><a href="Promociones.html">Promociones</a></li>
+          </ul>
+        </nav>
+        <div class="nav-actions">
+          <a href="cuenta.html" class="account-link active">Iniciar sesion</a>
+          <a href="agendar_cita.html" class="cta-button">Agendar Cita</a>
+        </div>
+      </div>
     </header>
 
-        <main class="login-page-main">
-        <div class="full-screen-container">
-            <div class="background-overlay"></div> 
-            
-            <div class="login-layout">
-                <div class="welcome-section">
-                    <div class="welcome-logo">
-                        <img src="assets/img/LOGIN.png" alt="Logo Taller Mecánico AT">
-                    </div>
-                    
-                    <h1>Bienvenido a AT</h1>
-                    <p>Tu vehículo siempre en las mejores manos. Inicia sesión para gestionar tus citas, historial y promociones exclusivas.</p>
-                    
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    
-                    <div id="login-form" class="form-container active">
-                        <h2>Acceder a tu Cuenta</h2>
-                        <form>
-                            <div class="form-group-full">
-                                <label for="login-email">Correo Electrónico</label>
-                                <input type="email" id="login-email" name="login-email" placeholder="tu@email.com" required>
-                            </div>
-                            <div class="form-group-full">
-                                <label for="login-password">Contraseña</label>
-                                <input type="password" id="login-password" name="login-password" placeholder="********" required>
-                            </div>
-                            <div class="remember-me">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">Recordarme</label>
-                            </div>
-                            <button type="submit" class="cta-button full-width">Iniciar Sesión</button>
-                        </form>
-                        <p class="forgot-password-full"><a href="#">¿Olvidaste tu contraseña?</a></p>
-                        <p class="no-account">¿No tienes cuenta? <a href="#" id="switch-to-register">Regístrate aquí</a></p>
-                    </div>
-
-                    <div id="register-form" class="form-container">
-                        <h2>Regístrate en Taller AT</h2>
-                        <form>
-                            <div class="form-group-full">
-                                <label for="register-name">Nombre Completo</label>
-                                <input type="text" id="register-name" name="register-name" required>
-                            </div>
-                            <div class="form-group-full">
-                                <label for="register-email">Correo Electrónico</label>
-                                <input type="email" id="register-email" name="register-email" required>
-                            </div>
-                            <div class="form-group-full">
-                                <label for="register-password">Contraseña</label>
-                                <input type="password" id="register-password" name="register-password" required>
-                            </div>
-                            <div class="form-group-full">
-                                <label for="register-phone">Teléfono</label>
-                                <input type="text" id="register-phone" name="register-phone" required>
-                            </div>
-                            <button type="submit" class="cta-button full-width">Crear Cuenta</button>
-                        </form>
-                        <p class="no-account">¿Ya tienes cuenta? <a href="#" id="switch-to-login">Iniciar sesión aquí</a></p>
-                    </div>
-                </div>
+    <main class="login-page-main">
+      <div class="full-screen-container">
+        <div class="background-overlay"></div>
+        <div class="login-layout">
+          <div class="welcome-section">
+            <div class="welcome-logo">
+              <img src="assets/img/LOGIN.png" alt="Logo Taller Mecánico AT" />
             </div>
+            <h1>Bienvenido a AT</h1>
+            <p>
+              Tu vehículo siempre en las mejores manos. Inicia sesión para
+              gestionar tus citas, historial y promociones exclusivas.
+            </p>
+            <div class="social-icons">
+              <a href="#" class="social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div id="login-form" class="form-container active">
+              <h2>Acceder a tu Cuenta</h2>
+              <form id="loginForm"> <div class="form-group-full">
+                  <label for="login-email">Correo Electrónico</label>
+                  <input
+                    type="email"
+                    id="login-email"
+                    name="login-email"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                </div>
+                <div class="form-group-full">
+                  <label for="login-password">Contraseña</label>
+                  <input
+                    type="password"
+                    id="login-password"
+                    name="login-password"
+                    placeholder="********"
+                    required
+                  />
+                </div>
+                <div class="remember-me">
+                  <input type="checkbox" id="remember" name="remember" />
+                  <label for="remember">Recordarme</label>
+                </div>
+                <button type="submit" class="cta-button full-width">
+                  Iniciar Sesión
+                </button>
+              </form>
+              <p class="forgot-password-full">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+              </p>
+              <p class="no-account">
+                ¿No tienes cuenta?
+                <a href="#" id="switch-to-register">Regístrate aquí</a>
+              </p>
+            </div>
+
+            <div id="register-form" class="form-container">
+              <h2>Regístrate en Taller AT</h2>
+              <form>
+                <div class="form-group-full">
+                  <label for="register-name">Nombre Completo</label>
+                  <input
+                    type="text"
+                    id="register-name"
+                    name="register-name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group-full">
+                  <label for="register-doc-type">Tipo de Documento</label>
+                  <select id="register-doc-type" name="register-doc-type" required>
+                    <option value="">Seleccione</option>
+                    <option value="DNI">DNI/Cédula</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="RUC">RUC/NIT</option>
+                  </select>
+                </div>
+
+                <div class="form-group-full">
+                  <label for="register-doc-num">Número de Documento</label>
+                  <input
+                    type="text"
+                    id="register-doc-num"
+                    name="register-doc-num"
+                    required
+                  />
+                </div>
+
+                <div class="form-group-full">
+                  <label for="register-email">Correo Electrónico</label>
+                  <input
+                    type="email"
+                    id="register-email"
+                    name="register-email"
+                    required
+                  />
+                </div>
+                <div class="form-group-full">
+                  <label for="register-password">Contraseña</label>
+                  <input
+                    type="password"
+                    id="register-password"
+                    name="register-password"
+                    required
+                  />
+                </div>
+                <div class="form-group-full">
+                  <label for="register-phone">Teléfono</label>
+                  <input
+                    type="text"
+                    id="register-phone"
+                    name="register-phone"
+                    required
+                  />
+                </div>
+
+                <div class="form-group-full">
+                  <label for="register-address">Dirección</label>
+                  <input
+                    type="text"
+                    id="register-address"
+                    name="register-address"
+                    placeholder="Ej: Calle Principal #123"
+                    required
+                  />
+                </div>
+
+                <button type="submit" class="cta-button full-width">
+                  Crear Cuenta
+                </button>
+              </form>
+              <p class="no-account">
+                ¿Ya tienes cuenta?
+                <a href="#" id="switch-to-login">Iniciar sesión aquí</a>
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
 
-    <footer>
-    </footer>
+    <footer></footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // -----------------------------------------------------------
-            // 1. Lógica para el toggle de Login/Registro 
-            // -----------------------------------------------------------
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            const switchToRegisterLink = document.getElementById('switch-to-register'); 
-            const switchToLoginLink = document.getElementById('switch-to-login'); 
-            
-            if (loginForm && registerForm) {
-                
-                function showForm(formToShow, formToHide) {
-                    formToShow.classList.add('active');
-                    formToHide.classList.remove('active');
-                    formToShow.style.display = 'block'; 
-                    formToHide.style.display = 'none'; 
-                }
+        const API_URL = "http://localhost:3000"; // URL base de tu servidor Node.js
+        const ADMINISTRATOR_ROLE_ID = 2; // Asegúrate de que este ID coincida con el rol de Administrador en tu BD
 
-                // Listener para ir a REGISTRO (desde el Login)
-                if (switchToRegisterLink) {
-                    switchToRegisterLink.addEventListener('click', (e) => {
-                        e.preventDefault(); 
-                        showForm(registerForm, loginForm); 
-                    });
-                }
-                
-                // Listener para ir a LOGIN (desde el Registro)
-                if (switchToLoginLink) {
-                    switchToLoginLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        showForm(loginForm, registerForm);
-                    });
-                }
-                
-                // Inicialización al cargar la página (Mostrar Login por defecto)
-                showForm(loginForm, registerForm);
-            }
+        // --- REGISTRO ---
+        const registerFormHTML = document.querySelector("#register-form form");
 
-            // -----------------------------------------------------------
-            // 2. Lógica de Simulación de Acceso Administrativo/Usuario
-            // -----------------------------------------------------------
-            const loginFormSubmit = document.querySelector('#login-form form');
-            
-            // ✅ CORRECCIÓN DE IDS: Usamos los IDs reales del HTML
-            const emailInput = document.getElementById('login-email');
-            const passwordInput = document.getElementById('login-password'); 
+        if (registerFormHTML) {
+            registerFormHTML.addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-            // --- Variables de Simulación de Administrador ---
-            const ADMIN_EMAIL = 'admin@taller.com'; 
-            const ADMIN_PASS = '1234'; 
+                const data = {
+                    name: document.getElementById("register-name").value,
+                    doc_type: document.getElementById("register-doc-type").value,
+                    doc_num: document.getElementById("register-doc-num").value,
+                    email: document.getElementById("register-email").value,
+                    password: document.getElementById("register-password").value,
+                    phone: document.getElementById("register-phone").value,
+                    address: document.getElementById("register-address").value,
+                };
 
-            if (loginFormSubmit && emailInput && passwordInput) {
-                loginFormSubmit.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Detiene el envío del formulario
-                    
-                    const enteredEmail = emailInput.value.trim();
-                    const enteredPass = passwordInput.value.trim();
-
-                    if (enteredEmail === ADMIN_EMAIL && enteredPass === ADMIN_PASS) {
-                        // Acceso de Administrador: Redirigir al Dashboard
-                        alert('Acceso de Administrador simulado exitoso. Redirigiendo a Dashboard...');
-                        window.location.href = 'admin-dashboard.html'; 
-                    } else {
-                        // Acceso de Usuario Normal: Simulación
-                        alert('Ingreso de usuario normal simulado. ¡Bienvenido!');
-                        window.location.href = 'perfil-usuario.html';
-                    }
+                const res = await fetch(`${API_URL}/register`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
                 });
-            }
-        });
+
+                const result = await res.json();
+                alert(result.message || result.error || "Error registrando usuario");
+            });
+        }
+
+        // --- LOGIN (LÓGICA DE REDIRECCIÓN POR ROL) ---
+        const loginFormHTML = document.getElementById("loginForm"); 
+
+        if (loginFormHTML) {
+            loginFormHTML.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById("login-email").value;
+                const password = document.getElementById("login-password").value;
+
+                const res = await fetch(`${API_URL}/login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const result = await res.json();
+
+                if (result.success) {
+                    // Éxito en el login
+                    const roleId = result.user.roleId;
+
+                    if (roleId === ADMINISTRATOR_ROLE_ID) {
+                        // Redirige al panel de administración (dashboard.html)
+                        alert(`¡Bienvenido Administrador ${result.user.nombre}! Redirigiendo al Dashboard.`);
+                        window.location.href = "dashboard.html"; 
+                    } else {
+                        // Redirige al panel de cliente (o página principal)
+                        alert(`¡Bienvenido ${result.user.nombre}!`);
+                        window.location.href = "index.html"; 
+                    }
+                    
+                } else {
+                    // Fallo en el login
+                    alert(result.message || "Error al iniciar sesión. Verifica tus credenciales.");
+                }
+            });
+        }
+
+
+        // --- Lógica de Cambio de Formulario (Sin Cambios) ---
+        const switchToRegister = document.getElementById("switch-to-register");
+        const switchToLogin = document.getElementById("switch-to-login");
+
+        const loginFormDiv = document.getElementById("login-form");
+        const registerFormDiv = document.getElementById("register-form");
+
+        if (switchToRegister) {
+            switchToRegister.addEventListener("click", (e) => {
+                e.preventDefault();
+                loginFormDiv.classList.remove("active");
+                registerFormDiv.classList.add("active");
+            });
+        }
+
+        if (switchToLogin) {
+            switchToLogin.addEventListener("click", (e) => {
+                e.preventDefault();
+                registerFormDiv.classList.remove("active");
+                loginFormDiv.classList.add("active");
+            });
+        }
     </script>
-    
-</body>
+  </body>
 </html>

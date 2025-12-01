@@ -67,35 +67,27 @@ document.addEventListener('DOMContentLoaded', () => {
      * En una aplicación real, esto haría una llamada a la API/Base de Datos.
      * @param {string} repuestoId El ID del repuesto a cargar.
      */
-    const loadRepuestoData = (repuestoId) => {
-        console.log(`Cargando datos del repuesto ID: ${repuestoId}...`);
-
-        // **SIMULACIÓN DE DATOS (REEMPLAZAR CON FETCH REAL EN PRODUCCIÓN)**
-        const mockData = {
-            'nombre': `Pastillas de Freno Premium (${repuestoId})`,
-            'sku': 'PF-2024-X',
-            'categoria': 'Frenos',
-            'proveedor': 'Mecánica Total Ltda.',
-            'stock': 45,
-            'stock-minimo': 10,
-            'precio-compra': 25.50,
-            'precio-venta': 45.99
-        };
-
-        // Llenar los campos del formulario con los datos simulados
-        document.getElementById('nombre').value = mockData.nombre;
-        document.getElementById('sku').value = mockData.sku;
-        document.getElementById('categoria').value = mockData.categoria;
-        document.getElementById('proveedor').value = mockData.proveedor;
-        document.getElementById('stock').value = mockData.stock;
-        document.getElementById('stock-minimo').value = mockData['stock-minimo'];
-        document.getElementById('precio-compra').value = mockData['precio-compra'];
-        document.getElementById('precio-venta').value = mockData['precio-venta'];
+    
+const loadRepuestoData = async (repuestoId) => {
+    console.log(`Cargando datos ID: ${repuestoId}...`);
+    
+    try {
+        // Conexión real al servidor
+        const response = await fetch(`http://localhost:3000/api/repuestos/${repuestoId}`);
+        if (!response.ok) throw new Error('Error al cargar datos');
         
-        alert(`¡Modo Edición Activado! Datos de ejemplo cargados para ID: ${repuestoId}`);
-        // Muestra un mensaje de éxito/carga al usuario
-    };
-
+        const data = await response.json();
+        
+        // Llenar formulario (asegúrate que los IDs de tus inputs coincidan con los nombres de la BD)
+        document.getElementById('nombre-repuesto').value = data.nombre;
+        document.getElementById('sku-repuesto').value = data.sku;
+        // ... resto de campos
+        
+    } catch (error) {
+        console.error("Error:", error);
+        alert("No se pudo cargar la información de la base de datos.");
+    }
+};
     // ===============================================
     // 3. LÓGICA DEL FORMULARIO INVENTARIO
     // ===============================================

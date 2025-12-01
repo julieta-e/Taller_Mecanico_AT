@@ -4,182 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Taller AT</title>
-    <style>
-        /* RESET */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; font-family: Arial, sans-serif; background: #f4f4f4; overflow: hidden; }
-
-        /* LAYOUT */
-        .admin-body { display: flex; height: 100vh; }
-
-        /* SIDEBAR - MENÚ IZQUIERDO */
-        .sidebar {
-            width: 250px;
-            background-color: #003366;
-            color: white;
-            padding: 20px;
-            height: 100vh;
-            overflow-y: auto;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-admin img {
-            width: 150px;
-            margin-bottom: 30px;
-        }
-
-        .sidebar-nav ul { list-style: none; flex: 1; }
-
-        .sidebar-nav a {
-            display: block;
-            color: white;
-            padding: 12px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-nav a:hover { background-color: #ff6d2d; }
-
-        /* SUBMENÚS */
-        .has-submenu > .main-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .has-submenu > .main-link::after {
-            content: '▼';
-            font-size: 0.7em;
-            transition: transform 0.3s ease;
-        }
-
-        .has-submenu.open > .main-link::after {
-            transform: rotate(180deg);
-        }
-
-        .submenu {
-            list-style: none;
-            padding: 0;
-            margin: 5px 0 0 0;
-            background-color: rgba(255, 109, 45, 0.1);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out;
-            border-left: 3px solid #ff6d2d;
-        }
-
-        .has-submenu.open .submenu {
-            max-height: 1000px; /* suficiente para todos los ítems */
-        }
-
-        .submenu li a {
-            padding: 10px 15px 10px 35px;
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.9);
-            transition: all 0.2s ease;
-        }
-
-        .submenu li a:hover {
-            background-color: rgba(255, 109, 45, 0.3);
-            color: #ff6d2d;
-            padding-left: 40px;
-        }
-
-        /* CERRAR SESIÓN */
-        .logout-link {
-            margin-top: auto;
-            padding-top: 20px;
-        }
-
-        .logout-link a {
-            background-color: #dc3545 !important;
-            text-align: center;
-        }
-
-        .logout-link a:hover {
-            background-color: #c82333 !important;
-        }
-
-        /* CONTENIDO PRINCIPAL */
-        main {
-            flex: 1;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .dashboard-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 40px;
-            background-color: #f4f4f4;
-        }
-
-        .dashboard-section { display: none; }
-        .dashboard-section.active { display: block; }
-
-        h1 {
-            color: #003366;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #ff6d2d;
-            padding-bottom: 10px;
-            font-size: 2em;
-        }
-
-        /* ESTILOS GENERALES */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 30px 0; }
-        .stat-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); text-align: center; border-left: 5px solid #003366; }
-        .stat-box.alert { border-left-color: #dc3545; }
-        .stat-box .number { font-size: 3em; font-weight: bold; color: #003366; }
-        .stat-box .label { color: #666; margin-top: 8px; font-size: 1.1em; }
-
-        .section-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); margin-bottom: 25px; }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #003366;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin: 10px 8px 20px 0;
-        }
-        .cta-button:hover { background-color: #ff6d2d; }
-
-        .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .data-table th { background-color: #003366; color: white; padding: 15px; text-align: left; }
-        .data-table td { padding: 12px; border-bottom: 1px solid #ddd; }
-        .data-table tr:hover { background-color: #f9f9f9; }
-        .action-btn { color: #ff6d2d; cursor: pointer; font-weight: bold; }
-        .action-btn:hover { text-decoration: underline; }
-
-        /* FORMULARIOS */
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #ff6d2d; box-shadow: 0 0 8px rgba(255,109,45,0.3); }
-        .form-row { display: flex; gap: 20px; }
-        .form-row .form-group { flex: 1; }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .admin-body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; padding: 15px; }
-            .dashboard-content { padding: 20px; }
-            .form-row { flex-direction: column; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body class="admin-body">
 
-    <!-- MENÚ IZQUIERDO - 100% COMO LO TENÍAS TÚ -->
     <aside class="sidebar">
         <div class="logo-admin">
             <img src="assets/img/systmec-Photoroom.png" alt="Logo" onerror="this.style.display='none'">
@@ -187,27 +15,37 @@
 
         <nav class="sidebar-nav">
             <ul>
-                <li><a href="javascript:void(0)" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+                <li><a href="javascript:void(0)" onclick="mostrarSeccion('inicio')"> Inicio</a></li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Citas</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Citas</a>
                     <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-listar')">Todas las Citas</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-hoy')">Citas de Hoy</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-proximas')">Próximas Citas</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-crear')">Crear Cita</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-crear')">Agendar Nueva Cita</a></li>
                     </ul>
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Clientes</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Clientes</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-listar')">Lista de Clientes</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-nuevo')">Registrar Cliente</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-historial')">Historial</a></li>
                     </ul>
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Vehículos</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Proveedores</a>
+                    <ul class="submenu">
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-listar')">Lista de Proveedores</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-nuevo')">Registrar Proveedor</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-compras')">Órdenes de Compra</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Vehículos</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('vehiculos-listar')">Lista</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('vehiculos-nuevo')">Registrar</a></li>
@@ -215,7 +53,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Productos</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Productos/Inventario</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-listar')">Inventario</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-nuevo')">Agregar</a></li>
@@ -223,7 +61,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Ventas</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Ventas</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('ventas-listar')">Registro</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('ventas-nueva')">Nueva Venta</a></li>
@@ -231,7 +69,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Compras</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Compras</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('compras-listar')">Órdenes</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('compras-nueva')">Nueva Orden</a></li>
@@ -239,7 +77,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Usuarios</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Usuarios</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-listar')">Lista</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-nuevo')">Crear Usuario</a></li>
@@ -247,29 +85,13 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Servicios</a>
+                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Servicios</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('servicios-listar')">Lista</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('servicios-nuevo')">Crear</a></li>
                     </ul>
                 </li>
-
-                <li class="has-has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Repuestos</a>
-                    <ul class="submenu">
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('repuestos-listar')">Catálogo</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('repuestos-nuevo')">Agregar</a></li>
-                    </ul>
-                </li>
-
-                <li class="has-submenu">
-                    <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Proveedores</a>
-                    <ul class="submenu">
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-listar')">Lista</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-nuevo')">Registrar</a></li>
-                    </ul>
-                </li>
-
+                
                 <li class="logout-link">
                     <a href="logout.php">Cerrar Sesión</a>
                 </li>
@@ -277,10 +99,8 @@
         </nav>
     </aside>
 
-    <!-- CONTENIDO -->
     <main>
         <div class="dashboard-content">
-            <!-- INICIO -->
             <section id="inicio" class="dashboard-section active">
                 <h1>Bienvenido al Sistema - Taller AT</h1>
                 <div class="stats-grid">
@@ -294,7 +114,144 @@
                 </div>
             </section>
 
-            <!-- VEHÍCULOS - LISTA Y REGISTRO (CRUD funcional) -->
+            <section id="citas-listar" class="dashboard-section">
+                <h1> Todas las Citas</h1>
+                <button class="cta-button" onclick="mostrarSeccion('citas-crear')">+ Agendar Nueva Cita</button>
+                <div class="section-card">
+                    <h2>Próximas y Pendientes</h2>
+                    <table class="data-table" id="tablaCitas">
+                        <thead>
+                            <tr><th>Fecha y Hora</th><th>Cliente</th><th>Vehículo</th><th>Servicio Solicitado</th><th>Estado</th><th>Acciones</th></tr>
+                        </thead>
+                        <tbody id="citasBody">
+                            <tr>
+                                <td>2025-12-10 10:00</td><td>Juan Pérez</td><td>SAB-100 (Toyota)</td><td>Mantenimiento Básico</td><td>Pendiente</td>
+                                <td><span class="action-btn" onclick="editarCita(this)">Modificar</span> | <span class="action-btn" onclick="iniciarOrden(this)">Iniciar OT</span></td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-15 14:30</td><td>María Gómez</td><td>ABC-567 (Nissan)</td><td>Diagnóstico de Motor</td><td>Pendiente</td>
+                                <td><span class="action-btn" onclick="editarCita(this)">Modificar</span> | <span class="action-btn" onclick="iniciarOrden(this)">Iniciar OT</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="citas-crear" class="dashboard-section">
+                <h1> Agendar Nueva Cita</h1>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('citas-listar')">Volver al Listado</button>
+                <div class="section-card">
+                    <form id="formCita">
+                        <div class="form-row">
+                            <div class="form-group"><label>Cliente *</label><select id="citaCliente" required><option value="">Seleccionar Cliente</option><option>Juan Pérez</option><option>María Gómez</option></select></div>
+                            <div class="form-group"><label>Vehículo (Placa) *</label><select id="citaVehiculo" required><option value="">Seleccionar Vehículo</option><option>SAB-100</option><option>ABC-567</option></select></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Fecha *</label><input type="date" id="citaFecha" required></div>
+                            <div class="form-group"><label>Hora *</label><input type="time" id="citaHora" required></div>
+                        </div>
+                        <div class="form-group"><label>Servicio Solicitado / Notas</label><textarea id="citaNotas"></textarea></div>
+                        <button type="button" class="cta-button" onclick="guardarCita()">Agendar Cita</button>
+                    </form>
+                </div>
+            </section>
+            
+            <section id="citas-hoy" class="dashboard-section">
+                <h1> Citas Programadas para Hoy</h1>
+                <div class="section-card">
+                    <p>Aquí se mostrarán dinámicamente solo las citas con fecha actual.</p>
+                </div>
+            </section>
+
+            <section id="clientes-listar" class="dashboard-section">
+                <h1> Lista de Clientes</h1>
+                <button class="cta-button" onclick="mostrarSeccion('clientes-nuevo')">+ Registrar Nuevo Cliente</button>
+                <div class="section-card">
+                    <table class="data-table" id="tablaClientes">
+                        <thead>
+                            <tr><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Vehículos</th><th>Acciones</th></tr>
+                        </thead>
+                        <tbody id="clientesBody">
+                            <tr>
+                                <td>Juan Pérez</td><td>777-12345</td><td>juan@mail.com</td><td>2</td>
+                                <td><span class="action-btn" onclick="editarCliente(this)">Editar</span> | <span class="action-btn" onclick="verHistorial(this)">Historial</span> | <span class="action-btn" onclick="eliminarCliente(this)">Eliminar</span></td>
+                            </tr>
+                            <tr>
+                                <td>María Gómez</td><td>654-98765</td><td>maria@mail.com</td><td>1</td>
+                                <td><span class="action-btn" onclick="editarCliente(this)">Editar</span> | <span class="action-btn" onclick="verHistorial(this)">Historial</span> | <span class="action-btn" onclick="eliminarCliente(this)">Eliminar</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="clientes-nuevo" class="dashboard-section">
+                <h1> Registrar Nuevo Cliente</h1>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('clientes-listar')">Volver al Listado</button>
+                <div class="section-card">
+                    <form id="formCliente">
+                        <div class="form-group"><label>Nombre Completo *</label><input type="text" id="clienteNombre" required></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Email *</label><input type="email" id="clienteEmail" required></div>
+                            <div class="form-group"><label>Teléfono *</label><input type="text" id="clienteTelefono" required></div>
+                        </div>
+                        <div class="form-group"><label>Dirección</label><input type="text" id="clienteDireccion"></div>
+                        <button type="button" class="cta-button" onclick="guardarCliente()">Guardar Cliente</button>
+                    </form>
+                </div>
+            </section>
+            
+            <section id="clientes-historial" class="dashboard-section">
+                <h1> Historial de Servicios de Clientes</h1>
+                <div class="section-card">
+                    <p>Esta sección mostraría un buscador de clientes para ver sus vehículos, órdenes de trabajo pasadas y facturas.</p>
+                </div>
+            </section>
+
+
+            <section id="proveedores-listar" class="dashboard-section">
+                <h1> Lista de Proveedores</h1>
+                <button class="cta-button" onclick="mostrarSeccion('proveedores-nuevo')">+ Registrar Nuevo Proveedor</button>
+                <div class="section-card">
+                    <table class="data-table" id="tablaProveedores">
+                        <thead>
+                            <tr><th>Empresa</th><th>Contacto</th><th>Teléfono</th><th>Email</th><th>Productos Suministrados</th><th>Acciones</th></tr>
+                        </thead>
+                        <tbody id="proveedoresBody">
+                            <tr>
+                                <td>Repuestos Rápido S.A.</td><td>Luis Martínez</td><td>222-1111</td><td>ventas@rapido.com</td><td>Filtros, Aceites</td>
+                                <td><span class="action-btn" onclick="editarProveedor(this)">Editar</span> | <span class="action-btn" onclick="eliminarProveedor(this)">Eliminar</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="proveedores-nuevo" class="dashboard-section">
+                <h1> Registrar Nuevo Proveedor</h1>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('proveedores-listar')">Volver al Listado</button>
+                <div class="section-card">
+                    <form id="formProveedor">
+                        <div class="form-group"><label>Nombre de la Empresa *</label><input type="text" id="provEmpresa" required></div>
+                        <div class="form-group"><label>Nombre de Contacto</label><input type="text" id="provContacto"></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Teléfono *</label><input type="text" id="provTelefono" required></div>
+                            <div class="form-group"><label>Email</label><input type="email" id="provEmail"></div>
+                        </div>
+                        <div class="form-group"><label>Dirección</label><input type="text" id="provDireccion"></div>
+                        <button type="button" class="cta-button" onclick="guardarProveedor()">Guardar Proveedor</button>
+                    </form>
+                </div>
+            </section>
+            
+            <section id="proveedores-compras" class="dashboard-section">
+                <h1> Órdenes de Compra a Proveedores</h1>
+                <div class="section-card">
+                    <p>Listado de pedidos realizados a proveedores y su estado (Pendiente, Recibido, Cancelado).</p>
+                </div>
+            </section>
+
+
             <section id="vehiculos-listar" class="dashboard-section">
                 <h1>Lista de Vehículos</h1>
                 <button class="cta-button" onclick="mostrarSeccion('vehiculos-nuevo')">+ Registrar Vehículo</button>
@@ -342,8 +299,7 @@
                 </div>
             </section>
 
-            <!-- Aquí puedes ir pegando todas las demás secciones que ya tenías (citas, clientes, productos, etc.) -->
-        </div>
+            </div>
     </main>
 
     <script>
@@ -352,13 +308,94 @@
             const sec = document.getElementById(id);
             if (sec) sec.classList.add('active');
             document.querySelector('.dashboard-content').scrollTop = 0;
+            // Opcional: Cerrar todos los submenús al cambiar de sección
+            document.querySelectorAll('.has-submenu.open').forEach(item => item.classList.remove('open'));
         }
 
         function toggleMenu(el) {
+            // Cierra otros menús abiertos antes de abrir el actual
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== el.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
             el.parentElement.classList.toggle('open');
         }
 
-        // CRUD Vehículos
+        // ==============================================
+        // FUNCIONES CRUD BÁSICAS (Citas, Clientes, Proveedores)
+        // ==============================================
+
+        // --- CITAS ---
+        function guardarCita() {
+            const cliente = document.getElementById('citaCliente').value;
+            const vehiculo = document.getElementById('citaVehiculo').value;
+            const fecha = document.getElementById('citaFecha').value;
+            const hora = document.getElementById('citaHora').value;
+            const notas = document.getElementById('citaNotas').value || 'Sin notas';
+
+            if (!cliente || !vehiculo || !fecha || !hora) { alert('Complete los campos obligatorios para la cita'); return; }
+
+            const tbody = document.getElementById('citasBody');
+            const fila = document.createElement('tr');
+            fila.innerHTML = `<td>${fecha} ${hora}</td><td>${cliente}</td><td>${vehiculo}</td><td>${notas.substring(0, 30)}...</td><td>Pendiente</td>
+                <td><span class="action-btn" onclick="editarCita(this)">Modificar</span> | <span class="action-btn" onclick="iniciarOrden(this)">Iniciar OT</span></td>`;
+            tbody.appendChild(fila);
+            document.getElementById('formCita').reset();
+            alert('Cita agendada correctamente.');
+            mostrarSeccion('citas-listar');
+        }
+        function editarCita(btn) { alert('Función: Modificar Cita - Implementar lógica de edición aquí.'); }
+        function iniciarOrden(btn) { alert('Función: Iniciar Orden de Trabajo (OT) - Redirigir a módulo de Órdenes.'); }
+
+
+        // --- CLIENTES ---
+        function guardarCliente() {
+            const nombre = document.getElementById('clienteNombre').value.trim();
+            const email = document.getElementById('clienteEmail').value.trim();
+            const telefono = document.getElementById('clienteTelefono').value.trim();
+            const direccion = document.getElementById('clienteDireccion').value.trim() || 'N/A';
+
+            if (!nombre || !email || !telefono) { alert('Complete los campos obligatorios para el cliente'); return; }
+
+            const tbody = document.getElementById('clientesBody');
+            const fila = document.createElement('tr');
+            fila.innerHTML = `<td>${nombre}</td><td>${telefono}</td><td>${email}</td><td>0</td>
+                <td><span class="action-btn" onclick="editarCliente(this)">Editar</span> | <span class="action-btn" onclick="verHistorial(this)">Historial</span> | <span class="action-btn" onclick="eliminarCliente(this)">Eliminar</span></td>`;
+            tbody.appendChild(fila);
+            document.getElementById('formCliente').reset();
+            alert('Cliente registrado correctamente.');
+            mostrarSeccion('clientes-listar');
+        }
+        function editarCliente(btn) { alert('Función: Editar Cliente - Implementar lógica de edición aquí.'); }
+        function verHistorial(btn) { alert('Función: Ver Historial del Cliente - Redirigir a sección Historial.'); mostrarSeccion('clientes-historial'); }
+        function eliminarCliente(btn) { if (confirm('¿Eliminar cliente y todos sus datos?')) btn.closest('tr').remove(); }
+
+
+        // --- PROVEEDORES ---
+        function guardarProveedor() {
+            const empresa = document.getElementById('provEmpresa').value.trim();
+            const contacto = document.getElementById('provContacto').value.trim() || 'N/A';
+            const telefono = document.getElementById('provTelefono').value.trim();
+            const email = document.getElementById('provEmail').value.trim() || 'N/A';
+            const direccion = document.getElementById('provDireccion').value.trim() || 'N/A';
+
+            if (!empresa || !telefono) { alert('Complete el nombre de la empresa y el teléfono obligatoriamente'); return; }
+
+            const tbody = document.getElementById('proveedoresBody');
+            const fila = document.createElement('tr');
+            fila.innerHTML = `<td>${empresa}</td><td>${contacto}</td><td>${telefono}</td><td>${email}</td><td>Sin Datos</td>
+                <td><span class="action-btn" onclick="editarProveedor(this)">Editar</span> | <span class="action-btn" onclick="eliminarProveedor(this)">Eliminar</span></td>`;
+            tbody.appendChild(fila);
+            document.getElementById('formProveedor').reset();
+            alert('Proveedor registrado correctamente.');
+            mostrarSeccion('proveedores-listar');
+        }
+        function editarProveedor(btn) { alert('Función: Editar Proveedor - Implementar lógica de edición aquí.'); }
+        function eliminarProveedor(btn) { if (confirm('¿Eliminar proveedor?')) btn.closest('tr').remove(); }
+
+
+        // --- VEHÍCULOS (Funciones que ya tenías) ---
         function guardarVehiculo() {
             const placa = document.getElementById('placa').value.trim();
             const marca = document.getElementById('marca').value.trim();
@@ -378,7 +415,6 @@
             document.getElementById('formVehiculo').reset();
             mostrarSeccion('vehiculos-listar');
         }
-
         function eliminarVehiculo(btn) { if (confirm('¿Eliminar vehículo?')) btn.closest('tr').remove(); }
         function editarVehiculo(btn) { alert('Función editar lista para implementar'); }
 
