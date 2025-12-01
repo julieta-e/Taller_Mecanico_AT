@@ -254,7 +254,7 @@
                     </ul>
                 </li>
 
-                <li class="has-has-submenu">
+                <li class="has-submenu">
                     <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)">Repuestos</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('repuestos-listar')">Catálogo</a></li>
@@ -343,6 +343,199 @@
             </section>
 
             <!-- Aquí puedes ir pegando todas las demás secciones que ya tenías (citas, clientes, productos, etc.) -->
+            
+            <!-- REPUESTOS -->
+            <section id="repuestos-listar" class="dashboard-section">
+                <h1>Catálogo de Repuestos</h1>
+                <button class="cta-button" onclick="mostrarSeccion('repuestos-nuevo')">+ Agregar Repuesto</button>
+                <button class="cta-button" onclick="exportarRepuestosCSV()">Exportar CSV</button>
+
+                <!-- RESUMEN INVENTARIO -->
+                <div id="resumenInventario" style="
+                    display:flex;
+                    justify-content: space-between;
+                    background:#eef3ff;
+                    padding:12px;
+                    border-radius:8px;
+                    margin-top:15px;
+                    font-weight:bold;">
+                    <span>Total repuestos: <span id="ri_total">0</span></span>
+                    <span>Stock total: <span id="ri_stock">0</span></span>
+                    <span>Valor total: <span id="ri_valor">0</span> Bs</span>
+                </div>
+
+                <!-- Búsqueda -->
+                <input type="text" id="buscarRepuesto" placeholder="Buscar repuesto..." onkeyup="filtrarRepuestos()" style="margin: 15px 0; padding:10px; width:100%; border-radius:5px; border:1px solid #ddd;">
+
+                <!-- Filtros avanzados -->
+                <div style="display:flex; gap:10px; margin:10px 0;">
+                    <select id="filtroTipo" onchange="filtrarRepuestos()" style="padding:8px; border-radius:5px;">
+                        <option value="">Filtrar por categoría</option>
+                        <option>Aceite</option>
+                        <option>Frenos</option>
+                        <option>Encendido</option>
+                        <option>Suspensión</option>
+                        <option>Eléctrico</option>
+                    </select>
+
+                    <select id="filtroProveedor" onchange="filtrarRepuestos()" style="padding:8px; border-radius:5px;">
+                        <option value="">Filtrar por proveedor</option>
+                        <option>Bosch</option>
+                        <option>NGK</option>
+                        <option>Valeo</option>
+                    </select>
+
+                    <select id="filtroStock" onchange="filtrarRepuestos()" style="padding:8px; border-radius:5px;">
+                        <option value="">Stock</option>
+                        <option value="bajo">Stock bajo</option>
+                        <option value="normal">Stock normal</option>
+                    </select>
+                </div>
+
+                <div class="section-card">
+                    <table class="data-table" id="tablaRepuestos">
+                        <thead>
+                            <tr>
+                                <th>SKU</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Fabricante</th>
+                                <th>Stock</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repuestosBody">
+                            <tr>
+                                <td>R-001</td><td>Filtro Aceite</td><td>Aceite</td><td>Bosch</td><td>10</td><td>120</td>
+                                <td>
+                                    <span class="action-btn" onclick="editarRepuesto(this)">Editar</span> |
+                                    <span class="action-btn" onclick="eliminarRepuesto(this)">Eliminar</span> |
+                                    <span class="action-btn" onclick="duplicarRepuesto(this)">Duplicar</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="paginadorRepuestos" style="margin-top:10px; text-align:center;"></div>
+                </div>
+            </section>
+
+            <section id="repuestos-nuevo" class="dashboard-section">
+                <h1>Agregar Repuesto</h1>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('repuestos-listar')">Volver</button>
+                <div class="section-card">
+                    <form id="formRepuesto">
+                        <div class="form-row">
+                            <div class="form-group"><label>SKU *</label><input type="text" id="sku" required placeholder="Ej: R-001"></div>
+                            <div class="form-group"><label>Nombre *</label><input type="text" id="nombre" required placeholder="Filtro de aceite"></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tipo / Categoría *</label>
+                                <select id="tipo" required>
+                                    <option value="">Seleccionar</option>
+                                    <option>Aceite</option>
+                                    <option>Frenos</option>
+                                    <option>Encendido</option>
+                                    <option>Suspensión</option>
+                                    <option>Eléctrico</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Proveedor</label>
+                                <select id="proveedor">
+                                    <option value="">Seleccionar proveedor</option>
+                                    <option>Bosch</option>
+                                    <option>NGK</option>
+                                    <option>Valeo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group"><label>Stock *</label><input type="number" id="stock" min="0" required placeholder="Cantidad disponible"></div>
+                            <div class="form-group"><label>Stock mínimo</label><input type="number" id="stockMin" min="0" placeholder="Alerta si bajo stock"></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group"><label>Precio *</label><input type="number" id="precio" min="0" required placeholder="Precio en Bs."></div>
+                            <div class="form-group"><label>Ubicación</label><input type="text" id="ubicacion" placeholder="Estante / Bodega"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea id="descripcion" rows="3" placeholder="Detalles adicionales del repuesto"
+                                style="width:100%; height:80px; resize:none;"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <input type="file" id="imagen" accept="image/*">
+                        </div>
+
+                        <button type="button" class="cta-button" onclick="guardarRepuesto()">Guardar</button>
+                        <button type="button" class="cta-button" style="background:#dc3545;" onclick="mostrarSeccion('repuestos-listar')">Cancelar</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- USUARIOS -->
+            <section id="usuarios-listar" class="dashboard-section">
+                <h1>Lista de Usuarios</h1>
+                <button class="cta-button" onclick="mostrarSeccion('usuarios-nuevo')">+ Crear Usuario</button>
+                <button class="cta-button" onclick="exportarUsuariosCSV()">Exportar CSV</button>
+                <div style="display:flex; gap:10px; margin:15px 0;">
+                    <input type="text" id="buscarUsuario" placeholder="Buscar por nombre o email..." onkeyup="filtrarUsuarios()" style="flex:1; padding:10px; border-radius:5px; border:1px solid #ddd;">
+                    <select id="filtrarRol" onchange="filtrarUsuarios()" style="padding:10px; border-radius:5px; border:1px solid #ddd;">
+                        <option value="">Todos los puestos</option>
+                        <option>Administrador</option>
+                        <option>Técnico</option>
+                    </select>
+                </div>
+                <div class="section-card">
+                    <table class="data-table" id="tablaUsuarios">
+                        <thead>
+                            <tr><th>Nombre</th><th>Apellido</th><th>Email</th><th>Teléfono</th><th>Puesto</th><th>Usuario</th><th>Activo</th><th>Acciones</th></tr>
+                        </thead>
+                        <tbody id="usuariosBody">
+                            <tr>
+                                <td>Admin</td><td>Perez</td><td>admin@taller.com</td><td>78541236</td><td>Administrador</td><td>Admin1</td><td>Si</td>
+                                <td><span class="action-btn" onclick="editarUsuario(this)">Editar</span> | <span class="action-btn" onclick="eliminarUsuario(this)">Eliminar</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="usuarios-nuevo" class="dashboard-section">
+                <h1>Crear Usuario</h1>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('usuarios-listar')">Volver</button>
+                <div class="section-card">
+                    <form id="formUsuario">
+                        <div class="form-group"><label>Nombre *</label><input type="text" id="userNombre" required></div>
+                        <div class="form-group"><label>Apellido *</label><input type="text" id="userApellido" required></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="userEmail" required></div>
+                        <div class="form-group"><label>Teléfono</label><input type="text" id="userTelefono"></div>
+                        <div class="form-group"><label>Puesto *</label>
+                            <select id="userPuesto" required>
+                                <option value="">Seleccionar puesto</option>
+                                <option>Administrador</option>
+                                <option>Técnico</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Usuario *</label><input type="text" id="userLogin" required></div>
+                        <div class="form-group" style="display:flex; align-items:center; gap:10px; width: fit-content;">
+                            <label for="userActivo" style="margin:0;">Activo</label>
+                            <input type="checkbox" id="userActivo" checked 
+                                style="width:18px; height:18px; cursor:pointer; margin:0;">
+                        </div>
+                        <div class="form-group"><label>Contraseña</label><input type="password" id="userPassword"></div>
+                        <button type="button" class="cta-button" onclick="guardarUsuario()">Guardar</button>
+                        <button type="button" class="cta-button" style="background:#dc3545;" onclick="mostrarSeccion('usuarios-listar')">Cancelar</button>
+                    </form>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -384,6 +577,364 @@
 
         // Iniciar en Inicio
         document.addEventListener('DOMContentLoaded', () => mostrarSeccion('inicio'));
+    
+        // ------------------ REPUESTOS ------------------
+        let repuestoEnEdicion = null;
+
+        function guardarRepuesto() {
+            const sku = document.getElementById('sku').value.trim();
+            const nombre = document.getElementById('nombre').value.trim();
+            const tipo = document.getElementById('tipo').value.trim();
+            const proveedor = document.getElementById('proveedor').value.trim();
+            const stock = document.getElementById('stock').value;
+            const stockMin = document.getElementById('stockMin').value;
+            const precio = document.getElementById('precio').value;
+            const ubicacion = document.getElementById('ubicacion').value.trim();
+            const descripcion = document.getElementById('descripcion').value.trim();
+            const imgElem = document.getElementById('imagen');
+            const imagen = (imgElem && imgElem.files && imgElem.files[0]) ? imgElem.files[0].name : '';
+
+            if (!sku || !nombre || !tipo || stock === "" || precio === "") {
+                alert('Complete todos los campos obligatorios');
+                return;
+            }
+
+            const tbody = document.getElementById('repuestosBody');
+
+            if (repuestoEnEdicion) {
+                repuestoEnEdicion.innerHTML = `
+                    <td>${sku}</td>
+                    <td>${nombre}</td>
+                    <td>${tipo}</td>
+                    <td>${proveedor || '-'}</td>
+                    <td>${stock}</td>
+                    <td>${precio}</td>
+                    <td>
+                        <span class="action-btn" onclick="editarRepuesto(this)">Editar</span> |
+                        <span class="action-btn" onclick="eliminarRepuesto(this)">Eliminar</span> |
+                        <span class="action-btn" onclick="duplicarRepuesto(this)">Duplicar</span>
+                    </td>
+                `;
+                // actualizar datasets
+                repuestoEnEdicion.dataset.stockmin = stockMin || "";
+                repuestoEnEdicion.dataset.ubicacion = ubicacion || "";
+                repuestoEnEdicion.dataset.descripcion = descripcion || "";
+                repuestoEnEdicion.dataset.imagen = imagen || "";
+                repuestoEnEdicion = null;
+            } else {
+                // Agregar nuevo repuesto
+                const fila = document.createElement('tr');
+                fila.dataset.stockmin = stockMin || "";
+                fila.dataset.ubicacion = ubicacion || "";
+                fila.dataset.descripcion = descripcion || "";
+                fila.dataset.imagen = imagen || "";
+
+                fila.innerHTML = `
+                    <td>${sku}</td>
+                    <td>${nombre}</td>
+                    <td>${tipo}</td>
+                    <td>${proveedor || '-'}</td>
+                    <td>${stock}</td>
+                    <td>${precio}</td>
+                    <td>
+                        <span class="action-btn" onclick="editarRepuesto(this)">Editar</span> |
+                        <span class="action-btn" onclick="eliminarRepuesto(this)">Eliminar</span> |
+                        <span class="action-btn" onclick="duplicarRepuesto(this)">Duplicar</span>
+                    </td>
+                `;
+
+                tbody.appendChild(fila);
+
+                // marcar fila en rojo si stock < stockMin
+                if (stockMin !== "" && parseInt(stock) < parseInt(stockMin || 0)) {
+                    fila.style.backgroundColor = '#f8d7da';
+                }
+            }
+
+            // reset formulario
+            document.getElementById('formRepuesto').reset();
+            // volver al listado y actualizar UI
+            mostrarSeccion('repuestos-listar');
+            document.querySelector('#formRepuesto button.cta-button').textContent = 'Guardar';
+            actualizarResumenInventario();
+            if (typeof mostrarPaginaRepuestos === 'function') mostrarPaginaRepuestos();
+        }
+
+        function editarRepuesto(btn) {
+            repuestoEnEdicion = btn.closest("tr");
+            document.getElementById("sku").value = repuestoEnEdicion.children[0].textContent.trim();
+            document.getElementById("nombre").value = repuestoEnEdicion.children[1].textContent.trim();
+            document.getElementById("tipo").value = repuestoEnEdicion.children[2].textContent.trim();
+            document.getElementById("proveedor").value = repuestoEnEdicion.children[3].textContent.trim() !== '-' ? repuestoEnEdicion.children[3].textContent.trim() : '';
+            document.getElementById("stock").value = repuestoEnEdicion.children[4].textContent.trim();
+            document.getElementById("precio").value = repuestoEnEdicion.children[5].textContent.trim();
+
+            document.getElementById("stockMin").value = repuestoEnEdicion.dataset.stockmin || "";
+            document.getElementById("ubicacion").value = repuestoEnEdicion.dataset.ubicacion || "";
+            document.getElementById("descripcion").value = repuestoEnEdicion.dataset.descripcion || "";
+            document.querySelector('#formRepuesto button.cta-button').textContent = 'Actualizar';
+
+            mostrarSeccion('repuestos-nuevo');
+        }
+
+        function filtrarRepuestos() {
+            const texto = document.getElementById('buscarRepuesto').value.toLowerCase();
+            const filtroTipo = document.getElementById('filtroTipo').value;
+            const filtroProveedor = document.getElementById('filtroProveedor').value;
+            const filtroStock = document.getElementById('filtroStock').value;
+
+            document.querySelectorAll('#repuestosBody tr').forEach(fila => {
+                const sku = fila.cells[0].textContent.toLowerCase();
+                const nombre = fila.cells[1].textContent.toLowerCase();
+                const tipo = fila.cells[2].textContent;
+                const proveedor = fila.cells[3].textContent;
+                const stock = parseInt(fila.cells[4].textContent);
+                const stockMin = parseInt(fila.dataset.stockmin || 0);
+
+                let mostrar = true;
+
+                // Filtro por búsqueda
+                if (texto && !sku.includes(texto) && !nombre.includes(texto)) {
+                    mostrar = false;
+                }
+
+                // Filtro por categoría
+                if (filtroTipo && tipo !== filtroTipo) {
+                    mostrar = false;
+                }
+
+                // Filtro por proveedor
+                if (filtroProveedor && proveedor !== filtroProveedor) {
+                    mostrar = false;
+                }
+
+                // Filtro por stock
+                if (filtroStock === "bajo" && !(stock < stockMin)) {
+                    mostrar = false;
+                }
+                if (filtroStock === "normal" && stock < stockMin) {
+                    mostrar = false;
+                }
+
+                fila.style.display = mostrar ? "" : "none";
+            });
+        }
+
+        function eliminarRepuesto(btn) {
+            if (confirm('¿Eliminar este repuesto?')) {
+                const fila = btn.closest('tr');
+                fila.remove();
+                actualizarResumenInventario();
+                if (typeof mostrarPaginaRepuestos === 'function') mostrarPaginaRepuestos();
+            }
+        }
+
+        function duplicarRepuesto(btn) {
+            const filaOriginal = btn.closest("tr");
+            const filaNueva = filaOriginal.cloneNode(true);
+            filaNueva.dataset.stockmin = filaOriginal.dataset.stockmin || "";
+            filaNueva.dataset.ubicacion = filaOriginal.dataset.ubicacion || "";
+            filaNueva.dataset.descripcion = filaOriginal.dataset.descripcion || "";
+            filaNueva.dataset.imagen = filaOriginal.dataset.imagen || "";
+
+            // añadir etiqueta copia al SKU
+            filaNueva.children[0].textContent = filaOriginal.children[0].textContent + " (copia)";
+
+            // insertar debajo
+            filaOriginal.insertAdjacentElement("afterend", filaNueva);
+
+            actualizarResumenInventario();
+            if (typeof mostrarPaginaRepuestos === 'function') mostrarPaginaRepuestos();
+        }
+
+        function exportarRepuestosCSV() {
+            const filas = Array.from(document.querySelectorAll("#tablaRepuestos tbody tr")).filter(r => r.style.display !== 'none');
+
+            if (filas.length === 0) {
+                alert("No hay repuestos para exportar.");
+                return;
+            }
+            let csv = "SKU;Nombre;Tipo;Proveedor;Stock;Precio\n";
+
+            filas.forEach(fila => {
+                const sku = fila.cells[0].textContent.trim();
+                const nombre = fila.cells[1].textContent.trim();
+                const tipo = fila.cells[2].textContent.trim();
+                const proveedor = fila.cells[3].textContent.trim();
+                const stock = fila.cells[4].textContent.trim();
+                const precio = fila.cells[5].textContent.trim();
+                csv += `"${sku}";"${nombre}";"${tipo}";"${proveedor}";"${stock}";"${precio}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", "repuestos.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function actualizarResumenInventario() {
+            const filas = Array.from(document.querySelectorAll('#repuestosBody tr')).filter(r => r.style.display !== 'none');
+            let total = 0, stockTotal = 0, valorTotal = 0;
+
+            filas.forEach(fila => {
+                total++;
+                const stock = parseInt(fila.cells[4].textContent) || 0;
+                const precio = parseFloat(fila.cells[5].textContent) || 0;
+                stockTotal += stock;
+                valorTotal += stock * precio;
+            });
+
+            document.getElementById('ri_total').textContent = total;
+            document.getElementById('ri_stock').textContent = stockTotal;
+            document.getElementById('ri_valor').textContent = valorTotal.toFixed(2);
+        }
+
+        // Iniciar datos y actualización al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            actualizarResumenInventario();
+            if (typeof mostrarPaginaRepuestos === 'function') mostrarPaginaRepuestos();
+        });
+       
+        let repuestosPorPagina = 5;
+        let paginaActual = 1;
+
+        function mostrarPaginaRepuestos(pagina = 1) {
+            const filas = document.querySelectorAll("#repuestosBody tr");
+            const totalPaginas = Math.ceil(filas.length / repuestosPorPagina);
+            paginaActual = pagina;
+
+            filas.forEach((fila, index) => {
+                fila.style.display = (index >= (pagina-1)*repuestosPorPagina && index < pagina*repuestosPorPagina) ? '' : 'none';
+            });
+
+            // Construir paginador
+            const paginador = document.getElementById("paginadorRepuestos");
+            paginador.innerHTML = '';
+
+            for (let i = 1; i <= totalPaginas; i++) {
+                let btn = document.createElement('button');
+                btn.textContent = i;
+                btn.style.margin = "0 5px";
+                btn.className = (i === paginaActual) ? "active-page" : "";
+                btn.onclick = () => mostrarPaginaRepuestos(i);
+                paginador.appendChild(btn);
+            }
+        }
+
+        function cambiarPagina(num) {
+            paginaActual = num;
+            mostrarPaginaRepuestos();
+        }
+
+        // USUARIOS
+        function guardarUsuario() {
+            const nombre = document.getElementById('userNombre').value.trim();
+            const apellido = document.getElementById('userApellido').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            const telefono = document.getElementById('userTelefono').value.trim();
+            const puesto = document.getElementById('userPuesto').value;
+            const login = document.getElementById('userLogin').value.trim();
+            const activo = document.getElementById('userActivo').checked ? 'Sí' : 'No';
+            const password = document.getElementById('userPassword').value;
+
+            if(!nombre || !apellido || !email || !puesto || !login){
+                alert('Complete todos los campos obligatorios');
+                return;
+            }
+
+            const tbody = document.getElementById('usuariosBody');
+
+            if(usuarioEnEdicion){
+                usuarioEnEdicion.innerHTML = `<td>${nombre}</td><td>${apellido}</td><td>${email}</td><td>${telefono}</td><td>${puesto}</td><td>${login}</td><td>${activo}</td>
+                    <td><span class="action-btn" onclick="editarUsuario(this)">Editar</span> | 
+                    <span class="action-btn" onclick="eliminarUsuario(this)">Eliminar</span></td>`;
+                usuarioEnEdicion = null;
+            } else {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `<td>${nombre}</td><td>${apellido}</td><td>${email}</td><td>${telefono}</td><td>${puesto}</td><td>${login}</td><td>${activo}</td>
+                    <td><span class="action-btn" onclick="editarUsuario(this)">Editar</span> | 
+                    <span class="action-btn" onclick="eliminarUsuario(this)">Eliminar</span></td>`;
+                tbody.appendChild(fila);
+            }
+
+            document.getElementById('formUsuario').reset();
+            mostrarSeccion('usuarios-listar');
+            document.querySelector('#formUsuario button.cta-button').textContent = 'Guardar';
+        }
+
+        function eliminarUsuario(btn) {
+            if (confirm('¿Eliminar usuario?')) {
+                const fila = btn.closest('tr');
+                fila.remove();
+            }
+        }
+       
+        let usuarioEnEdicion = null;
+
+        function editarUsuario(btn){
+            const fila = btn.closest('tr');
+            usuarioEnEdicion = fila;
+
+            document.getElementById('userNombre').value = fila.cells[0].textContent;
+            document.getElementById('userApellido').value = fila.cells[1].textContent;
+            document.getElementById('userEmail').value = fila.cells[2].textContent;
+            document.getElementById('userTelefono').value = fila.cells[3].textContent;
+            document.getElementById('userPuesto').value = fila.cells[4].textContent;
+            document.getElementById('userLogin').value = fila.cells[5].textContent;
+            document.getElementById('userActivo').checked = fila.cells[6].textContent === 'Sí';
+
+            mostrarSeccion('usuarios-nuevo');
+            document.querySelector('#formUsuario button.cta-button').textContent = 'Actualizar';
+        }
+
+        function filtrarUsuarios() {
+            const filtroTexto = document.getElementById('buscarUsuario').value.toLowerCase();
+            const filtroRol = document.getElementById('filtrarRol').value;
+
+            document.querySelectorAll('#usuariosBody tr').forEach(fila => {
+                const nombre = fila.cells[0].textContent.toLowerCase();
+                const apellido = fila.cells[1].textContent.toLowerCase();
+                const email = fila.cells[2].textContent.toLowerCase();
+                const puesto = fila.cells[4].textContent; 
+
+                const coincideTexto =
+                    nombre.includes(filtroTexto) ||
+                    apellido.includes(filtroTexto) ||
+                    email.includes(filtroTexto);
+
+                const coincideRol =
+                    filtroRol === '' || puesto === filtroRol;
+
+                fila.style.display = (coincideTexto && coincideRol) ? '' : 'none';
+            });
+        }
+
+        function exportarUsuariosCSV() {
+            const filas = Array.from(document.querySelectorAll('#usuariosBody tr'));
+            if(filas.length === 0) { 
+                alert('No hay usuarios para exportar'); 
+                return; 
+            }
+
+            // Cabecera
+            let csv = `"Nombre";"Apellido";"Email";"Telefono";"Puesto";"Usuario";"Activo"\n`;
+
+            filas.forEach(f => {
+                // Encerramos cada celda en comillas y separamos con ;
+                csv += `"${f.cells[0].textContent}";"${f.cells[1].textContent}";"${f.cells[2].textContent}";"${f.cells[3].textContent}";"${f.cells[4].textContent}";"${f.cells[5].textContent}";"${f.cells[6].textContent}"\n`;
+            });
+
+            // Crear link de descarga
+            const link = document.createElement('a');
+            link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+            link.download = 'usuarios.csv';
+            link.click();
+        }
+
     </script>
 </body>
 </html>
