@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
+
 <body class="admin-body">
 
     <aside class="sidebar">
@@ -21,10 +23,14 @@
                 <li class="has-submenu">
                     <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Citas </a>
                     <ul class="submenu">
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-crear')">Registrar Nueva Cita</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-modificar-trasladar')">Modificar/Trasladar Cita</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-cancelar')">Cancelar Cita</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-disponibilidad')">Definir Disponibilidad</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-crear')">Registrar Nueva
+                                Cita</a></li>
+                        <li><a href="javascript:void(0)"
+                                onclick="mostrarSeccion('citas-modificar-trasladar')">Modificar/Trasladar Cita</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-cancelar')">Cancelar Cita</a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-disponibilidad')">Definir
+                                Disponibilidad</a></li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('citas-buscar')">Buscar Citas</a></li>
                         <li><a href="javascript:void(0)" onclick="cargarCitas()">Lista de Citas (Todas)</a></li>
                     </ul>
@@ -33,11 +39,17 @@
                 <li class="has-submenu">
                     <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Clientes </a>
                     <ul class="submenu">
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-nuevo')">Registrar Cliente</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-modificar')">Modificar/Actualizar Info</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-eliminar-inactivar')">Eliminar/Inactivar Cliente</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-historial')">Consultar Historial</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-buscar')">Buscar Clientes</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-nuevo')">Registrar
+                                Cliente</a></li>
+                        <li><a href="javascript:void(0)"
+                                onclick="mostrarSeccion('clientes-modificar')">Modificar/Actualizar Info</a></li>
+                        <li><a href="javascript:void(0)"
+                                onclick="mostrarSeccion('clientes-eliminar-inactivar')">Eliminar/Inactivar Cliente</a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-historial')">Consultar
+                                Historial</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('clientes-buscar')">Buscar Clientes</a>
+                        </li>
                         <li><a href="javascript:void(0)" onclick="cargarClientes()">Lista de Clientes</a></li>
                     </ul>
                 </li>
@@ -45,11 +57,16 @@
                 <li class="has-submenu">
                     <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Proveedores </a>
                     <ul class="submenu">
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-nuevo')">Registrar Proveedor</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-modificar')">Modificar Proveedor</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-eliminar-sec')">Eliminar Proveedor</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-buscar')">Buscar Proveedores</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-compras')">Historial de Compras</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-nuevo')">Registrar
+                                Proveedor</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-modificar')">Modificar
+                                Proveedor</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-eliminar-sec')">Eliminar
+                                Proveedor</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-buscar')">Buscar
+                                Proveedores</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('proveedores-compras')">Historial de
+                                Compras</a></li>
                         <li><a href="javascript:void(0)" onclick="cargarProveedores()">Lista de Proveedores</a></li>
                     </ul>
                 </li>
@@ -65,7 +82,8 @@
                 <li class="has-submenu">
                     <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Productos/Inventario </a>
                     <ul class="submenu">
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-listar')">Inventario</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-listar')">Inventario</a>
+                        </li>
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('productos-nuevo')">Agregar</a></li>
                     </ul>
                 </li>
@@ -90,8 +108,10 @@
                     <a href="javascript:void(0)" class="main-link" onclick="toggleMenu(this)"> Usuarios </a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-listar')">Lista</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-nuevo')">Crear Usuario</a></li>
-                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-actividad')">Actividad/Sesiones</a></li>
+                        <li><a href="javascript:void(0)" onclick="mostrarSeccion('usuarios-nuevo')">Crear Usuario</a>
+                        </li>
+                        <li><a href="javascript:void(0)"
+                                onclick="mostrarSeccion('usuarios-actividad')">Actividad/Sesiones</a></li>
                     </ul>
                 </li>
 
@@ -102,7 +122,7 @@
                         <li><a href="javascript:void(0)" onclick="mostrarSeccion('servicios-nuevo')">Crear</a></li>
                     </ul>
                 </li>
-                
+
                 <li class="logout-link">
                     <a href="index.html">Cerrar Sesión</a>
                 </li>
@@ -115,9 +135,18 @@
             <section id="inicio" class="dashboard-section active">
                 <h1>Bienvenido al Sistema - Taller AT</h1>
                 <div class="stats-grid">
-                    <div class="stat-box"><div class="number">0</div><div class="label">Citas Hoy</div></div>
-                    <div class="stat-box alert"><div class="number">0</div><div class="label">Stock Crítico</div></div>
-                    <div class="stat-box"><div class="number">Bs 0</div><div class="label">Ventas del Día</div></div>
+                    <div class="stat-box">
+                        <div class="number">0</div>
+                        <div class="label">Citas Hoy</div>
+                    </div>
+                    <div class="stat-box alert">
+                        <div class="number">0</div>
+                        <div class="label">Stock Crítico</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">Bs 0</div>
+                        <div class="label">Ventas del Día</div>
+                    </div>
                 </div>
                 <div class="section-card">
                     <h2>Panel de Administración</h2>
@@ -132,10 +161,19 @@
                     <h2>Próximas y Pendientes</h2>
                     <table class="data-table" id="tablaCitas">
                         <thead>
-                            <tr><th>ID</th><th>Fecha y Hora</th><th>Cliente</th><th>Vehículo (Placa)</th><th>Estado</th><th>Acciones</th></tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha y Hora</th>
+                                <th>Cliente</th>
+                                <th>Vehículo (Placa)</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
                         </thead>
                         <tbody id="citasBody">
-                            <tr><td colspan="6">Cargando citas...</td></tr>
+                            <tr>
+                                <td colspan="6">Cargando citas...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -143,151 +181,217 @@
 
             <section id="citas-crear" class="dashboard-section">
                 <h1> Registrar Nueva Cita</h1>
-                <button class="cta-button" style="background:#003366;" onclick="cargarCitas()">Volver al Listado</button>
+                <button class="cta-button" style="background:#003366;" onclick="cargarCitas()">Volver al
+                    Listado</button>
                 <div class="section-card">
                     <form id="formCita">
-                        <div class="form-row"><div class="form-group">
-                            <label>Cliente *</label>
-                            <input type="text" id="clienteNombreInput" placeholder="Escriba nombre, apellido o documento del cliente..." autocomplete="off" required>
-                            <input type="hidden" id="citaClienteId" required> 
-                            <div id="clienteSuggestions" class="autocomplete-suggestions"></div>
-                        </div>
+                        <div class="form-row">
                             <div class="form-group">
-    <label>Vehículo (Placa) *</label>
-<input type="text" id="citaVehiculoPlacaInput" placeholder="Escriba la placa del vehículo (Ej: ABC-123)" autocomplete="off" required> 
-<input type="hidden" id="citaVehiculoId"> 
-<div id="vehiculoSuggestions" class="autocomplete-suggestions"></div>
-                        <div class="form-row">
-                            <div class="form-group"><label>Fecha *</label><input type="date" id="citaFecha" required></div>
-                            <div class="form-group"><label>Hora *</label><input type="time" id="citaHora" required></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group"><label>Servicio *</label><select id="citaServicio" required><option value="">Seleccionar Servicio</option><option>Mantenimiento Básico</option><option>Diagnóstico de Motor</option></select></div>
-                            <div class="form-group"><label>Profesional/Recurso</label><select id="citaProfesional"><option value="">Cualquiera</option><option>Técnico A</option><option>Técnico B</option></select></div>
-                        </div>
-                        <div class="form-group"><label>Notas Adicionales</label><textarea id="citaNotas"></textarea></div>
-                        <button type="button" class="cta-button" onclick="guardarCita()">Agendar Cita</button>
+                                <label>Cliente *</label>
+                                <input type="text" id="clienteNombreInput"
+                                    placeholder="Escriba nombre, apellido o documento del cliente..." autocomplete="off"
+                                    required>
+                                <input type="hidden" id="citaClienteId" required>
+                                <div id="clienteSuggestions" class="autocomplete-suggestions"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Vehículo (Placa) *</label>
+                                <input type="text" id="citaVehiculoPlacaInput"
+                                    placeholder="Escriba la placa del vehículo (Ej: ABC-123)" autocomplete="off"
+                                    required>
+                                <input type="hidden" id="citaVehiculoId">
+                                <div id="vehiculoSuggestions" class="autocomplete-suggestions"></div>
+                                <div class="form-row">
+                                    <div class="form-group"><label>Fecha *</label><input type="date" id="citaFecha"
+                                            required></div>
+                                    <div class="form-group"><label>Hora *</label><input type="time" id="citaHora"
+                                            required></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group"><label>Servicio *</label><select id="citaServicio" required>
+                                            <option value="">Seleccionar Servicio</option>
+                                            <option>Mantenimiento Básico</option>
+                                            <option>Diagnóstico de Motor</option>
+                                        </select></div>
+                                    <div class="form-group"><label>Profesional/Recurso</label><select
+                                            id="citaProfesional">
+                                            <option value="">Cualquiera</option>
+                                            <option>Técnico A</option>
+                                            <option>Técnico B</option>
+                                        </select></div>
+                                </div>
+                                <div class="form-group"><label>Notas Adicionales</label><textarea
+                                        id="citaNotas"></textarea></div>
+                                <button type="button" class="cta-button" onclick="guardarCita()">Agendar Cita</button>
                     </form>
                 </div>
             </section>
-            
-           <section id="citas-modificar-trasladar" class="dashboard-section">
-    <h1> Modificar o Trasladar Cita</h1>
-    <div class="section-card">
-        <h2>Paso 1: Buscar Cita Existente</h2>
-        <input type="text" id="citaSearchModificar" class="search-input" 
-               placeholder="Buscar cita por ID, cliente o placa para modificar..." onkeyup="buscarCitaParaModificar()">
-        
-        <div id="modificarSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="modificarCitaFormContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2>Paso 2: Modificar Cita <span id="modificarCitaInfo" style="color:#003366;"></span></h2>
-            <form id="formModificarCita">
-                <input type="hidden" id="modificarCitaId">
-                <div class="form-row">
-                    <div class="form-group"><label>Nueva Fecha *</label><input type="date" id="modificarFecha" required></div>
-                    <div class="form-group"><label>Nueva Hora *</label><input type="time" id="modificarHora" required></div>
+
+            <section id="citas-modificar-trasladar" class="dashboard-section">
+                <h1> Modificar o Trasladar Cita</h1>
+                <div class="section-card">
+                    <h2>Paso 1: Buscar Cita Existente</h2>
+                    <input type="text" id="citaSearchModificar" class="search-input"
+                        placeholder="Buscar cita por ID, cliente o placa para modificar..."
+                        onkeyup="buscarCitaParaModificar()">
+
+                    <div id="modificarSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="modificarCitaFormContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2>Paso 2: Modificar Cita <span id="modificarCitaInfo" style="color:#003366;"></span></h2>
+                        <form id="formModificarCita">
+                            <input type="hidden" id="modificarCitaId">
+                            <div class="form-row">
+                                <div class="form-group"><label>Nueva Fecha *</label><input type="date"
+                                        id="modificarFecha" required></div>
+                                <div class="form-group"><label>Nueva Hora *</label><input type="time" id="modificarHora"
+                                        required></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Servicio</label><select id="modificarServicio">
+                                        <option>Mantenimiento Básico</option>
+                                        <option>Diagnóstico de Motor</option>
+                                    </select></div>
+                                <div class="form-group"><label>Nuevo Profesional/Recurso</label><select
+                                        id="modificarProfesional">
+                                        <option value="">Cualquiera</option>
+                                        <option>Técnico A</option>
+                                        <option>Técnico B</option>
+                                    </select></div>
+                            </div>
+                            <button type="button" class="cta-button" onclick="guardarModificacionCita()">Guardar
+                                Cambios</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group"><label>Servicio</label><select id="modificarServicio"><option>Mantenimiento Básico</option><option>Diagnóstico de Motor</option></select></div>
-                    <div class="form-group"><label>Nuevo Profesional/Recurso</label><select id="modificarProfesional"><option value="">Cualquiera</option><option>Técnico A</option><option>Técnico B</option></select></div>
+            </section>
+
+            <section id="citas-cancelar" class="dashboard-section">
+                <h1> Cancelar Cita y Registrar Motivo</h1>
+                <div class="section-card">
+                    <h2>Paso 1: Buscar Cita Pendiente</h2>
+                    <input type="text" id="citaSearchCancelar" class="search-input"
+                        placeholder="Buscar cita por ID, cliente o placa para cancelar..."
+                        onkeyup="buscarCitaParaCancelar()">
+
+                    <div id="cancelarSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="cancelarCitaContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2>Paso 2: Confirmar Cancelación</h2>
+                        <p>ID: <strong id="cancelarCitaInfo"></strong> | Cliente: <strong id="cancelarCliente"></strong>
+                        </p>
+                        <p>Fecha/Hora: <strong id="cancelarFechaHora"></strong> | Estado Actual: <strong
+                                id="cancelarEstado"></strong></p>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label>Motivo de la Cancelación (Mínimo 10 caracteres) *</label>
+                            <textarea id="motivoCancelacion" rows="3" required></textarea>
+                        </div>
+
+                        <button type="button" class="cta-button" style="background:var(--rojo-alerta);"
+                            onclick="confirmarCancelacion()">Confirmar Cancelación</button>
+                    </div>
                 </div>
-                <button type="button" class="cta-button" onclick="guardarModificacionCita()">Guardar Cambios</button>
-            </form>
-        </div>
-    </div>
-</section>
+            </section>
 
-          <section id="citas-cancelar" class="dashboard-section">
-    <h1> Cancelar Cita y Registrar Motivo</h1>
-    <div class="section-card">
-        <h2>Paso 1: Buscar Cita Pendiente</h2>
-        <input type="text" id="citaSearchCancelar" class="search-input" 
-               placeholder="Buscar cita por ID, cliente o placa para cancelar..." onkeyup="buscarCitaParaCancelar()">
+            <section id="citas-disponibilidad" class="dashboard-section">
+                <h1> Definir/Bloquear Disponibilidad</h1>
+                <div class="section-card">
+                    <h2>Bloquear Horario de Recurso/Profesional</h2>
+                    <form id="formBloquearDisponibilidad">
+                        <div class="form-row">
+                            <div class="form-group"><label>Profesional/Recurso *</label>
+                                <select id="disponibilidadProfesional" required>
+                                    <option value="">Seleccionar Recurso</option>
+                                    <option>Técnico A</option>
+                                    <option>Técnico B</option>
+                                    <option>Elevador 1</option>
+                                    <option>Bahía Rápida</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>Motivo del Bloqueo</label><input type="text"
+                                    id="disponibilidadMotivo" placeholder="Ej: Capacitación, Mantenimiento..."></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Fecha *</label><input type="date" id="disponibilidadFecha"
+                                    required></div>
+                            <div class="form-group"><label>Hora Inicio *</label><input type="time"
+                                    id="disponibilidadHoraInicio" required></div>
+                            <div class="form-group"><label>Hora Fin *</label><input type="time"
+                                    id="disponibilidadHoraFin" required></div>
+                        </div>
+                        <button type="button" class="cta-button" onclick="guardarBloqueoDisponibilidad()">Bloquear
+                            Horario</button>
+                    </form>
 
-        <div id="cancelarSuggestions" class="autocomplete-suggestions"></div>
-
-        <div id="cancelarCitaContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2>Paso 2: Confirmar Cancelación</h2>
-            <p>ID: <strong id="cancelarCitaInfo"></strong> | Cliente: <strong id="cancelarCliente"></strong></p>
-            <p>Fecha/Hora: <strong id="cancelarFechaHora"></strong> | Estado Actual: <strong id="cancelarEstado"></strong></p>
-            
-            <div class="form-group" style="margin-top: 15px;">
-                <label>Motivo de la Cancelación (Mínimo 10 caracteres) *</label>
-                <textarea id="motivoCancelacion" rows="3" required></textarea>
-            </div>
-            
-            <button type="button" class="cta-button" style="background:var(--rojo-alerta);" onclick="confirmarCancelacion()">Confirmar Cancelación</button>
-        </div>
-    </div>
-</section>
-            
-          <section id="citas-disponibilidad" class="dashboard-section">
-    <h1> Definir/Bloquear Disponibilidad</h1>
-    <div class="section-card">
-        <h2>Bloquear Horario de Recurso/Profesional</h2>
-        <form id="formBloquearDisponibilidad">
-            <div class="form-row">
-                <div class="form-group"><label>Profesional/Recurso *</label>
-                    <select id="disponibilidadProfesional" required>
-                        <option value="">Seleccionar Recurso</option>
-                        <option>Técnico A</option>
-                        <option>Técnico B</option>
-                        <option>Elevador 1</option>
-                        <option>Bahía Rápida</option>
-                    </select>
+                    <h2 style="margin-top: 40px;">Disponibilidad Bloqueada Actual (Simulación)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Recurso</th>
+                                <th>Fecha</th>
+                                <th>Horario</th>
+                                <th>Motivo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="disponibilidadBody">
+                            <tr>
+                                <td colspan="4">No hay bloqueos activos simulados.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="form-group"><label>Motivo del Bloqueo</label><input type="text" id="disponibilidadMotivo" placeholder="Ej: Capacitación, Mantenimiento..."></div>
-            </div>
-            <div class="form-row">
-                <div class="form-group"><label>Fecha *</label><input type="date" id="disponibilidadFecha" required></div>
-                <div class="form-group"><label>Hora Inicio *</label><input type="time" id="disponibilidadHoraInicio" required></div>
-                <div class="form-group"><label>Hora Fin *</label><input type="time" id="disponibilidadHoraFin" required></div>
-            </div>
-            <button type="button" class="cta-button" onclick="guardarBloqueoDisponibilidad()">Bloquear Horario</button>
-        </form>
-        
-        <h2 style="margin-top: 40px;">Disponibilidad Bloqueada Actual (Simulación)</h2>
-        <table class="data-table">
-            <thead>
-                <tr><th>Recurso</th><th>Fecha</th><th>Horario</th><th>Motivo</th></tr>
-            </thead>
-            <tbody id="disponibilidadBody">
-                <tr><td colspan="4">No hay bloqueos activos simulados.</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+            </section>
 
-           <section id="citas-buscar" class="dashboard-section">
-    <h1> Buscar Citas</h1>
-    <div class="section-card">
-        <p>Búsqueda rápida por **Cliente, Placa, o Estado** de la cita.</p>
-        <input type="text" id="citaSearchInput" class="search-input" 
-               placeholder="Buscar cita por nombre de cliente o placa..." onkeyup="filtrarCitasBuscar()">
-        
-        <table class="data-table" id="tablaCitasBuscar">
-            <thead>
-                <tr><th>ID</th><th>Fecha/Hora</th><th>Cliente</th><th>Vehículo (Placa)</th><th>Estado</th></tr>
-            </thead>
-            <tbody id="citasBuscarBody">
-                <tr><td colspan="5">Comience a escribir para buscar citas...</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-            
-            
+            <section id="citas-buscar" class="dashboard-section">
+                <h1> Buscar Citas</h1>
+                <div class="section-card">
+                    <p>Búsqueda rápida por **Cliente, Placa, o Estado** de la cita.</p>
+                    <input type="text" id="citaSearchInput" class="search-input"
+                        placeholder="Buscar cita por nombre de cliente o placa..." onkeyup="filtrarCitasBuscar()">
+
+                    <table class="data-table" id="tablaCitasBuscar">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha/Hora</th>
+                                <th>Cliente</th>
+                                <th>Vehículo (Placa)</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="citasBuscarBody">
+                            <tr>
+                                <td colspan="5">Comience a escribir para buscar citas...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
             <section id="clientes-listar" class="dashboard-section">
                 <h1> Lista de Clientes</h1>
                 <button class="cta-button" onclick="mostrarSeccion('clientes-nuevo')">+ Registrar Nuevo Cliente</button>
                 <div class="section-card">
                     <table class="data-table" id="tablaClientes">
                         <thead>
-                            <tr><th>ID</th><th>Código</th><th>Nombre Completo</th><th>Teléfono</th><th>Email</th><th>Documento</th><th>Acciones</th></tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Código</th>
+                                <th>Nombre Completo</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Documento</th>
+                                <th>Acciones</th>
+                            </tr>
                         </thead>
                         <tbody id="clientesBody">
-                            <tr><td colspan="7">Cargando clientes...</td></tr>
+                            <tr>
+                                <td colspan="7">Cargando clientes...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -295,161 +399,229 @@
 
             <section id="clientes-nuevo" class="dashboard-section">
                 <h1> Registrar Nuevo Cliente</h1>
-                <button class="cta-button" style="background:#666;" onclick="cargarClientes()">Volver al Listado</button>
+                <button class="cta-button" style="background:#666;" onclick="cargarClientes()">Volver al
+                    Listado</button>
                 <div class="section-card">
                     <form id="formCliente">
                         <div class="form-row">
-                            <div class="form-group"><label>Tipo Documento</label><select id="clienteTipoDoc"><option>CC</option><option>Pasaporte</option><option>DNI</option></select></div>
-                            <div class="form-group"><label>Nro. Documento *</label><input type="text" id="clienteNroDoc" required></div>
+                            <div class="form-group"><label>Tipo Documento</label><select id="clienteTipoDoc">
+                                    <option>CC</option>
+                                    <option>Pasaporte</option>
+                                    <option>DNI</option>
+                                </select></div>
+                            <div class="form-group"><label>Nro. Documento *</label><input type="text" id="clienteNroDoc"
+                                    required></div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group"><label>Nombre *</label><input type="text" id="clienteNombre" required></div>
-                            <div class="form-group"><label>Apellido</label><input type="text" id="clienteApellido"></div>
+                            <div class="form-group"><label>Nombre *</label><input type="text" id="clienteNombre"
+                                    required></div>
+                            <div class="form-group"><label>Apellido</label><input type="text" id="clienteApellido">
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group"><label>Email *</label><input type="email" id="clienteEmail" required></div>
-                            <div class="form-group"><label>Teléfono *</label><input type="text" id="clienteTelefono" required></div>
+                            <div class="form-group"><label>Email *</label><input type="email" id="clienteEmail"
+                                    required></div>
+                            <div class="form-group"><label>Teléfono *</label><input type="text" id="clienteTelefono"
+                                    required></div>
                         </div>
                         <div class="form-group"><label>Dirección</label><input type="text" id="clienteDireccion"></div>
-                        <div class="form-group"><label>Código Cliente (Opcional)</label><input type="text" id="clienteCodigo"></div>
+                        <div class="form-group"><label>Código Cliente (Opcional)</label><input type="text"
+                                id="clienteCodigo"></div>
                         <button type="button" class="cta-button" onclick="guardarCliente()">Guardar Cliente</button>
                     </form>
                 </div>
             </section>
-            
+
             <section id="clientes-modificar" class="dashboard-section">
-    <h1> Modificar/Actualizar Información del Cliente</h1>
-    <div class="section-card">
-        <h2>Paso 1: Buscar Cliente a Modificar</h2>
-        <input type="text" id="modificarClienteSearchInput" class="search-input" 
-               placeholder="Buscar cliente por ID, nombre o documento..." onkeyup="buscarClienteParaModificar()">
-        
-        <div id="modificarClienteSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="modificarClienteFormContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2>Paso 2: Editando Cliente ID: <span id="modificarClienteIdDisplay" style="color:var(--azul-claro);"></span></h2>
-            <form id="formModificarCliente">
-                <input type="hidden" id="modificarClienteId">
-                
-                <div class="form-row">
-                    <div class="form-group"><label>Nombre *</label><input type="text" id="modificarClienteNombre" required></div>
-                    <div class="form-group"><label>Apellido</label><input type="text" id="modificarClienteApellido"></div>
-                </div>
+                <h1> Modificar/Actualizar Información del Cliente</h1>
+                <div class="section-card">
+                    <h2>Paso 1: Buscar Cliente a Modificar</h2>
+                    <input type="text" id="modificarClienteSearchInput" class="search-input"
+                        placeholder="Buscar cliente por ID, nombre o documento..."
+                        onkeyup="buscarClienteParaModificar()">
 
-                <div class="form-row">
-                    <div class="form-group"><label>Teléfono *</label><input type="tel" id="modificarClienteTelefono" required></div>
-                    <div class="form-group"><label>Email *</label><input type="email" id="modificarClienteEmail" required></div>
-                </div>
+                    <div id="modificarClienteSuggestions" class="autocomplete-suggestions"></div>
 
-                <div class="form-row">
-                    <div class="form-group"><label>Tipo Doc.</label><select id="modificarClienteTipoDoc"><option>DNI</option><option>RUC</option></select></div>
-                    <div class="form-group"><label>Nro. Documento *</label><input type="text" id="modificarClienteNroDoc" required></div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group"><label>Dirección</label><input type="text" id="modificarClienteDireccion"></div>
-                    <div class="form-group"><label>Código Cliente</label><input type="text" id="modificarClienteCodigo"></div>
-                </div>
+                    <div id="modificarClienteFormContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2>Paso 2: Editando Cliente ID: <span id="modificarClienteIdDisplay"
+                                style="color:var(--azul-claro);"></span></h2>
+                        <form id="formModificarCliente">
+                            <input type="hidden" id="modificarClienteId">
 
-                <button type="button" class="cta-button" onclick="guardarModificacionCliente()">Guardar Cambios</button>
-            </form>
-        </div>
-    </div>
-</section>
+                            <div class="form-row">
+                                <div class="form-group"><label>Nombre *</label><input type="text"
+                                        id="modificarClienteNombre" required></div>
+                                <div class="form-group"><label>Apellido</label><input type="text"
+                                        id="modificarClienteApellido"></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group"><label>Teléfono *</label><input type="tel"
+                                        id="modificarClienteTelefono" required></div>
+                                <div class="form-group"><label>Email *</label><input type="email"
+                                        id="modificarClienteEmail" required></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group"><label>Tipo Doc.</label><select id="modificarClienteTipoDoc">
+                                        <option>DNI</option>
+                                        <option>RUC</option>
+                                    </select></div>
+                                <div class="form-group"><label>Nro. Documento *</label><input type="text"
+                                        id="modificarClienteNroDoc" required></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group"><label>Dirección</label><input type="text"
+                                        id="modificarClienteDireccion"></div>
+                                <div class="form-group"><label>Código Cliente</label><input type="text"
+                                        id="modificarClienteCodigo"></div>
+                            </div>
+
+                            <button type="button" class="cta-button" onclick="guardarModificacionCliente()">Guardar
+                                Cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
 
             <section id="clientes-eliminar-inactivar" class="dashboard-section">
-    <h1> Eliminar o Inactivar Cliente</h1>
-    <div class="section-card">
-        <h2>Paso 1: Seleccionar Cliente</h2>
-        <input type="text" id="eliminarClienteSearchInput" class="search-input" 
-               placeholder="Buscar cliente por ID, nombre o documento..." onkeyup="buscarClienteParaEliminar()">
-        
-        <div id="eliminarClienteSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="eliminarClienteContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2>Cliente Seleccionado: <span id="eliminarClienteNombreDisplay" style="color:var(--azul-claro);"></span></h2>
-            <p>ID: <strong id="eliminarClienteIdDisplay"></strong> | Documento: <strong id="eliminarClienteDocDisplay"></strong></p>
-            <p>Estado Actual: <strong id="eliminarClienteEstadoDisplay"></strong></p>
-            
-            <div style="margin-top: 30px;">
-                <button type="button" class="cta-button" onclick="inactivarCliente()" 
-                        style="background:var(--gris-oscuro); margin-right: 20px;">
-                    ✅ Marcar como INACTIVO (Recomendado)
-                </button>
-                
-                <button type="button" class="cta-button" onclick="eliminarClienteConfirmacion()" 
-                        style="background:var(--rojo-alerta);">
-                    🗑️ ELIMINAR Permanentemente (Riesgoso)
-                </button>
-                <p style="margin-top: 10px; color:var(--rojo-alerta); font-size: 0.9em;">**Advertencia:** Eliminar permanentemente un cliente puede causar inconsistencias en el historial de citas y órdenes de trabajo previas.</p>
-            </div>
-        </div>
-    </div>
-</section>
+                <h1> Eliminar o Inactivar Cliente</h1>
+                <div class="section-card">
+                    <h2>Paso 1: Seleccionar Cliente</h2>
+                    <input type="text" id="eliminarClienteSearchInput" class="search-input"
+                        placeholder="Buscar cliente por ID, nombre o documento..."
+                        onkeyup="buscarClienteParaEliminar()">
+
+                    <div id="eliminarClienteSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="eliminarClienteContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2>Cliente Seleccionado: <span id="eliminarClienteNombreDisplay"
+                                style="color:var(--azul-claro);"></span></h2>
+                        <p>ID: <strong id="eliminarClienteIdDisplay"></strong> | Documento: <strong
+                                id="eliminarClienteDocDisplay"></strong></p>
+                        <p>Estado Actual: <strong id="eliminarClienteEstadoDisplay"></strong></p>
+
+                        <div style="margin-top: 30px;">
+                            <button type="button" class="cta-button" onclick="inactivarCliente()"
+                                style="background:var(--gris-oscuro); margin-right: 20px;">
+                                ✅ Marcar como INACTIVO (Recomendado)
+                            </button>
+
+                            <button type="button" class="cta-button" onclick="eliminarClienteConfirmacion()"
+                                style="background:var(--rojo-alerta);">
+                                🗑️ ELIMINAR Permanentemente (Riesgoso)
+                            </button>
+                            <p style="margin-top: 10px; color:var(--rojo-alerta); font-size: 0.9em;">**Advertencia:**
+                                Eliminar permanentemente un cliente puede causar inconsistencias en el historial de
+                                citas y órdenes de trabajo previas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section id="clientes-historial" class="dashboard-section">
-    <h1> Historial Completo de Servicios y Compras</h1>
-    <div class="section-card">
-        <h2>Buscar Historial</h2>
-        <input type="text" id="historialClienteSearchInput" class="search-input" 
-               placeholder="Buscar cliente por ID, nombre o documento..." onkeyup="buscarClienteParaHistorial()">
-        
-        <div id="historialClienteSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="historialClienteContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2 style="margin-bottom: 20px;">Historial de: <span id="historialClienteNombreDisplay" style="color:var(--azul-claro);"></span></h2>
-            
-            <h3>Citas Previas (<span id="countCitas">0</span>)</h3>
-            <table class="data-table small-table">
-                <thead><tr><th>Fecha</th><th>Vehículo</th><th>Servicio</th><th>Estado</th></tr></thead>
-                <tbody id="historialCitasBody"><tr><td colspan="4">Sin citas registradas. (Simulación)</td></tr></tbody>
-            </table>
+                <h1> Historial Completo de Servicios y Compras</h1>
+                <div class="section-card">
+                    <h2>Buscar Historial</h2>
+                    <input type="text" id="historialClienteSearchInput" class="search-input"
+                        placeholder="Buscar cliente por ID, nombre o documento..."
+                        onkeyup="buscarClienteParaHistorial()">
 
-            <h3 style="margin-top: 30px;">Órdenes de Trabajo/Facturas (<span id="countOT">0</span>)</h3>
-            <table class="data-table small-table">
-                <thead><tr><th>OT ID</th><th>Fecha</th><th>Monto Total</th><th>Estado Pago</th></tr></thead>
-                <tbody id="historialOTBody"><tr><td colspan="4">Sin órdenes de trabajo. (Simulación)</td></tr></tbody>
-            </table>
-        </div>
-    </div>
-</section>
+                    <div id="historialClienteSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="historialClienteContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2 style="margin-bottom: 20px;">Historial de: <span id="historialClienteNombreDisplay"
+                                style="color:var(--azul-claro);"></span></h2>
+
+                        <h3>Citas Previas (<span id="countCitas">0</span>)</h3>
+                        <table class="data-table small-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Vehículo</th>
+                                    <th>Servicio</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historialCitasBody">
+                                <tr>
+                                    <td colspan="4">Sin citas registradas. (Simulación)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 style="margin-top: 30px;">Órdenes de Trabajo/Facturas (<span id="countOT">0</span>)</h3>
+                        <table class="data-table small-table">
+                            <thead>
+                                <tr>
+                                    <th>OT ID</th>
+                                    <th>Fecha</th>
+                                    <th>Monto Total</th>
+                                    <th>Estado Pago</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historialOTBody">
+                                <tr>
+                                    <td colspan="4">Sin órdenes de trabajo. (Simulación)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
             <section id="clientes-buscar" class="dashboard-section">
-    <h1> Buscar Clientes</h1>
-    <div class="section-card">
-        <p>Busque clientes por nombre, apellido, teléfono, o número de documento.</p>
-        <input type="text" id="clienteSearchInput" class="search-input" 
-               placeholder="Escriba aquí para buscar clientes..." onkeyup="filtrarClientesBuscar()">
-        
-        <table class="data-table" style="margin-top: 20px;">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Cód.</th>
-                    <th>Nombre Completo</th>
-                    <th>Teléfono</th>
-                    <th>Documento</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="clientesBuscarBody">
-                <tr><td colspan="6">Comience a escribir para ver resultados...</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+                <h1> Buscar Clientes</h1>
+                <div class="section-card">
+                    <p>Busque clientes por nombre, apellido, teléfono, o número de documento.</p>
+                    <input type="text" id="clienteSearchInput" class="search-input"
+                        placeholder="Escriba aquí para buscar clientes..." onkeyup="filtrarClientesBuscar()">
+
+                    <table class="data-table" style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cód.</th>
+                                <th>Nombre Completo</th>
+                                <th>Teléfono</th>
+                                <th>Documento</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientesBuscarBody">
+                            <tr>
+                                <td colspan="6">Comience a escribir para ver resultados...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
 
             <section id="proveedores-listar" class="dashboard-section">
                 <h1> Lista de Proveedores</h1>
-                <button class="cta-button" onclick="mostrarSeccion('proveedores-nuevo')">+ Registrar Nuevo Proveedor</button>
+                <button class="cta-button" onclick="mostrarSeccion('proveedores-nuevo')">+ Registrar Nuevo
+                    Proveedor</button>
                 <div class="section-card">
                     <table class="data-table" id="tablaProveedores">
                         <thead>
-                            <tr><th>ID</th><th>Empresa</th><th>Contacto Principal</th><th>Teléfono</th><th>Email</th><th>Acciones</th></tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Empresa</th>
+                                <th>Contacto Principal</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Acciones</th>
+                            </tr>
                         </thead>
                         <tbody id="proveedoresBody">
-                            <tr><td colspan="6">Cargando proveedores...</td></tr>
+                            <tr>
+                                <td colspan="6">Cargando proveedores...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -457,253 +629,537 @@
 
             <section id="proveedores-nuevo" class="dashboard-section">
                 <h1> Registrar Nuevo Proveedor</h1>
-                <button class="cta-button" style="background:#666;" onclick="cargarProveedores()">Volver al Listado</button>
+                <button class="cta-button" style="background:#666;" onclick="cargarProveedores()">Volver al
+                    Listado</button>
                 <div class="section-card">
                     <form id="formProveedor">
-                        <div class="form-group"><label>Nombre de la Empresa *</label><input type="text" id="provEmpresa" required></div>
+                        <div class="form-group"><label>Nombre de la Empresa *</label><input type="text" id="provEmpresa"
+                                required></div>
                         <h2>Contacto Principal</h2>
-                        <div class="form-group"><label>Nombre de Contacto *</label><input type="text" id="provContactoNombre" required></div>
+                        <div class="form-group"><label>Nombre de Contacto *</label><input type="text"
+                                id="provContactoNombre" required></div>
                         <div class="form-row">
-                            <div class="form-group"><label>Teléfono *</label><input type="text" id="provContactoTelefono" required></div>
-                            <div class="form-group"><label>Email</label><input type="email" id="provContactoEmail"></div>
+                            <div class="form-group"><label>Teléfono *</label><input type="text"
+                                    id="provContactoTelefono" required></div>
+                            <div class="form-group"><label>Email</label><input type="email" id="provContactoEmail">
+                            </div>
                         </div>
                         <button type="button" class="cta-button" onclick="guardarProveedor()">Guardar Proveedor</button>
                     </form>
                 </div>
             </section>
-            
+
             <section id="proveedores-modificar" class="dashboard-section">
-    <h1> Modificar Proveedor</h1>
-    <div class="section-card">
-        <h2>Paso 1: Buscar Proveedor a Modificar</h2>
-        <input type="text" id="modificarProveedorSearchInput" class="search-input" 
-               placeholder="Buscar proveedor por ID, empresa o contacto..." onkeyup="buscarProveedorParaModificar()">
-        
-        <div id="modificarProveedorSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="modificarProveedorFormContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2>Paso 2: Editando Proveedor ID: <span id="modificarProveedorIdDisplay" style="color:var(--azul-claro);"></span></h2>
-            <form id="formModificarProveedor">
-                <input type="hidden" id="modificarProveedorId">
-                
-                <div class="form-row">
-                    <div class="form-group"><label>Nombre Empresa *</label><input type="text" id="modificarProvEmpresa" required></div>
-                    <div class="form-group"><label>RUC/NIT</label><input type="text" id="modificarProvRuc"></div>
+                <h1> Modificar Proveedor</h1>
+                <div class="section-card">
+                    <h2>Paso 1: Buscar Proveedor a Modificar</h2>
+                    <input type="text" id="modificarProveedorSearchInput" class="search-input"
+                        placeholder="Buscar proveedor por ID, empresa o contacto..."
+                        onkeyup="buscarProveedorParaModificar()">
+
+                    <div id="modificarProveedorSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="modificarProveedorFormContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2>Paso 2: Editando Proveedor ID: <span id="modificarProveedorIdDisplay"
+                                style="color:var(--azul-claro);"></span></h2>
+                        <form id="formModificarProveedor">
+                            <input type="hidden" id="modificarProveedorId">
+
+                            <div class="form-row">
+                                <div class="form-group"><label>Nombre Empresa *</label><input type="text"
+                                        id="modificarProvEmpresa" required></div>
+                                <div class="form-group"><label>RUC/NIT</label><input type="text" id="modificarProvRuc">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group"><label>Contacto Nombre *</label><input type="text"
+                                        id="modificarProvContactoNombre" required></div>
+                                <div class="form-group"><label>Contacto Teléfono *</label><input type="tel"
+                                        id="modificarProvContactoTelefono" required></div>
+                            </div>
+
+                            <div class="form-group"><label>Contacto Email</label><input type="email"
+                                    id="modificarProvContactoEmail"></div>
+
+                            <button type="button" class="cta-button" onclick="guardarModificacionProveedor()">Guardar
+                                Cambios del Proveedor</button>
+                        </form>
+                    </div>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group"><label>Contacto Nombre *</label><input type="text" id="modificarProvContactoNombre" required></div>
-                    <div class="form-group"><label>Contacto Teléfono *</label><input type="tel" id="modificarProvContactoTelefono" required></div>
-                </div>
-
-                <div class="form-group"><label>Contacto Email</label><input type="email" id="modificarProvContactoEmail"></div>
-
-                <button type="button" class="cta-button" onclick="guardarModificacionProveedor()">Guardar Cambios del Proveedor</button>
-            </form>
-        </div>
-    </div>
-</section>
+            </section>
 
             <section id="proveedores-eliminar-sec" class="dashboard-section">
-    <h1> Eliminar Proveedor</h1>
-    <div class="section-card">
-        <h2>Paso 1: Seleccionar Proveedor</h2>
-        <input type="text" id="eliminarProveedorSearchInput" class="search-input" 
-               placeholder="Buscar proveedor por ID, empresa o contacto..." onkeyup="buscarProveedorParaEliminar()">
-        
-        <div id="eliminarProveedorSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="eliminarProveedorContainer" style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2>Proveedor Seleccionado: <span id="eliminarProveedorNombreDisplay" style="color:var(--azul-claro);"></span></h2>
-            <p>ID: <strong id="eliminarProveedorIdDisplay"></strong> | Contacto: <strong id="eliminarProveedorContactoDisplay"></strong></p>
-            
-            <div style="margin-top: 30px;">
-                <button type="button" class="cta-button" onclick="eliminarProveedorConfirmacion()" 
-                        style="background:var(--rojo-alerta);">
-                    🗑️ ELIMINAR Permanentemente
-                </button>
-                <p style="margin-top: 10px; color:var(--rojo-alerta); font-size: 0.9em;">**Advertencia:** Eliminar permanentemente un proveedor podría afectar el historial de compras y el inventario asociado.</p>
-            </div>
-        </div>
-    </div>
-</section>
+                <h1> Eliminar Proveedor</h1>
+                <div class="section-card">
+                    <h2>Paso 1: Seleccionar Proveedor</h2>
+                    <input type="text" id="eliminarProveedorSearchInput" class="search-input"
+                        placeholder="Buscar proveedor por ID, empresa o contacto..."
+                        onkeyup="buscarProveedorParaEliminar()">
+
+                    <div id="eliminarProveedorSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="eliminarProveedorContainer"
+                        style="display:none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2>Proveedor Seleccionado: <span id="eliminarProveedorNombreDisplay"
+                                style="color:var(--azul-claro);"></span></h2>
+                        <p>ID: <strong id="eliminarProveedorIdDisplay"></strong> | Contacto: <strong
+                                id="eliminarProveedorContactoDisplay"></strong></p>
+
+                        <div style="margin-top: 30px;">
+                            <button type="button" class="cta-button" onclick="eliminarProveedorConfirmacion()"
+                                style="background:var(--rojo-alerta);">
+                                🗑️ ELIMINAR Permanentemente
+                            </button>
+                            <p style="margin-top: 10px; color:var(--rojo-alerta); font-size: 0.9em;">**Advertencia:**
+                                Eliminar permanentemente un proveedor podría afectar el historial de compras y el
+                                inventario asociado.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section id="proveedores-buscar" class="dashboard-section">
-    <h1> Buscar Proveedores</h1>
-    <div class="section-card">
-        <p>Busque proveedores por nombre de empresa, RUC/NIT, o nombre de contacto.</p>
-        <input type="text" id="proveedorSearchInput" class="search-input" 
-               placeholder="Escriba aquí para buscar proveedores..." onkeyup="filtrarProveedoresBuscar()">
-        
-        <table class="data-table" style="margin-top: 20px;">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Empresa</th>
-                    <th>Contacto</th>
-                    <th>Teléfono</th>
-                    <th>Email</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="proveedoresBuscarBody">
-                <tr><td colspan="6">Comience a escribir para ver resultados...</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+                <h1> Buscar Proveedores</h1>
+                <div class="section-card">
+                    <p>Busque proveedores por nombre de empresa, RUC/NIT, o nombre de contacto.</p>
+                    <input type="text" id="proveedorSearchInput" class="search-input"
+                        placeholder="Escriba aquí para buscar proveedores..." onkeyup="filtrarProveedoresBuscar()">
+
+                    <table class="data-table" style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Empresa</th>
+                                <th>Contacto</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proveedoresBuscarBody">
+                            <tr>
+                                <td colspan="6">Comience a escribir para ver resultados...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
             <section id="proveedores-compras" class="dashboard-section">
-    <h1> Historial de Compras</h1>
-    <div class="section-card">
-        <h2>Buscar Orden de Compra o Proveedor</h2>
-        <input type="text" id="historialCompraSearchInput" class="search-input" 
-               placeholder="Buscar por ID de Orden de Compra, o nombre de Proveedor..." onkeyup="buscarHistorialCompras()">
-        
-        <div id="historialCompraSuggestions" class="autocomplete-suggestions"></div>
-        
-        <div id="historialCompraContainer" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <h2 style="margin-bottom: 20px;">Resultado de Órdenes de Compra (<span id="countOC">0</span>)</h2>
-            
-            <table class="data-table small-table">
-                <thead><tr><th>OC ID</th><th>Proveedor</th><th>Fecha</th><th>Monto Total</th><th>Estado</th><th>Detalle</th></tr></thead>
-                <tbody id="historialComprasBody"><tr><td colspan="6">Busque una orden o proveedor para ver el historial.</td></tr></tbody>
-            </table>
+                <h1> Historial de Compras</h1>
+                <div class="section-card">
+                    <h2>Buscar Orden de Compra o Proveedor</h2>
+                    <input type="text" id="historialCompraSearchInput" class="search-input"
+                        placeholder="Buscar por ID de Orden de Compra, o nombre de Proveedor..."
+                        onkeyup="buscarHistorialCompras()">
 
-            <p style="margin-top: 20px; font-size: 0.9em; color: var(--gris-oscuro);">*Solo se muestran las órdenes de compra simuladas en base a su búsqueda.</p>
-        </div>
-    </div>
-</section>
+                    <div id="historialCompraSuggestions" class="autocomplete-suggestions"></div>
+
+                    <div id="historialCompraContainer"
+                        style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <h2 style="margin-bottom: 20px;">Resultado de Órdenes de Compra (<span id="countOC">0</span>)
+                        </h2>
+
+                        <table class="data-table small-table">
+                            <thead>
+                                <tr>
+                                    <th>OC ID</th>
+                                    <th>Proveedor</th>
+                                    <th>Fecha</th>
+                                    <th>Monto Total</th>
+                                    <th>Estado</th>
+                                    <th>Detalle</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historialComprasBody">
+                                <tr>
+                                    <td colspan="6">Busque una orden o proveedor para ver el historial.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="margin-top: 20px; font-size: 0.9em; color: var(--gris-oscuro);">*Solo se muestran las
+                            órdenes de compra simuladas en base a su búsqueda.</p>
+                    </div>
+                </div>
+            </section>
 
 
             <section id="vehiculos-listar" class="dashboard-section">
                 <h1>Lista de Vehículos</h1>
-                <div class="section-card"><p>Contenido para la lista de vehículos.</p></div>
+                <div class="section-card">
+                    <p>Contenido para la lista de vehículos.</p>
+                </div>
             </section>
 
             <section id="vehiculos-nuevo" class="dashboard-section">
                 <h1>Registrar Vehículo</h1>
-                <div class="section-card"><p>Contenido para el formulario de registrar vehículo.</p></div>
+                <div class="section-card">
+                    <p>Contenido para el formulario de registrar vehículo.</p>
+                </div>
             </section>
 
             <section id="productos-listar" class="dashboard-section">
                 <h1>Inventario de Productos</h1>
-                <div class="section-card"><p>Contenido para la lista y gestión del inventario.</p></div>
+                <div class="section-card">
+                    <p>Contenido para la lista y gestión del inventario.</p>
+                </div>
             </section>
-            
+
             <section id="productos-nuevo" class="dashboard-section">
                 <h1>Agregar Nuevo Producto</h1>
-                <div class="section-card"><p>Contenido para el formulario de agregar productos.</p></div>
+                <div class="section-card">
+                    <p>Contenido para el formulario de agregar productos.</p>
+                </div>
             </section>
-            
+
             <section id="ventas-listar" class="dashboard-section">
                 <h1>Registro de Ventas</h1>
-                <div class="section-card"><p>Contenido para la lista de ventas.</p></div>
+                <button class="cta-button" onclick="mostrarSeccion('ventas-nueva')">+ Nueva Venta</button>
+                <div class="section-card">
+                    <h2>Filtros de Búsqueda</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Fecha Desde</label>
+                            <input type="date" id="ventaFechaDesde">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha Hasta</label>
+                            <input type="date" id="ventaFechaHasta">
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select id="ventaEstadoFiltro">
+                                <option value="">Todos</option>
+                                <option value="Completada">Completada</option>
+                                <option value="Anulada">Anulada</option>
+                                <option value="Pendiente">Pendiente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="text" id="ventaSearchInput" class="search-input"
+                        placeholder="Buscar por cliente, factura o producto..." onkeyup="filtrarVentas()">
+
+                    <table class="data-table" id="tablaVentas">
+                        <thead>
+                            <tr>
+                                <th>ID Venta</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Total (Bs)</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ventasBody">
+                            <tr>
+                                <td colspan="6">Cargando ventas...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
-            
+
             <section id="ventas-nueva" class="dashboard-section">
                 <h1>Nueva Venta</h1>
-                <div class="section-card"><p>Contenido para el formulario de nueva venta.</p></div>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('ventas-listar')">Volver al
+                    Registro</button>
+                <div class="section-card">
+                    <form id="formVenta">
+                        <h2>Información del Cliente</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Cliente *</label>
+                                <input type="text" id="ventaClienteInput" placeholder="Buscar cliente..."
+                                    autocomplete="off" required>
+                                <input type="hidden" id="ventaClienteId">
+                                <div id="ventaClienteSuggestions" class="autocomplete-suggestions"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Venta *</label>
+                                <input type="date" id="ventaFecha" required>
+                            </div>
+                        </div>
+
+                        <h2>Productos/Servicios</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Producto/Servicio *</label>
+                                <select id="ventaProducto" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="1" data-precio="150">Cambio de Aceite - Bs 150</option>
+                                    <option value="2" data-precio="300">Alineación y Balanceo - Bs 300</option>
+                                    <option value="3" data-precio="500">Frenos Completos - Bs 500</option>
+                                    <option value="4" data-precio="80">Filtro de Aire - Bs 80</option>
+                                    <option value="5" data-precio="1200">Diagnóstico Completo - Bs 1200</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad *</label>
+                                <input type="number" id="ventaCantidad" min="1" value="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Precio Unitario (Bs) *</label>
+                                <input type="number" id="ventaPrecio" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        <button type="button" class="cta-button" style="background:#28a745;"
+                            onclick="agregarItemVenta()">+ Agregar Item</button>
+
+                        <h2 style="margin-top: 30px;">Items de la Venta</h2>
+                        <table class="data-table" id="tablaItemsVenta">
+                            <thead>
+                                <tr>
+                                    <th>Producto/Servicio</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unit.</th>
+                                    <th>Subtotal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemsVentaBody">
+                                <tr>
+                                    <td colspan="5" style="text-align:center; color:#999;">No hay items agregados</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-row" style="margin-top: 30px; justify-content: flex-end;">
+                            <div class="form-group" style="max-width: 300px;">
+                                <label style="font-size: 1.2em; font-weight: bold;">Total de la Venta (Bs)</label>
+                                <input type="text" id="ventaTotal" value="0.00" readonly
+                                    style="font-size: 1.5em; font-weight: bold; text-align: right; background-color: #f0f0f0;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Notas Adicionales</label>
+                            <textarea id="ventaNotas" rows="3" placeholder="Observaciones sobre la venta..."></textarea>
+                        </div>
+
+                        <button type="button" class="cta-button" onclick="guardarVenta()">Registrar Venta</button>
+                    </form>
+                </div>
             </section>
-            
+
             <section id="compras-listar" class="dashboard-section">
                 <h1>Órdenes de Compra</h1>
-                <div class="section-card"><p>Contenido para la lista de órdenes de compra.</p></div>
+                <button class="cta-button" onclick="mostrarSeccion('compras-nueva')">+ Nueva Orden</button>
+                <div class="section-card">
+                    <h2>Filtros de Búsqueda</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Proveedor</label>
+                            <input type="text" id="compraProveedorFiltro" placeholder="Nombre proveedor...">
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select id="compraEstadoFiltro">
+                                <option value="">Todos</option>
+                                <option value="Recibida">Recibida</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Cancelada">Cancelada</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="data-table" id="tablaCompras">
+                        <thead>
+                            <tr>
+                                <th>ID Orden</th>
+                                <th>Fecha</th>
+                                <th>Proveedor</th>
+                                <th>Total (Bs)</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comprasBody">
+                            <tr>
+                                <td colspan="6">Cargando órdenes...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
-            
+
             <section id="compras-nueva" class="dashboard-section">
                 <h1>Nueva Orden de Compra</h1>
-                <div class="section-card"><p>Contenido para el formulario de nueva orden de compra.</p></div>
+                <button class="cta-button" style="background:#666;" onclick="mostrarSeccion('compras-listar')">Volver al
+                    Listado</button>
+                <div class="section-card">
+                    <form id="formCompra">
+                        <h2>Datos del Proveedor</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Proveedor *</label>
+                                <select id="compraProveedor" required>
+                                    <option value="">Seleccionar Proveedor...</option>
+                                    <!-- Se llenará dinámicamente -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Orden *</label>
+                                <input type="date" id="compraFecha" required>
+                            </div>
+                        </div>
+
+                        <h2>Detalle de Productos</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Producto *</label>
+                                <input type="text" id="compraProducto" placeholder="Nombre del producto/repuesto">
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad *</label>
+                                <input type="number" id="compraCantidad" min="1" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Costo Unitario (Bs) *</label>
+                                <input type="number" id="compraCosto" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <button type="button" class="cta-button" style="background:#28a745;"
+                            onclick="agregarItemCompra()">+ Agregar a la Orden</button>
+
+                        <h2 style="margin-top: 30px;">Items de la Orden</h2>
+                        <table class="data-table" id="tablaItemsCompra">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Costo Unit.</th>
+                                    <th>Subtotal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemsCompraBody">
+                                <tr>
+                                    <td colspan="5" style="text-align:center; color:#999;">No hay items agregados</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-row" style="margin-top: 30px; justify-content: flex-end;">
+                            <div class="form-group" style="max-width: 300px;">
+                                <label style="font-size: 1.2em; font-weight: bold;">Total Orden (Bs)</label>
+                                <input type="text" id="compraTotal" value="0.00" readonly
+                                    style="font-size: 1.5em; font-weight: bold; text-align: right; background-color: #f0f0f0;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Observaciones</label>
+                            <textarea id="compraNotas" rows="3"></textarea>
+                        </div>
+
+                        <button type="button" class="cta-button" onclick="guardarCompra()">Generar Orden de
+                            Compra</button>
+                    </form>
+                </div>
             </section>
-            
+
             <section id="usuarios-listar" class="dashboard-section">
                 <h1>Lista de Usuarios</h1>
-                <div class="section-card"><p>Contenido para la lista de usuarios.</p></div>
+                <div class="section-card">
+                    <p>Contenido para la lista de usuarios.</p>
+                </div>
             </section>
-            
+
             <section id="usuarios-nuevo" class="dashboard-section">
                 <h1>Crear Usuario</h1>
-                <div class="section-card"><p>Contenido para el formulario de creación de usuarios.</p></div>
+                <div class="section-card">
+                    <p>Contenido para el formulario de creación de usuarios.</p>
+                </div>
             </section>
 
             <section id="usuarios-actividad" class="dashboard-section">
                 <h1> Actividad / Sesiones de Usuarios</h1>
-                <div class="section-card"><p>Registro de las acciones (auditoría) y las sesiones activas/históricas de los usuarios del sistema.</p></div>
-            </section>
-            
-            <section id="servicios-listar" class="dashboard-section">
-                <h1>Lista de Servicios</h1>
-                <div class="section-card"><p>Contenido para la lista de servicios ofrecidos.</p></div>
-            </section>
-            
-            <section id="servicios-nuevo" class="dashboard-section">
-                <h1>Crear Servicio</h1>
-                <div class="section-card"><p>Contenido para el formulario de creación de servicios.</p></div>
+                <div class="section-card">
+                    <p>Registro de las acciones (auditoría) y las sesiones activas/históricas de los usuarios del
+                        sistema.</p>
+                </div>
             </section>
 
-            </div>
+            <section id="servicios-listar" class="dashboard-section">
+                <h1>Lista de Servicios</h1>
+                <div class="section-card">
+                    <p>Contenido para la lista de servicios ofrecidos.</p>
+                </div>
+            </section>
+
+            <section id="servicios-nuevo" class="dashboard-section">
+                <h1>Crear Servicio</h1>
+                <div class="section-card">
+                    <p>Contenido para el formulario de creación de servicios.</p>
+                </div>
+            </section>
+
+        </div>
     </main>
 
     <script>
-   // Variable global para almacenar datos de la BD una sola vez
-let ALL_CLIENTS = [];
-let ALL_CITAS = [];
-let ALL_PROVEEDORES = []; 
-// Variables para gestionar los flujos de Citas y Clientes
-let currentCancelCita = null; 
-let CURRENT_CLIENT_VEHICLES = [];
-let CURRENT_CLIENT_TO_MANAGE = null; 
-let CURRENT_PROVEEDOR_TO_MANAGE = null; 
+        // Variable global para almacenar datos de la BD una sola vez
+        let ALL_CLIENTS = [];
+        let ALL_CITAS = [];
+        let ALL_PROVEEDORES = [];
+        // Variables para gestionar los flujos de Citas y Clientes
+        let currentCancelCita = null;
+        let CURRENT_CLIENT_VEHICLES = [];
+        let CURRENT_CLIENT_TO_MANAGE = null;
+        let CURRENT_PROVEEDOR_TO_MANAGE = null;
 
-const API_BASE_URL = 'http://localhost:3000/api';
-const CLIENT_SELECT_ID = 'citaClienteId'; 
-const CLIENT_INPUT_ID = 'clienteNombreInput'; 
-const VEHICULO_INPUT_ID = 'citaVehiculoPlacaInput'; 
+        const API_BASE_URL = 'http://localhost:3000/api';
+        const CLIENT_SELECT_ID = 'citaClienteId';
+        const CLIENT_INPUT_ID = 'clienteNombreInput';
+        const VEHICULO_INPUT_ID = 'citaVehiculoPlacaInput';
 
-// ==============================================
-// 1. FUNCIONES BÁSICAS DE NAVEGACIÓN
-// ==============================================
+        // ==============================================
+        // 1. FUNCIONES BÁSICAS DE NAVEGACIÓN
+        // ==============================================
 
-function mostrarSeccion(id) {
-    document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
-    const sec = document.getElementById(id);
-    if (sec) sec.classList.add('active');
-    document.querySelector('.dashboard-content').scrollTop = 0;
-    document.querySelectorAll('.has-submenu.open').forEach(item => item.classList.remove('open'));
-}
-
-function toggleMenu(el) {
-    document.querySelectorAll('.has-submenu.open').forEach(item => {
-        if (item !== el.parentElement) {
-            item.classList.remove('open');
+        function mostrarSeccion(id) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
+            const sec = document.getElementById(id);
+            if (sec) sec.classList.add('active');
+            document.querySelector('.dashboard-content').scrollTop = 0;
+            document.querySelectorAll('.has-submenu.open').forEach(item => item.classList.remove('open'));
         }
-    });
-    el.parentElement.classList.toggle('open');
-}
 
-// ==============================================
-// 2. LÓGICA DE CLIENTES (Se mantiene)
-// ==============================================
+        function toggleMenu(el) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== el.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
+            el.parentElement.classList.toggle('open');
+        }
 
-async function cargarClientes() {
-    mostrarSeccion('clientes-listar');
-    const tbody = document.getElementById('clientesBody');
-    tbody.innerHTML = '<tr><td colspan="7">Cargando datos de clientes...</td></tr>';
-    try {
-        const response = await axios.get(`${API_BASE_URL}/clientes`);
-        const clientes = response.data.map(c => ({
-            ...c,
-            activo: c.activo === undefined ? 1 : c.activo 
-        })); 
-        
-        ALL_CLIENTS = clientes; 
-        tbody.innerHTML = ''; 
-        
-        clientes.forEach(c => {
-            const estado = c.activo == 1 ? 'Activo' : 'Inactivo';
-            const estadoColor = c.activo == 1 ? 'color:var(--azul-claro);' : 'color:var(--rojo-alerta);';
-            const row = tbody.insertRow();
-            row.innerHTML = `
+        // ==============================================
+        // 2. LÓGICA DE CLIENTES (Se mantiene)
+        // ==============================================
+
+        async function cargarClientes() {
+            mostrarSeccion('clientes-listar');
+            const tbody = document.getElementById('clientesBody');
+            tbody.innerHTML = '<tr><td colspan="7">Cargando datos de clientes...</td></tr>';
+            try {
+                const response = await axios.get(`${API_BASE_URL}/clientes`);
+                const clientes = response.data.map(c => ({
+                    ...c,
+                    activo: c.activo === undefined ? 1 : c.activo
+                }));
+
+                ALL_CLIENTS = clientes;
+                tbody.innerHTML = '';
+
+                clientes.forEach(c => {
+                    const estado = c.activo == 1 ? 'Activo' : 'Inactivo';
+                    const estadoColor = c.activo == 1 ? 'color:var(--azul-claro);' : 'color:var(--rojo-alerta);';
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
                 <td>${c.id_cliente}</td>
                 <td>${c.codigo_cliente || 'N/A'}</td>
                 <td>${c.nombre} ${c.apellido || ''} <br><span style="${estadoColor} font-size: 0.8em;">(${estado})</span></td>
@@ -716,93 +1172,93 @@ async function cargarClientes() {
                     <span class="action-btn" style="color:var(--rojo-alerta);" onclick="eliminarCliente(${c.id_cliente})">Elim/Inact</span>
                 </td>
             `;
-        });
-    } catch (error) {
-        console.error("Error al cargar clientes:", error);
-        tbody.innerHTML = `<tr><td colspan="7" style="color:var(--rojo-alerta);">Error al cargar clientes. Verifique el servidor.</td></tr>`;
-    }
-}
-
-async function guardarCliente() {
-    // ... (Se mantiene igual) ...
-    const data = {
-        nombre: document.getElementById('clienteNombre').value.trim(),
-        apellido: document.getElementById('clienteApellido').value.trim(),
-        telefono: document.getElementById('clienteTelefono').value.trim(),
-        email: document.getElementById('clienteEmail').value.trim(),
-        tipo_documento: document.getElementById('clienteTipoDoc').value,
-        nro_documento: document.getElementById('clienteNroDoc').value.trim(),
-        direccion: document.getElementById('clienteDireccion').value.trim(),
-        codigo_cliente: document.getElementById('clienteCodigo').value.trim(),
-        activo: 1 
-    };
-
-    if (!data.nombre || !data.telefono || !data.email || !data.nro_documento) {
-        alert('Complete los campos obligatorios (*)');
-        return;
-    }
-
-    try {
-        const response = await axios.post(`${API_BASE_URL}/clientes`, data);
-        alert(response.data.message);
-        document.getElementById('formCliente').reset();
-        await cargarClientes(); 
-        if (document.getElementById(CLIENT_INPUT_ID)) {
-             document.getElementById(CLIENT_INPUT_ID).value = `${data.nombre} ${data.apellido || ''}`;
+                });
+            } catch (error) {
+                console.error("Error al cargar clientes:", error);
+                tbody.innerHTML = `<tr><td colspan="7" style="color:var(--rojo-alerta);">Error al cargar clientes. Verifique el servidor.</td></tr>`;
+            }
         }
-        mostrarSeccion('citas-crear'); 
-    } catch (error) {
-        console.error("Error al guardar cliente:", error.response ? error.response.data : error.message);
-        alert('Error al registrar cliente: ' + (error.response?.data?.error || error.message));
-    }
-}
 
-function editarCliente(id) { 
-    mostrarSeccion('clientes-modificar');
-    setTimeout(() => cargarFormularioModificarCliente(id), 50);
-}
+        async function guardarCliente() {
+            // ... (Se mantiene igual) ...
+            const data = {
+                nombre: document.getElementById('clienteNombre').value.trim(),
+                apellido: document.getElementById('clienteApellido').value.trim(),
+                telefono: document.getElementById('clienteTelefono').value.trim(),
+                email: document.getElementById('clienteEmail').value.trim(),
+                tipo_documento: document.getElementById('clienteTipoDoc').value,
+                nro_documento: document.getElementById('clienteNroDoc').value.trim(),
+                direccion: document.getElementById('clienteDireccion').value.trim(),
+                codigo_cliente: document.getElementById('clienteCodigo').value.trim(),
+                activo: 1
+            };
 
-function verHistorial(id) { 
-    mostrarSeccion('clientes-historial'); 
-    const input = document.getElementById('historialClienteSearchInput');
-    if(input) {
-        input.value = id;
-        setTimeout(() => buscarClienteParaHistorial(), 50); 
-    }
-}
+            if (!data.nombre || !data.telefono || !data.email || !data.nro_documento) {
+                alert('Complete los campos obligatorios (*)');
+                return;
+            }
 
-function eliminarCliente(id) { 
-    mostrarSeccion('clientes-eliminar-inactivar');
-    const input = document.getElementById('eliminarClienteSearchInput');
-    if(input) {
-        input.value = id;
-        setTimeout(() => buscarClienteParaEliminar(), 50);
-    }
-}
+            try {
+                const response = await axios.post(`${API_BASE_URL}/clientes`, data);
+                alert(response.data.message);
+                document.getElementById('formCliente').reset();
+                await cargarClientes();
+                if (document.getElementById(CLIENT_INPUT_ID)) {
+                    document.getElementById(CLIENT_INPUT_ID).value = `${data.nombre} ${data.apellido || ''}`;
+                }
+                mostrarSeccion('citas-crear');
+            } catch (error) {
+                console.error("Error al guardar cliente:", error.response ? error.response.data : error.message);
+                alert('Error al registrar cliente: ' + (error.response?.data?.error || error.message));
+            }
+        }
+
+        function editarCliente(id) {
+            mostrarSeccion('clientes-modificar');
+            setTimeout(() => cargarFormularioModificarCliente(id), 50);
+        }
+
+        function verHistorial(id) {
+            mostrarSeccion('clientes-historial');
+            const input = document.getElementById('historialClienteSearchInput');
+            if (input) {
+                input.value = id;
+                setTimeout(() => buscarClienteParaHistorial(), 50);
+            }
+        }
+
+        function eliminarCliente(id) {
+            mostrarSeccion('clientes-eliminar-inactivar');
+            const input = document.getElementById('eliminarClienteSearchInput');
+            if (input) {
+                input.value = id;
+                setTimeout(() => buscarClienteParaEliminar(), 50);
+            }
+        }
 
 
-// ==============================================
-// 3. LÓGICA DE PROVEEDORES (Se mantiene)
-// ==============================================
+        // ==============================================
+        // 3. LÓGICA DE PROVEEDORES (Se mantiene)
+        // ==============================================
 
-async function cargarProveedores() {
-    // ... (Se mantiene igual) ...
-    mostrarSeccion('proveedores-listar');
-    const tbody = document.getElementById('proveedoresBody');
-    tbody.innerHTML = '<tr><td colspan="6">Cargando datos de proveedores...</td></tr>';
-    try {
-        const response = await axios.get(`${API_BASE_URL}/proveedores`);
-        const proveedores = response.data.map((p, index) => ({
-            ...p,
-            ruc_nit: p.ruc_nit || `RUC-${1000 + index}` 
-        }));
-        
-        ALL_PROVEEDORES = proveedores; 
-        tbody.innerHTML = ''; 
-        
-        proveedores.forEach(p => {
-            const row = tbody.insertRow();
-            row.innerHTML = `
+        async function cargarProveedores() {
+            // ... (Se mantiene igual) ...
+            mostrarSeccion('proveedores-listar');
+            const tbody = document.getElementById('proveedoresBody');
+            tbody.innerHTML = '<tr><td colspan="6">Cargando datos de proveedores...</td></tr>';
+            try {
+                const response = await axios.get(`${API_BASE_URL}/proveedores`);
+                const proveedores = response.data.map((p, index) => ({
+                    ...p,
+                    ruc_nit: p.ruc_nit || `RUC-${1000 + index}`
+                }));
+
+                ALL_PROVEEDORES = proveedores;
+                tbody.innerHTML = '';
+
+                proveedores.forEach(p => {
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
                 <td>${p.id_proveedor}</td>
                 <td><strong>${p.nombre_empresa}</strong> <br><span style="font-size: 0.8em; color: var(--gris-oscuro);">${p.ruc_nit}</span></td>
                 <td>${p.contacto_nombre || 'N/A'}</td>
@@ -813,164 +1269,164 @@ async function cargarProveedores() {
                     <span class="action-btn" style="color:var(--rojo-alerta);" onclick="eliminarProveedor(${p.id_proveedor})">Eliminar</span>
                 </td>
             `;
-        });
-    } catch (error) {
-        console.error("Error al cargar proveedores:", error);
-        tbody.innerHTML = `<tr><td colspan="6" style="color:var(--rojo-alerta);">Error al cargar proveedores. Verifique el servidor.</td></tr>`;
-    }
-}
-
-async function guardarProveedor() {
-    // ... (Se mantiene igual) ...
-    const data = {
-        nombre_empresa: document.getElementById('provEmpresa').value.trim(),
-        contacto_nombre: document.getElementById('provContactoNombre').value.trim(),
-        contacto_telefono: document.getElementById('provContactoTelefono').value.trim(),
-        contacto_email: document.getElementById('provContactoEmail').value.trim(),
-        ruc_nit: document.getElementById('provRuc')?.value.trim() || '' 
-    };
-
-    if (!data.nombre_empresa || !data.contacto_nombre || !data.contacto_telefono) {
-        alert('Complete los campos obligatorios (*)');
-        return;
-    }
-
-    try {
-        const response = await axios.post(`${API_BASE_URL}/proveedores`, data);
-        alert(response.data.message);
-        document.getElementById('formProveedor').reset();
-        cargarProveedores(); 
-    } catch (error) {
-        console.error("Error al guardar proveedor:", error.response ? error.response.data : error.message);
-        alert('Error al registrar proveedor: ' + (error.response?.data?.error || error.message));
-    }
-}
-
-function editarProveedor(id) { 
-    mostrarSeccion('proveedores-modificar');
-    setTimeout(() => cargarFormularioModificarProveedor(id), 50);
-}
-
-async function eliminarProveedor(id) { 
-    mostrarSeccion('proveedores-eliminar-sec');
-    const input = document.getElementById('eliminarProveedorSearchInput');
-    if(input) {
-        input.value = id;
-        setTimeout(() => buscarProveedorParaEliminar(), 50);
-    }
-}
-
-
-// ==============================================
-// 4. LÓGICA DE CITAS (MODIFICADA)
-// ==============================================
-        
-function formatDateForInput(dateString) {
-    const date = new Date(dateString);
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    const hh = String(date.getHours()).padStart(2, '0');
-    const min = String(date.getMinutes()).padStart(2, '0');
-    return { date: `${yyyy}-${mm}-${dd}`, time: `${hh}:${min}` };
-}
-
-async function loadAllClients() {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/clientes`);
-        ALL_CLIENTS = response.data.map(c => ({
-            ...c,
-            activo: c.activo === undefined ? 1 : c.activo 
-        }));
-    } catch (error) {
-        console.error("Error al cargar todos los clientes para autocomplete:", error);
-        ALL_CLIENTS = [];
-    }
-}
-
-// MODIFICADA: Ahora no deshabilita el input de la placa al resetear
-function setupClienteAutocomplete() {
-    const input = document.getElementById(CLIENT_INPUT_ID);
-    const hiddenId = document.getElementById(CLIENT_SELECT_ID);
-    const suggestionsDiv = document.getElementById('clienteSuggestions');
-    const inputPlaca = document.getElementById(VEHICULO_INPUT_ID); 
-
-    input.addEventListener('input', () => {
-        const value = input.value.toLowerCase();
-        suggestionsDiv.innerHTML = ''; 
-        hiddenId.value = ''; 
-        
-        // Resetear vehículo, pero NO deshabilitar el input
-        document.getElementById('citaVehiculoId').value = '';
-        CURRENT_CLIENT_VEHICLES = []; 
-        inputPlaca.placeholder = 'Escriba la placa del vehículo (Ej: ABC-123)'; // Placeholder general
-
-        if (value.length < 2) return;
-
-        const filteredClients = ALL_CLIENTS.filter(c => 
-            (c.nombre.toLowerCase().includes(value) || 
-            c.apellido.toLowerCase().includes(value) || 
-            c.nro_documento?.includes(value)) && c.activo == 1 
-        ).slice(0, 5);
-
-        if (filteredClients.length === 0) {
-            suggestionsDiv.innerHTML = `<div class="suggestion-item new-client-prompt" onclick="promptNewClient('${input.value}')">
-                Cliente no encontrado o inactivo. ➕ Clic para registrar.
-            </div>`;
-            return;
+                });
+            } catch (error) {
+                console.error("Error al cargar proveedores:", error);
+                tbody.innerHTML = `<tr><td colspan="6" style="color:var(--rojo-alerta);">Error al cargar proveedores. Verifique el servidor.</td></tr>`;
+            }
         }
 
-        filteredClients.forEach(c => {
-            const suggestion = document.createElement('div');
-            suggestion.className = 'suggestion-item';
-            suggestion.innerHTML = `<strong>${c.nombre} ${c.apellido || ''}</strong> (Doc: ${c.nro_documento})`;
-            suggestion.onclick = () => {
-                input.value = `${c.nombre} ${c.apellido || ''}`;
-                hiddenId.value = c.id_cliente;
-                suggestionsDiv.innerHTML = '';
-                cargarVehiculosPorCliente(c.id_cliente); 
+        async function guardarProveedor() {
+            // ... (Se mantiene igual) ...
+            const data = {
+                nombre_empresa: document.getElementById('provEmpresa').value.trim(),
+                contacto_nombre: document.getElementById('provContactoNombre').value.trim(),
+                contacto_telefono: document.getElementById('provContactoTelefono').value.trim(),
+                contacto_email: document.getElementById('provContactoEmail').value.trim(),
+                ruc_nit: document.getElementById('provRuc')?.value.trim() || ''
             };
-            suggestionsDiv.appendChild(suggestion);
-        });
-    });
 
-    input.addEventListener('blur', () => {
-        setTimeout(() => suggestionsDiv.innerHTML = '', 200);
-    });
-
-    window.promptNewClient = (nombreInicial) => {
-        document.getElementById('clienteNombre').value = nombreInicial;
-        mostrarSeccion('clientes-nuevo');
-    };
-}
-
-
-async function cargarCitas() {
-    // ... (Se mantiene igual) ...
-    mostrarSeccion('citas-listar');
-    const tbody = document.getElementById('citasBody');
-    tbody.innerHTML = '<tr><td colspan="6">Cargando datos de citas...</td></tr>';
-    try {
-        const response = await axios.get(`${API_BASE_URL}/citas`);
-        const citas = response.data;
-        ALL_CITAS = citas; 
-        tbody.innerHTML = ''; 
-
-        const getStatusClass = (status) => {
-            switch(status) {
-                case 'Pendiente': return 'status-pending';
-                case 'Realizada': return 'status-completed';
-                case 'Cancelada': return 'status-cancelled';
-                default: return 'status-default';
+            if (!data.nombre_empresa || !data.contacto_nombre || !data.contacto_telefono) {
+                alert('Complete los campos obligatorios (*)');
+                return;
             }
-        };
-        
-        citas.forEach(c => {
-            const { date, time } = formatDateForInput(c.fecha_hora);
-            const statusClass = getStatusClass(c.estado_cita);
 
-            const row = tbody.insertRow();
-            row.innerHTML = `
+            try {
+                const response = await axios.post(`${API_BASE_URL}/proveedores`, data);
+                alert(response.data.message);
+                document.getElementById('formProveedor').reset();
+                cargarProveedores();
+            } catch (error) {
+                console.error("Error al guardar proveedor:", error.response ? error.response.data : error.message);
+                alert('Error al registrar proveedor: ' + (error.response?.data?.error || error.message));
+            }
+        }
+
+        function editarProveedor(id) {
+            mostrarSeccion('proveedores-modificar');
+            setTimeout(() => cargarFormularioModificarProveedor(id), 50);
+        }
+
+        async function eliminarProveedor(id) {
+            mostrarSeccion('proveedores-eliminar-sec');
+            const input = document.getElementById('eliminarProveedorSearchInput');
+            if (input) {
+                input.value = id;
+                setTimeout(() => buscarProveedorParaEliminar(), 50);
+            }
+        }
+
+
+        // ==============================================
+        // 4. LÓGICA DE CITAS (MODIFICADA)
+        // ==============================================
+
+        function formatDateForInput(dateString) {
+            const date = new Date(dateString);
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2, '0');
+            const dd = String(date.getDate()).padStart(2, '0');
+            const hh = String(date.getHours()).padStart(2, '0');
+            const min = String(date.getMinutes()).padStart(2, '0');
+            return { date: `${yyyy}-${mm}-${dd}`, time: `${hh}:${min}` };
+        }
+
+        async function loadAllClients() {
+            try {
+                const response = await axios.get(`${API_BASE_URL}/clientes`);
+                ALL_CLIENTS = response.data.map(c => ({
+                    ...c,
+                    activo: c.activo === undefined ? 1 : c.activo
+                }));
+            } catch (error) {
+                console.error("Error al cargar todos los clientes para autocomplete:", error);
+                ALL_CLIENTS = [];
+            }
+        }
+
+        // MODIFICADA: Ahora no deshabilita el input de la placa al resetear
+        function setupClienteAutocomplete() {
+            const input = document.getElementById(CLIENT_INPUT_ID);
+            const hiddenId = document.getElementById(CLIENT_SELECT_ID);
+            const suggestionsDiv = document.getElementById('clienteSuggestions');
+            const inputPlaca = document.getElementById(VEHICULO_INPUT_ID);
+
+            input.addEventListener('input', () => {
+                const value = input.value.toLowerCase();
+                suggestionsDiv.innerHTML = '';
+                hiddenId.value = '';
+
+                // Resetear vehículo, pero NO deshabilitar el input
+                document.getElementById('citaVehiculoId').value = '';
+                CURRENT_CLIENT_VEHICLES = [];
+                inputPlaca.placeholder = 'Escriba la placa del vehículo (Ej: ABC-123)'; // Placeholder general
+
+                if (value.length < 2) return;
+
+                const filteredClients = ALL_CLIENTS.filter(c =>
+                    (c.nombre.toLowerCase().includes(value) ||
+                        c.apellido.toLowerCase().includes(value) ||
+                        c.nro_documento?.includes(value)) && c.activo == 1
+                ).slice(0, 5);
+
+                if (filteredClients.length === 0) {
+                    suggestionsDiv.innerHTML = `<div class="suggestion-item new-client-prompt" onclick="promptNewClient('${input.value}')">
+                Cliente no encontrado o inactivo. ➕ Clic para registrar.
+            </div>`;
+                    return;
+                }
+
+                filteredClients.forEach(c => {
+                    const suggestion = document.createElement('div');
+                    suggestion.className = 'suggestion-item';
+                    suggestion.innerHTML = `<strong>${c.nombre} ${c.apellido || ''}</strong> (Doc: ${c.nro_documento})`;
+                    suggestion.onclick = () => {
+                        input.value = `${c.nombre} ${c.apellido || ''}`;
+                        hiddenId.value = c.id_cliente;
+                        suggestionsDiv.innerHTML = '';
+                        cargarVehiculosPorCliente(c.id_cliente);
+                    };
+                    suggestionsDiv.appendChild(suggestion);
+                });
+            });
+
+            input.addEventListener('blur', () => {
+                setTimeout(() => suggestionsDiv.innerHTML = '', 200);
+            });
+
+            window.promptNewClient = (nombreInicial) => {
+                document.getElementById('clienteNombre').value = nombreInicial;
+                mostrarSeccion('clientes-nuevo');
+            };
+        }
+
+
+        async function cargarCitas() {
+            // ... (Se mantiene igual) ...
+            mostrarSeccion('citas-listar');
+            const tbody = document.getElementById('citasBody');
+            tbody.innerHTML = '<tr><td colspan="6">Cargando datos de citas...</td></tr>';
+            try {
+                const response = await axios.get(`${API_BASE_URL}/citas`);
+                const citas = response.data;
+                ALL_CITAS = citas;
+                tbody.innerHTML = '';
+
+                const getStatusClass = (status) => {
+                    switch (status) {
+                        case 'Pendiente': return 'status-pending';
+                        case 'Realizada': return 'status-completed';
+                        case 'Cancelada': return 'status-cancelled';
+                        default: return 'status-default';
+                    }
+                };
+
+                citas.forEach(c => {
+                    const { date, time } = formatDateForInput(c.fecha_hora);
+                    const statusClass = getStatusClass(c.estado_cita);
+
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
                 <td><strong>${c.id_cita}</strong></td>
                 <td>${date} <br> <span class="time-detail">${time}</span></td>
                 <td><strong>${c.cliente_nombre || 'N/A'}</strong></td>
@@ -981,173 +1437,367 @@ async function cargarCitas() {
                     <span class="action-btn" onclick="iniciarOrden(${c.id_cita})">Iniciar OT</span>
                 </td>
             `;
-        });
-    } catch (error) {
-        console.error("Error al cargar citas:", error);
-        tbody.innerHTML = `<tr><td colspan="6" style="color:var(--rojo-alerta);">Error al cargar citas. Verifique el servidor.</td></tr>`;
-    }
-}
-
-// MODIFICADA: Solo carga los vehículos, pero no deshabilita el input de placa
-async function cargarVehiculosPorCliente(clienteId) {
-    const inputPlaca = document.getElementById(VEHICULO_INPUT_ID);
-    
-    // Clear previous vehicle selection
-    document.getElementById('citaVehiculoId').value = '';
-    CURRENT_CLIENT_VEHICLES = [];
-    inputPlaca.placeholder = 'Cargando vehículos...';
-
-    if (!clienteId) {
-        inputPlaca.placeholder = 'Escriba la placa del vehículo (Ej: ABC-123)';
-        setupVehiculoAutocomplete(); 
-        return;
-    }
-
-    try {
-        const response = await axios.get(`${API_BASE_URL}/vehiculos/cliente/${clienteId}`); 
-        CURRENT_CLIENT_VEHICLES = response.data;
-
-        if (CURRENT_CLIENT_VEHICLES.length === 0) {
-            inputPlaca.placeholder = 'Cliente sin vehículos registrados. Escriba la placa.';
-        } else {
-            inputPlaca.placeholder = 'Sugerencias de vehículos del cliente...';
+                });
+            } catch (error) {
+                console.error("Error al cargar citas:", error);
+                tbody.innerHTML = `<tr><td colspan="6" style="color:var(--rojo-alerta);">Error al cargar citas. Verifique el servidor.</td></tr>`;
+            }
         }
-        
-        setupVehiculoAutocomplete(); 
-    } catch (error) {
-        console.error("Error al cargar vehículos:", error);
-        inputPlaca.placeholder = 'Escriba la placa (Error al cargar sugerencias)';
-    }
-}
 
-// MODIFICADA: Actualiza el mensaje de sugerencia de nuevo vehículo
-function setupVehiculoAutocomplete() {
-    const input = document.getElementById(VEHICULO_INPUT_ID);
-    const hiddenId = document.getElementById('citaVehiculoId');
-    const suggestionsDiv = document.getElementById('vehiculoSuggestions');
-    
-    input.oninput = () => { 
-        const value = input.value.toUpperCase();
-        suggestionsDiv.innerHTML = ''; 
-        hiddenId.value = ''; // Se resetea el ID, solo se asigna si se selecciona una sugerencia
-        
-        if (value.length < 2) return;
+        // MODIFICADA: Solo carga los vehículos, pero no deshabilita el input de placa
+        async function cargarVehiculosPorCliente(clienteId) {
+            const inputPlaca = document.getElementById(VEHICULO_INPUT_ID);
 
-        const filteredVehicles = CURRENT_CLIENT_VEHICLES.filter(v => 
-            v.placa.includes(value) || 
-            v.fabricante.toLowerCase().includes(value.toLowerCase()) ||
-            v.modelo.toLowerCase().includes(value.toLowerCase())
-        ).slice(0, 5);
+            // Clear previous vehicle selection
+            document.getElementById('citaVehiculoId').value = '';
+            CURRENT_CLIENT_VEHICLES = [];
+            inputPlaca.placeholder = 'Cargando vehículos...';
 
-        if (filteredVehicles.length === 0 && document.getElementById(CLIENT_SELECT_ID).value) {
-            // Solo muestra la sugerencia de registro si hay un cliente seleccionado
-            suggestionsDiv.innerHTML = `<div class="suggestion-item new-client-prompt" onclick="promptNewVehicle('${input.value}')">
+            if (!clienteId) {
+                inputPlaca.placeholder = 'Escriba la placa del vehículo (Ej: ABC-123)';
+                setupVehiculoAutocomplete();
+                return;
+            }
+
+            try {
+                const response = await axios.get(`${API_BASE_URL}/vehiculos/cliente/${clienteId}`);
+                CURRENT_CLIENT_VEHICLES = response.data;
+
+                if (CURRENT_CLIENT_VEHICLES.length === 0) {
+                    inputPlaca.placeholder = 'Cliente sin vehículos registrados. Escriba la placa.';
+                } else {
+                    inputPlaca.placeholder = 'Sugerencias de vehículos del cliente...';
+                }
+
+                setupVehiculoAutocomplete();
+            } catch (error) {
+                console.error("Error al cargar vehículos:", error);
+                inputPlaca.placeholder = 'Escriba la placa (Error al cargar sugerencias)';
+            }
+        }
+
+        // MODIFICADA: Actualiza el mensaje de sugerencia de nuevo vehículo
+        function setupVehiculoAutocomplete() {
+            const input = document.getElementById(VEHICULO_INPUT_ID);
+            const hiddenId = document.getElementById('citaVehiculoId');
+            const suggestionsDiv = document.getElementById('vehiculoSuggestions');
+
+            input.oninput = () => {
+                const value = input.value.toUpperCase();
+                suggestionsDiv.innerHTML = '';
+                hiddenId.value = ''; // Se resetea el ID, solo se asigna si se selecciona una sugerencia
+
+                if (value.length < 2) return;
+
+                const filteredVehicles = CURRENT_CLIENT_VEHICLES.filter(v =>
+                    v.placa.includes(value) ||
+                    v.fabricante.toLowerCase().includes(value.toLowerCase()) ||
+                    v.modelo.toLowerCase().includes(value.toLowerCase())
+                ).slice(0, 5);
+
+                if (filteredVehicles.length === 0 && document.getElementById(CLIENT_SELECT_ID).value) {
+                    // Solo muestra la sugerencia de registro si hay un cliente seleccionado
+                    suggestionsDiv.innerHTML = `<div class="suggestion-item new-client-prompt" onclick="promptNewVehicle('${input.value}')">
                 Vehículo no encontrado. Placa "${input.value}" se agendará como nuevo.
             </div>`;
-            return;
+                    return;
+                }
+
+                filteredVehicles.forEach(v => {
+                    const suggestion = document.createElement('div');
+                    suggestion.className = 'suggestion-item';
+                    suggestion.innerHTML = `<strong>${v.placa}</strong> - ${v.fabricante} ${v.modelo}`;
+                    suggestion.onclick = () => {
+                        input.value = v.placa;
+                        hiddenId.value = v.id_vehiculo; // Se asigna el ID si se selecciona
+                        suggestionsDiv.innerHTML = '';
+                    };
+                    suggestionsDiv.appendChild(suggestion);
+                });
+            };
+
+            input.onblur = () => {
+                setTimeout(() => suggestionsDiv.innerHTML = '', 200);
+            };
+
+            window.promptNewVehicle = (placaInicial) => {
+                alert(`La placa "${placaInicial}" se utilizará para esta cita. Al guardar, el sistema debería registrarla como nuevo vehículo para el cliente seleccionado.`);
+                // Al hacer click, solo borramos las sugerencias y dejamos la placa escrita
+                document.getElementById('vehiculoSuggestions').innerHTML = '';
+            };
         }
 
-        filteredVehicles.forEach(v => {
-            const suggestion = document.createElement('div');
-            suggestion.className = 'suggestion-item';
-            suggestion.innerHTML = `<strong>${v.placa}</strong> - ${v.fabricante} ${v.modelo}`;
-            suggestion.onclick = () => {
-                input.value = v.placa;
-                hiddenId.value = v.id_vehiculo; // Se asigna el ID si se selecciona
-                suggestionsDiv.innerHTML = '';
+
+        // MODIFICADA: La validación ahora depende del input de texto de la placa
+        async function guardarCita() {
+            const fecha = document.getElementById('citaFecha').value;
+            const hora = document.getElementById('citaHora').value;
+
+            const placa_input = document.getElementById(VEHICULO_INPUT_ID).value.trim();
+            const vehiculo_id_seleccionado = document.getElementById('citaVehiculoId').value;
+            const cliente_id = document.getElementById(CLIENT_SELECT_ID).value;
+
+            const data = {
+                cliente_id: cliente_id,
+                vehiculo_id: vehiculo_id_seleccionado, // ID (si se seleccionó), o '' (si es placa nueva)
+                placa_texto: placa_input, // El texto de la placa (siempre se envía)
+                fecha_hora: `${fecha}T${hora}:00`,
+                estado_cita: 'Pendiente'
             };
-            suggestionsDiv.appendChild(suggestion);
+
+            // Nueva validación: Necesita cliente_id Y placa_texto
+            if (!cliente_id || !placa_input || !fecha || !hora) {
+                alert('Complete los campos obligatorios (*). Necesita seleccionar un cliente y escribir la placa del vehículo.');
+                return;
+            }
+
+            try {
+                // En un backend real, si vehiculo_id está vacío y placa_texto está lleno, 
+                // el servidor crea un nuevo vehículo para el cliente antes de la cita.
+                const response = await axios.post(`${API_BASE_URL}/citas`, data);
+                alert(response.data.message);
+
+                // Resetear formulario de cita
+                document.getElementById('formCita').reset();
+                document.getElementById(CLIENT_SELECT_ID).value = '';
+                document.getElementById(CLIENT_INPUT_ID).value = '';
+                document.getElementById(VEHICULO_INPUT_ID).value = '';
+                document.getElementById('citaVehiculoId').value = '';
+
+                cargarCitas();
+            } catch (error) {
+                console.error("Error al agendar cita:", error.response ? error.response.data : error.message);
+                alert('Error al agendar cita: ' + (error.response?.data?.error || error.message));
+            }
+        }
+
+
+        function editarCita(id) {
+            // ... (Se mantiene igual) ...
+            mostrarSeccion('citas-modificar-trasladar');
+            const input = document.getElementById('citaSearchModificar');
+            if (input) {
+                input.value = id;
+                setTimeout(() => buscarCitaParaModificar(), 50);
+            }
+        }
+
+        function iniciarOrden(id) {
+            // ... (Se mantiene igual) ...
+            alert(`Función: Iniciar Orden de Trabajo (OT) para Cita ID ${id} - Redirigir a módulo de Órdenes.`);
+        }
+
+
+        // ==============================================
+        // 5. LÓGICA DE GESTIÓN DE CLIENTES (Se mantiene)
+        // ==============================================
+
+        // ==============================================
+        // 6. LÓGICA DE VENTAS
+        // ==============================================
+
+        let itemsVenta = [];
+
+        function agregarItemVenta() {
+            const select = document.getElementById('ventaProducto');
+            const cantidadInput = document.getElementById('ventaCantidad');
+            const precioInput = document.getElementById('ventaPrecio');
+
+            const productoId = select.value;
+            const productoNombre = select.options[select.selectedIndex].text.split(' - ')[0];
+            const cantidad = parseInt(cantidadInput.value);
+            const precio = parseFloat(precioInput.value);
+
+            if (!productoId || cantidad <= 0 || isNaN(precio)) {
+                alert('Seleccione un producto y una cantidad válida.');
+                return;
+            }
+
+            const subtotal = cantidad * precio;
+            itemsVenta.push({ productoId, productoNombre, cantidad, precio, subtotal });
+
+            actualizarTablaItemsVenta();
+
+            // Reset inputs
+            select.value = "";
+            cantidadInput.value = 1;
+            precioInput.value = "";
+        }
+
+        function actualizarTablaItemsVenta() {
+            const tbody = document.getElementById('itemsVentaBody');
+            tbody.innerHTML = '';
+            let total = 0;
+
+            itemsVenta.forEach((item, index) => {
+                total += item.subtotal;
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${item.productoNombre}</td>
+                    <td>${item.cantidad}</td>
+                    <td>Bs ${item.precio.toFixed(2)}</td>
+                    <td>Bs ${item.subtotal.toFixed(2)}</td>
+                    <td><button class="action-btn" style="color:red;" onclick="eliminarItemVenta(${index})">X</button></td>
+                `;
+            });
+
+            if (itemsVenta.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#999;">No hay items agregados</td></tr>';
+            }
+
+            document.getElementById('ventaTotal').value = total.toFixed(2);
+        }
+
+        function eliminarItemVenta(index) {
+            itemsVenta.splice(index, 1);
+            actualizarTablaItemsVenta();
+        }
+
+        function guardarVenta() {
+            const cliente = document.getElementById('ventaClienteInput').value;
+            const fecha = document.getElementById('ventaFecha').value;
+
+            if (!cliente || !fecha || itemsVenta.length === 0) {
+                alert('Complete los datos del cliente, fecha y agregue al menos un item.');
+                return;
+            }
+
+            alert('Venta registrada exitosamente (Simulación).');
+            document.getElementById('formVenta').reset();
+            itemsVenta = [];
+            actualizarTablaItemsVenta();
+            mostrarSeccion('ventas-listar');
+        }
+
+        function filtrarVentas() {
+            const input = document.getElementById('ventaSearchInput').value.toLowerCase();
+            const tbody = document.getElementById('ventasBody');
+            // Simulación de filtro
+            console.log("Filtrando ventas por:", input);
+        }
+
+        // Auto-llenar precio al seleccionar producto
+        document.getElementById('ventaProducto')?.addEventListener('change', function () {
+            const option = this.options[this.selectedIndex];
+            const precio = option.getAttribute('data-precio');
+            if (precio) {
+                document.getElementById('ventaPrecio').value = precio;
+            }
         });
-    };
-    
-    input.onblur = () => {
-        setTimeout(() => suggestionsDiv.innerHTML = '', 200);
-    };
-    
-    window.promptNewVehicle = (placaInicial) => {
-        alert(`La placa "${placaInicial}" se utilizará para esta cita. Al guardar, el sistema debería registrarla como nuevo vehículo para el cliente seleccionado.`);
-        // Al hacer click, solo borramos las sugerencias y dejamos la placa escrita
-        document.getElementById('vehiculoSuggestions').innerHTML = '';
-    };
-}
 
 
-// MODIFICADA: La validación ahora depende del input de texto de la placa
-async function guardarCita() {
-    const fecha = document.getElementById('citaFecha').value;
-    const hora = document.getElementById('citaHora').value;
+        // ==============================================
+        // 7. LÓGICA DE COMPRAS
+        // ==============================================
 
-    const placa_input = document.getElementById(VEHICULO_INPUT_ID).value.trim();
-    const vehiculo_id_seleccionado = document.getElementById('citaVehiculoId').value; 
-    const cliente_id = document.getElementById(CLIENT_SELECT_ID).value;
+        let itemsCompra = [];
 
-    const data = {
-        cliente_id: cliente_id, 
-        vehiculo_id: vehiculo_id_seleccionado, // ID (si se seleccionó), o '' (si es placa nueva)
-        placa_texto: placa_input, // El texto de la placa (siempre se envía)
-        fecha_hora: `${fecha}T${hora}:00`,
-        estado_cita: 'Pendiente' 
-    };
+        function agregarItemCompra() {
+            const producto = document.getElementById('compraProducto').value;
+            const cantidadInput = document.getElementById('compraCantidad');
+            const costoInput = document.getElementById('compraCosto');
 
-    // Nueva validación: Necesita cliente_id Y placa_texto
-    if (!cliente_id || !placa_input || !fecha || !hora) { 
-        alert('Complete los campos obligatorios (*). Necesita seleccionar un cliente y escribir la placa del vehículo.'); 
-        return; 
-    }
+            const cantidad = parseInt(cantidadInput.value);
+            const costo = parseFloat(costoInput.value);
 
-    try {
-        // En un backend real, si vehiculo_id está vacío y placa_texto está lleno, 
-        // el servidor crea un nuevo vehículo para el cliente antes de la cita.
-        const response = await axios.post(`${API_BASE_URL}/citas`, data);
-        alert(response.data.message);
-        
-        // Resetear formulario de cita
-        document.getElementById('formCita').reset();
-        document.getElementById(CLIENT_SELECT_ID).value = ''; 
-        document.getElementById(CLIENT_INPUT_ID).value = ''; 
-        document.getElementById(VEHICULO_INPUT_ID).value = ''; 
-        document.getElementById('citaVehiculoId').value = ''; 
-        
-        cargarCitas(); 
-    } catch (error) {
-        console.error("Error al agendar cita:", error.response ? error.response.data : error.message);
-        alert('Error al agendar cita: ' + (error.response?.data?.error || error.message));
-    }
-}
+            if (!producto || cantidad <= 0 || isNaN(costo)) {
+                alert('Ingrese un nombre de producto, cantidad y costo válido.');
+                return;
+            }
+
+            const subtotal = cantidad * costo;
+            itemsCompra.push({ producto, cantidad, costo, subtotal });
+
+            actualizarTablaItemsCompra();
+
+            // Reset inputs
+            document.getElementById('compraProducto').value = "";
+            cantidadInput.value = 1;
+            costoInput.value = "";
+            document.getElementById('compraProducto').focus();
+        }
+
+        function actualizarTablaItemsCompra() {
+            const tbody = document.getElementById('itemsCompraBody');
+            tbody.innerHTML = '';
+            let total = 0;
+
+            itemsCompra.forEach((item, index) => {
+                total += item.subtotal;
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${item.producto}</td>
+                    <td>${item.cantidad}</td>
+                    <td>Bs ${item.costo.toFixed(2)}</td>
+                    <td>Bs ${item.subtotal.toFixed(2)}</td>
+                    <td><button class="action-btn" style="color:red;" onclick="eliminarItemCompra(${index})">X</button></td>
+                `;
+            });
+
+            if (itemsCompra.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#999;">No hay items agregados</td></tr>';
+            }
+
+            document.getElementById('compraTotal').value = total.toFixed(2);
+        }
+
+        function eliminarItemCompra(index) {
+            itemsCompra.splice(index, 1);
+            actualizarTablaItemsCompra();
+        }
+
+        function guardarCompra() {
+            const proveedor = document.getElementById('compraProveedor').value;
+            const fecha = document.getElementById('compraFecha').value;
+
+            if (!proveedor || !fecha || itemsCompra.length === 0) {
+                alert('Seleccione proveedor, fecha y agregue al menos un item.');
+                return;
+            }
+
+            alert('Orden de Compra generada exitosamente (Simulación).');
+            document.getElementById('formCompra').reset();
+            itemsCompra = [];
+            actualizarTablaItemsCompra();
+            mostrarSeccion('compras-listar');
+        }
+
+        // Llenar select de proveedores al cargar
+        async function llenarSelectProveedores() {
+            const select = document.getElementById('compraProveedor');
+            if (!select) return;
+
+            // Usar ALL_PROVEEDORES si ya está cargado, si no, esperar un poco o cargarlo
+            if (ALL_PROVEEDORES.length === 0) {
+                try {
+                    const response = await axios.get(`${API_BASE_URL}/proveedores`);
+                    ALL_PROVEEDORES = response.data;
+                } catch (e) { console.error(e); }
+            }
+
+            select.innerHTML = '<option value="">Seleccionar Proveedor...</option>';
+            ALL_PROVEEDORES.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p.id_proveedor;
+                option.text = p.nombre_empresa;
+                select.appendChild(option);
+            });
+        }
 
 
-function editarCita(id) { 
-    // ... (Se mantiene igual) ...
-    mostrarSeccion('citas-modificar-trasladar');
-    const input = document.getElementById('citaSearchModificar');
-    if (input) {
-        input.value = id;
-        setTimeout(() => buscarCitaParaModificar(), 50); 
-    }
-}
 
-function iniciarOrden(id) { 
-    // ... (Se mantiene igual) ...
-    alert(`Función: Iniciar Orden de Trabajo (OT) para Cita ID ${id} - Redirigir a módulo de Órdenes.`); 
-}
-
-
-// ==============================================
-// 5. LÓGICA DE GESTIÓN DE CLIENTES (Se mantiene)
-// ==============================================
-
-// ... (El resto de las funciones de Clientes, Proveedores y Disponibilidad se mantienen igual) ...
-
-// Iniciar en Inicio y cargar datos necesarios
-document.addEventListener('DOMContentLoaded', () => {
-    mostrarSeccion('inicio');
-    loadAllClients(); 
-    setupClienteAutocomplete(); 
-    cargarProveedores();
-    // NOTA: setupVehiculoAutocomplete ya no necesita ser llamada aquí, 
-    // ya que el input de placa está habilitado por defecto y su lógica se activa oninput.
-});
+        // Iniciar en Inicio y cargar datos necesarios
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarSeccion('inicio');
+            loadAllClients();
+            setupClienteAutocomplete();
+            cargarProveedores();
+            llenarSelectProveedores();
+            // NOTA: setupVehiculoAutocomplete ya no necesita ser llamada aquí, 
+            // ya que el input de placa está habilitado por defecto y su lógica se activa oninput.
+        });
     </script>
-    
+
 </body>
+
 </html>

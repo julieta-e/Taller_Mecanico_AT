@@ -175,7 +175,8 @@ header {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 15px; /* Espacio entre el botón y el perfil */
+  gap: 15px;
+  /* Espacio entre el botón y el perfil */
 }
 
 .account-link {
@@ -220,6 +221,7 @@ header {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 #hero::before {
   /* Capa oscura */
   content: "";
@@ -721,9 +723,11 @@ main.login-page-main {
 
 .full-screen-container {
   display: flex;
-  align-items: center; /* 👈 ASEGURA QUE ESTÉ ASÍ para centrar verticalmente */
+  align-items: center;
+  /* 👈 ASEGURA QUE ESTÉ ASÍ para centrar verticalmente */
   justify-content: center;
-  min-height: calc(100vh - 80px); /* Esto ya está bien si tu header mide 80px */
+  min-height: calc(100vh - 80px);
+  /* Esto ya está bien si tu header mide 80px */
   width: 100%;
 
   background-image: url("assets/img/Fondo_cuenta.jpeg");
@@ -740,12 +744,11 @@ main.login-page-main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.65
-  ); /* Oscuridad de la imagen (más oscuro para el contraste) */
+  background-color: rgba(0,
+      0,
+      0,
+      0.65);
+  /* Oscuridad de la imagen (más oscuro para el contraste) */
   z-index: 1;
 }
 
@@ -760,13 +763,15 @@ main.login-page-main {
   min-height: 550px;
   z-index: 2;
   overflow: hidden;
-  margin: 500; /* 👈 CAMBIA ESTA LÍNEA de '40px 0' a 'auto' */
+  margin: 500;
+  /* 👈 CAMBIA ESTA LÍNEA de '40px 0' a 'auto' */
 }
 
 /* Sección de Bienvenida (Izquierda - Fondo Azul) */
 .welcome-section {
   flex: 1;
-  background-color: var(--azul-oscuro); /* Fondo azul corporativo */
+  background-color: var(--azul-oscuro);
+  /* Fondo azul corporativo */
   color: var(--blanco);
   padding: 40px;
   display: flex;
@@ -814,7 +819,8 @@ main.login-page-main {
 }
 
 .social-icon:hover {
-  color: var(--naranja-vibrante); /* Íconos Naranja al pasar el mouse */
+  color: var(--naranja-vibrante);
+  /* Íconos Naranja al pasar el mouse */
 }
 
 /* Sección del Formulario (Derecha - Fondo Blanco) */
@@ -838,18 +844,21 @@ main.login-page-main {
 .form-group-full {
   margin-bottom: 20px;
 }
+
 .form-group-full label {
   display: block;
   font-weight: bold;
   margin-bottom: 8px;
   color: var(--gris-oscuro);
 }
+
 .form-group-full input {
   width: 100%;
   padding: 12px 15px;
   border-radius: 5px;
   border: 1px solid #ddd;
 }
+
 .form-group-full input:focus {
   border-color: var(--naranja-vibrante);
   box-shadow: 0 0 0 3px rgba(255, 109, 45, 0.2);
@@ -868,12 +877,14 @@ main.login-page-main {
   padding: 15px;
   font-size: 1.1em;
   margin-top: 10px;
-  background-color: var(--naranja-vibrante); /* Botón principal Naranja */
+  background-color: var(--naranja-vibrante);
+  /* Botón principal Naranja */
   border: none;
 }
 
 .cta-button.full-width:hover {
-  background-color: var(--azul-oscuro); /* Hover Azul Corporativo */
+  background-color: var(--azul-oscuro);
+  /* Hover Azul Corporativo */
 }
 
 .forgot-password-full,
@@ -888,6 +899,7 @@ main.login-page-main {
   color: var(--naranja-vibrante);
   font-weight: bold;
 }
+
 .forgot-password-full a:hover,
 .no-account a:hover {
   text-decoration: underline;
@@ -908,28 +920,34 @@ main.login-page-main {
     min-height: auto;
     padding: 20px 0;
   }
+
   .login-layout {
     flex-direction: column;
     width: 95%;
     max-width: 450px;
     min-height: auto;
-    margin: 510px; /* 👈 CAMBIA ESTA LÍNEA de '20px auto' a 'auto' */
+    margin: 510px;
+    /* 👈 CAMBIA ESTA LÍNEA de '20px auto' a 'auto' */
   }
 
   .welcome-section {
     max-width: none;
     padding: 30px;
   }
+
   .welcome-logo img {
     height: 80px;
   }
+
   .welcome-section h1 {
     font-size: 2em;
     margin-bottom: 10px;
   }
+
   .welcome-section p {
     margin-bottom: 20px;
   }
+
   .social-icons {
     margin-top: 20px;
   }
@@ -975,7 +993,7 @@ main.login-page-main {
 }
 
 /* Contenido sobre el overlay */
-#form-cita > * {
+#form-cita>* {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -994,10 +1012,12 @@ main.login-page-main {
   font-size: 3em;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
+
 #form-cita p {
   font-size: 1.1em;
   opacity: 0.9;
 }
+
 #form-cita h2::after {
   background-color: var(--naranja-vibrante);
   height: 5px;
@@ -1157,23 +1177,24 @@ main.login-page-main {
   border-color: var(--azul-oscuro);
   background-color: #f0f0f0;
 }
+
 .logo-option:hover img {
   opacity: 1;
 }
 
 /* ESTADO SELECCIONADO (CON TU COLOR NARANJA VIBRANTE) */
-.logo-selector-grid input[type="radio"]:checked + .logo-option {
+.logo-selector-grid input[type="radio"]:checked+.logo-option {
   border: 2px solid var(--naranja-vibrante);
   background-color: rgba(255, 109, 45, 0.1);
   box-shadow: 0 0 5px rgba(255, 109, 45, 0.4);
 }
 
-.logo-selector-grid input[type="radio"]:checked + .logo-option img {
+.logo-selector-grid input[type="radio"]:checked+.logo-option img {
   filter: grayscale(0%);
   opacity: 1;
 }
 
-.logo-selector-grid input[type="radio"]:checked + .logo-option span {
+.logo-selector-grid input[type="radio"]:checked+.logo-option span {
   color: var(--naranja-vibrante);
   opacity: 1;
 }
@@ -1183,24 +1204,29 @@ main.login-page-main {
   .cita-form-container {
     padding: 30px;
   }
+
   .form-row {
     flex-direction: column;
     gap: 0;
   }
+
   .form-row .form-group {
     min-width: 100%;
   }
 }
+
 @media (max-width: 600px) {
   .logo-selector-grid {
     justify-content: space-between;
     gap: 8px;
   }
+
   .logo-option {
     flex-basis: calc(50% - 4px);
     padding: 6px 10px;
     font-size: 0.9em;
   }
+
   .logo-option img {
     width: 30px;
     height: 30px;
@@ -1247,7 +1273,8 @@ body {
   left: 0;
   height: 100vh;
   overflow-y: auto;
-  z-index: 100;
+  overflow-x: hidden;
+  z-index: 1000;
 }
 
 .logo-admin {
@@ -1281,35 +1308,23 @@ body {
 }
 
 /* Submenús */
-.sidebar-nav .has-submenu > .main-link {
+.sidebar-nav .has-submenu>.main-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.sidebar-nav .has-submenu > .main-link::after {
+.sidebar-nav .has-submenu>.main-link::after {
   content: "â–¼";
   font-size: 0.7em;
   transition: transform 0.3s ease;
 }
 
-.sidebar-nav .has-submenu.open > .main-link::after {
+.sidebar-nav .has-submenu.open>.main-link::after {
   transform: rotate(180deg);
 }
 
-.sidebar-nav .submenu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background-color: #2c3e50;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
-}
 
-.sidebar-nav .has-submenu.open .submenu {
-  max-height: 1000px;
-}
 
 .sidebar-nav .submenu li a {
   padding: 8px 20px 8px 40px;
@@ -1346,9 +1361,21 @@ body {
   background-color: #f4f4f4;
 }
 
+/* Asegurar que el elemento main también se ajuste al sidebar */
+.admin-body main {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
 .dashboard-content {
   flex: 1;
-  padding: 80px 40px 40px 40px; /* Espacio superior para el perfil flotante */
+  padding: 80px 40px 40px 40px;
+  /* Espacio superior para el perfil flotante */
   width: 100%;
 }
 
@@ -1576,10 +1603,13 @@ body {
 .form-row {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .form-row .form-group {
   flex: 1;
+  min-width: 250px;
+  /* Asegura que no se aplasten demasiado */
 }
 
 .cta-button {
@@ -1607,7 +1637,8 @@ body {
   color: #ecf0f1;
   padding: 40px 20px 20px;
   width: 100%;
-  margin-top: auto; /* CLAVE: Empuja el footer al final */
+  margin-top: auto;
+  /* CLAVE: Empuja el footer al final */
 }
 
 .admin-footer .footer-content {
@@ -1821,7 +1852,8 @@ body {
 .carousel-panel {
   min-width: 100%;
 
-  height: 450px; /* Altura del carrusel */
+  height: 450px;
+  /* Altura del carrusel */
 
   background-size: cover;
 
@@ -1831,7 +1863,8 @@ body {
 
   align-items: center;
 
-  justify-content: flex-start; /* Contenido a la izquierda */
+  justify-content: flex-start;
+  /* Contenido a la izquierda */
 
   padding: 0 10%;
 
@@ -1841,12 +1874,11 @@ body {
 }
 
 .panel-content {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.65
-  ); /* Fondo semitransparente para el texto */
+  background-color: rgba(0,
+      0,
+      0,
+      0.65);
+  /* Fondo semitransparente para el texto */
 
   padding: 30px;
 
@@ -2008,7 +2040,8 @@ body {
 
   font-style: italic;
 
-  color: #ffb792; /* Naranja más claro para énfasis */
+  color: #ffb792;
+  /* Naranja más claro para énfasis */
 }
 
 .promo-action {
@@ -2379,53 +2412,32 @@ footer {
 
 /* --- ESTILOS PARA EL SUBMENÚ DESPLEGABLE (Dropdown) --- */
 
-/* La lista anidada del submenú */
-.sidebar-nav .submenu {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
 
-  /* CLAVES PARA OCULTARLO POR DEFECTO Y PERMITIR LA TRANSICIÓN */
-  max-height: 0;
-  overflow: hidden;
-
-  /* Transición para la animación de despliegue */
-  transition: max-height 0.4s ease-out;
-  background-color: rgba(0, 0, 0, 0.2); /* Fondo ligero para distinguirlo */
-}
-
-/* --- ESTILOS PARA EL SUBMENÚ HORIZONTAL (A LA DERECHA) --- */
+/* --- ESTILOS PARA EL SUBMENÚ DESPLEGABLE VERTICAL (DROPDOWN) --- */
 
 .sidebar-nav li.has-submenu {
   position: relative;
 }
 
-/* La lista anidada del submenú - POSICIONADA A LA DERECHA */
+/* La lista anidada del submenú - DESPLEGABLE HACIA ABAJO */
 .sidebar-nav .submenu {
   list-style: none;
   padding: 0;
   margin: 0;
 
-  /* POSICIONAMIENTO A LA DERECHA DEL SIDEBAR */
-  position: absolute;
-  left: 100%;
-  top: 0;
+  /* Oculto por defecto con max-height */
+  max-height: 0;
+  overflow: hidden;
 
-  /* Dimensiones */
-  width: 250px;
-  background-color: var(--gris-claro-fondo);
-  border-left: 4px solid var(--naranja-vibrante);
+  /* Transición suave */
+  transition: max-height 0.4s ease-out;
 
-  /* Oculto por defecto */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-20px);
-  transition: all 0.3s ease;
+  /* Fondo más oscuro para distinguir del menú principal */
+  background-color: #2c3e50;
 
-  /* Sombra para que destaque */
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-
-  z-index: 1000;
+  /* Z-index alto para estar sobre el contenido */
+  position: relative;
+  z-index: 1500;
 }
 
 /* Estilo de los enlaces internos del submenú */
@@ -2435,33 +2447,27 @@ footer {
 
 .sidebar-nav .submenu li a {
   display: block;
-  padding: 12px 20px;
-  font-size: 0.95em;
-  color: var(--azul-oscuro);
+  padding: 10px 20px 10px 40px;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   transition: all 0.3s ease;
-  border-bottom: 1px solid #ddd;
+  border-left: 3px solid transparent;
 }
 
 .sidebar-nav .submenu li a:hover {
-  background-color: var(--naranja-vibrante);
-  color: var(--blanco);
-  padding-left: 30px;
-}
-
-.sidebar-nav .submenu li:last-child a {
-  border-bottom: none;
+  background-color: rgba(255, 109, 45, 0.3);
+  border-left-color: var(--naranja-vibrante);
+  padding-left: 45px;
 }
 
 /* Mostrar el submenú cuando el padre tiene la clase 'open' */
 .sidebar-nav li.has-submenu.open .submenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
+  max-height: 1000px;
 }
 
 /* Flecha de expansión */
-.sidebar-nav li.has-submenu > .main-link::after {
+.sidebar-nav li.has-submenu>.main-link::after {
   content: "▶";
   font-size: 0.6em;
   margin-left: auto;
@@ -2470,12 +2476,12 @@ footer {
 }
 
 /* Rotar la flecha cuando el submenú está abierto */
-.sidebar-nav li.has-submenu.open > .main-link::after {
+.sidebar-nav li.has-submenu.open>.main-link::after {
   transform: rotate(90deg);
 }
 
 /* Estilo del main-link */
-.sidebar-nav li.has-submenu > .main-link {
+.sidebar-nav li.has-submenu>.main-link {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2507,6 +2513,7 @@ body {
   min-height: 100vh;
   width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* SIDEBAR */
@@ -2555,20 +2562,20 @@ body {
   position: relative;
 }
 
-.has-submenu > .main-link {
+.has-submenu>.main-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.has-submenu > .main-link::after {
+.has-submenu>.main-link::after {
   content: "▼";
   font-size: 0.6em;
   transition: transform 0.3s ease;
   margin-left: 10px;
 }
 
-.has-submenu.open > .main-link::after {
+.has-submenu.open>.main-link::after {
   transform: rotate(-180deg);
 }
 
@@ -2791,10 +2798,12 @@ h2 {
 .form-row {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .form-row .form-group {
   flex: 1;
+  min-width: 250px;
 }
 
 /* RESPONSIVE */
@@ -2827,6 +2836,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 .form-container {
   display: none;
 }
@@ -2834,13 +2844,15 @@ h2 {
 .form-container.active {
   display: block;
 }
+
 /* ========================================= */
 /* ESTILOS ESPECÍFICOS DEL PERFIL DEL CLIENTE */
 /* ========================================= */
 
 /* Main de la página de perfil */
 main.profile-page-main {
-  padding-top: 100px; /* Ajuste para el header fijo */
+  padding-top: 100px;
+  /* Ajuste para el header fijo */
   background-color: var(--gris-claro-fondo);
 }
 
@@ -2875,7 +2887,8 @@ main.profile-page-main {
 }
 
 .data-card {
-  flex: 2; /* Ocupa más espacio para los datos */
+  flex: 2;
+  /* Ocupa más espacio para los datos */
   min-width: 350px;
 }
 
@@ -2905,7 +2918,8 @@ main.profile-page-main {
 }
 
 .profile-actions {
-  flex: 3; /* Ocupa el resto del espacio */
+  flex: 3;
+  /* Ocupa el resto del espacio */
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -2973,12 +2987,14 @@ main.profile-page-main {
     flex-direction: column;
     align-items: stretch;
   }
+
   .data-card,
   .profile-actions {
     min-width: 100%;
     flex: 1;
   }
 }
+
 /* ========================================= */
 /* NUEVO: MENÚ DE USUARIO (TIPO YOUTUBE - AJUSTADO) */
 /* ========================================= */
@@ -2994,14 +3010,16 @@ main.profile-page-main {
   /* Reemplaza .user-avatar si usas este ID */
   width: 45px;
   height: 45px;
-  background-color: var(--naranja-vibrante); /* Color de fondo del Avatar */
+  background-color: var(--naranja-vibrante);
+  /* Color de fondo del Avatar */
   color: var(--blanco);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 1.5rem; /* Ícono grande */
+  font-size: 1.5rem;
+  /* Ícono grande */
   border: 2px solid var(--blanco);
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
@@ -3009,8 +3027,10 @@ main.profile-page-main {
 }
 
 #profile-button:hover {
-  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4); /* Efecto de hover sutil */
-  background-color: #e64a19; /* Ligeramente más oscuro al pasar el ratón */
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4);
+  /* Efecto de hover sutil */
+  background-color: #e64a19;
+  /* Ligeramente más oscuro al pasar el ratón */
 }
 
 #profile-button i {
@@ -3020,14 +3040,17 @@ main.profile-page-main {
 /* El Menú Desplegable (Estilo Oscuro UNIFICADO) */
 .profile-dropdown-menu {
   position: absolute;
-  top: 60px; /* Ajustado para caer debajo de un header típico */
+  top: 60px;
+  /* Ajustado para caer debajo de un header típico */
   right: 0;
-  background-color: #282828; /* Fondo oscuro estilo YouTube */
+  background-color: #282828;
+  /* Fondo oscuro estilo YouTube */
   color: #fff;
   width: 300px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  display: flex; /* Mostrará como flex, la clase hidden lo ocultará */
+  display: flex;
+  /* Mostrará como flex, la clase hidden lo ocultará */
   flex-direction: column;
   z-index: 2000;
   overflow: hidden;
@@ -3146,10 +3169,10 @@ hr {
 
 /* Estilo específico para Cerrar Sesión */
 .logout-item {
-  color: var(
-    --color-danger
-  ) !important; /* Asegura el color rojo si usas la variable */
-  color: #f44336 !important; /* Si no tienes --color-danger, usa un rojo específico */
+  color: var(--color-danger) !important;
+  /* Asegura el color rojo si usas la variable */
+  color: #f44336 !important;
+  /* Si no tienes --color-danger, usa un rojo específico */
 }
 
 .logout-item i {
@@ -3169,7 +3192,7 @@ body {
   height: 100%;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
-  
+
 }
 
 /* LAYOUT */
@@ -3216,19 +3239,19 @@ body {
 }
 
 /* SUBMENÚS */
-.has-submenu > .main-link {
+.has-submenu>.main-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.has-submenu > .main-link::after {
+.has-submenu>.main-link::after {
   content: "▼";
   font-size: 0.7em;
   transition: transform 0.3s ease;
 }
 
-.has-submenu.open > .main-link::after {
+.has-submenu.open>.main-link::after {
   transform: rotate(180deg);
 }
 
@@ -3433,10 +3456,12 @@ h1 {
 .form-row {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .form-row .form-group {
   flex: 1;
+  min-width: 250px;
 }
 
 /* RESPONSIVE */
@@ -3459,6 +3484,7 @@ h1 {
     flex-direction: column;
   }
 }
+
 html,
 body {
   /* 1. Asegura que la altura se ajuste al contenido (opcional, pero buena práctica) */
@@ -3473,85 +3499,90 @@ body {
 body {
   height: auto;
 }
+
 main {
   height: auto;
 }
 
 /* Estilos para Autocompletado -- MODULO CITAS*/
 .autocomplete-suggestions {
-    position: absolute;
-    z-index: 100;
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 100%; /* Ajustar al ancho del contenedor del input */
-    box-sizing: border-box;
+  position: absolute;
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* Ajustar al ancho del contenedor del input */
+  box-sizing: border-box;
 }
 
 .suggestion-item {
-    padding: 8px 12px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
 }
 
 .suggestion-item:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 .new-client-prompt {
-    color: #003366;
-    font-weight: bold;
-    background-color: #e6f7ff;
+  color: #003366;
+  font-weight: bold;
+  background-color: #e6f7ff;
 }
 
 /* Estilos para Listado Mejorado (citasBody y citasBuscarBody) */
 .data-table td {
-    vertical-align: top;
-    padding: 10px 8px;
+  vertical-align: top;
+  padding: 10px 8px;
 }
 
 .time-detail {
-    font-size: 0.9em;
-    color: #555;
+  font-size: 0.9em;
+  color: #555;
 }
 
 .detail {
-    font-size: 0.85em;
-    color: #777;
+  font-size: 0.85em;
+  color: #777;
 }
 
 /* Etiquetas de Estado */
 .status-label {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.8em;
-    display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8em;
+  display: inline-block;
 }
 
 .status-pending {
-    background-color: #fff3cd; /* Amarillo suave */
-    color: #856404;
+  background-color: #fff3cd;
+  /* Amarillo suave */
+  color: #856404;
 }
 
 .status-completed {
-    background-color: #d4edda; /* Verde suave */
-    color: #155724;
+  background-color: #d4edda;
+  /* Verde suave */
+  color: #155724;
 }
 
 .status-cancelled {
-    background-color: #f8d7da; /* Rojo suave */
-    color: #721c24;
+  background-color: #f8d7da;
+  /* Rojo suave */
+  color: #721c24;
 }
 
 /* Estilo para barra de búsqueda */
 .search-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
